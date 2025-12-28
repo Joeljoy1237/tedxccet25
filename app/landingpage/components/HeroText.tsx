@@ -48,7 +48,7 @@ export default function HeroText() {
 
         <div className="hidden md:block">|</div>
 
-        <Link href="/getting-there">
+        <Link href="/gettingthere">
           <div className="flex items-center gap-2 text-sm cursor-pointer">
             {/* Location Icon */}
             <svg

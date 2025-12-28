@@ -1,15 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const sponsors = [
   {
     name: "CCET",
     logo: (
-      <img
+      <Image
         src="/ccet.png"
         alt="CCET Logo"
-        className="w-24 h-24 md:w-32 md:h-32"
+        width={280}
+        height={308}
+        className="w-auto h-24 md:h-32 object-contain"
       />
     ),
   },
