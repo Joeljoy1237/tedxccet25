@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Ticket, Menu, X } from "lucide-react";
+import { Ticket, Menu, X, LogIn } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-5 left-5 right-5 z-50 flex items-center justify-between px-6 py-4 bg-black/50 backdrop-blur-md border border-white/10 rounded-full">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-black/50 backdrop-blur-md border-b border-white/10">
       <div className="flex items-center gap-2">
         <Link href="/">
           <Image
-            src="/logo1.svg"
+            src="/Logo1.svg"
             alt="TEDxCCET Logo"
             width={150}
             height={40}
@@ -55,11 +55,11 @@ export default function Navbar() {
 
       <div className="hidden md:flex items-center gap-4">
         <Link
-          href="#"
+          href="/login"
           className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-red-600 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105"
         >
-          <span>Get Tickets</span>
-          <Ticket className="w-4 h-4" />
+          <span>Login</span>
+          <LogIn className="w-4 h-4" />
         </Link>
       </div>
 
@@ -67,6 +67,7 @@ export default function Navbar() {
       <button
         className="md:hidden text-white focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle menu"
       >
         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
@@ -76,28 +77,28 @@ export default function Navbar() {
         <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 md:hidden">
           <div className="flex flex-col gap-4 text-base font-medium text-white/80">
             <Link
-              href="#"
+              href="/"
               className="hover:text-red-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
-              href="#"
+              href="/about"
               className="hover:text-red-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
-              href="#"
+              href="/theme"
               className="hover:text-red-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Theme
             </Link>
             <Link
-              href="#"
+              href="/speakers"
               className="hover:text-red-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
@@ -126,12 +127,12 @@ export default function Navbar() {
             </Link>
           </div>
           <Link
-            href="#"
+            href="/login"
             className="flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-red-600 rounded-lg hover:bg-red-700 transition-all duration-300"
             onClick={() => setIsOpen(false)}
           >
-            <span>Get Tickets</span>
-            <Ticket className="w-4 h-4" />
+            <span>Login</span>
+            <LogIn className="w-4 h-4" />
           </Link>
         </div>
       )}

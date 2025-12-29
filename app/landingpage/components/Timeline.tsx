@@ -1,15 +1,9 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
-const timelineEvents: {
-  time: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  isHighlight?: boolean;
-}[] = [
+const timelineEvents = [
   {
     time: "08:00 AM",
     title: "Registration & Check-in",
@@ -222,9 +216,150 @@ const timelineEvents: {
   },
 ];
 
+interface TimelineRowProps {
+  event: (typeof timelineEvents)[0];
+  index: number;
+}
+
+const TimelineRow = ({ event, index }: TimelineRowProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+  const isEven = index % 2 === 0;
+
+  return (
+    <div
+      ref={ref}
+      className={`relative flex flex-col md:flex-row items-center w-full transition-all duration-500`}
+    >
+      {/* Left Column */}
+      <div className="w-full md:w-1/2 pl-20 md:pl-0 md:pr-16 mb-4 md:mb-0 flex md:justify-end">
+        {isEven ? (
+          // Even Index: Time on Left
+          <div
+            className={`hidden md:inline-block ${
+              isInView
+                ? "bg-red-600 text-white shadow-lg shadow-red-600/20 scale-105"
+                : "text-neutral-500 bg-transparent"
+            } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider transition-all duration-300`}
+          >
+            {event.time}
+          </div>
+        ) : (
+          // Odd Index: Card on Left
+          <div
+            className={`group relative bg-[#0a0a0a] border ${
+              isInView
+                ? "border-red-600/40 shadow-xl shadow-red-900/10 scale-105"
+                : "border-white/5 hover:border-red-600/20"
+            } p-6 rounded-xl transition-all duration-500 w-full md:max-w-md text-left ml-auto`}
+          >
+            <div className="flex items-start gap-4 mb-2">
+              <div
+                className={`p-2 rounded-lg shrink-0 transition-colors duration-300 ${
+                  isInView
+                    ? "bg-red-600 text-white"
+                    : "bg-white/5 text-neutral-500"
+                }`}
+              >
+                {event.icon}
+              </div>
+              <div>
+                <h3
+                  className={`text-lg md:text-xl font-bold mb-1 transition-colors duration-300 ${
+                    isInView
+                      ? "text-red-500"
+                      : "text-white group-hover:text-red-500"
+                  }`}
+                >
+                  {event.title}
+                </h3>
+                <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">
+                  {event.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Center Dot */}
+      <div className="absolute left-[28px] md:left-1/2 transform -translate-x-1/2 w-4 h-4 z-10 flex items-center justify-center">
+        <div
+          className={`w-3 h-3 rounded-full border-2 transition-all duration-500 ${
+            isInView
+              ? "bg-red-600 border-red-600 shadow-[0_0_15px_rgba(220,38,38,0.8)] scale-125"
+              : "bg-black border-neutral-700"
+          }`}
+        />
+      </div>
+
+      {/* Right Column */}
+      <div className="w-full md:w-1/2 pl-20 md:pl-16 flex md:justify-start">
+        {isEven ? (
+          // Even Index: Card on Right
+          <div
+            className={`group relative bg-[#0a0a0a] border ${
+              isInView
+                ? "border-red-600/40 shadow-xl shadow-red-900/10 scale-105"
+                : "border-white/5 hover:border-red-600/20"
+            } p-6 rounded-xl transition-all duration-500 w-full md:max-w-md text-left mr-auto`}
+          >
+            <div className="flex items-start gap-4 mb-2">
+              <div
+                className={`p-2 rounded-lg shrink-0 transition-colors duration-300 ${
+                  isInView
+                    ? "bg-red-600 text-white"
+                    : "bg-white/5 text-neutral-500"
+                }`}
+              >
+                {event.icon}
+              </div>
+              <div>
+                <h3
+                  className={`text-lg md:text-xl font-bold mb-1 transition-colors duration-300 ${
+                    isInView
+                      ? "text-red-500"
+                      : "text-white group-hover:text-red-500"
+                  }`}
+                >
+                  {event.title}
+                </h3>
+                <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">
+                  {event.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          // Odd Index: Time on Right
+          <div
+            className={`hidden md:inline-block ${
+              isInView
+                ? "bg-red-600 text-white shadow-lg shadow-red-600/20 scale-105"
+                : "text-neutral-500 bg-transparent"
+            } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider transition-all duration-300`}
+          >
+            {event.time}
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Time (Absolute) - Visible only on mobile */}
+      <div className="md:hidden absolute top-0 left-20 -translate-y-[140%]">
+        <span
+          className={`text-xs font-mono font-bold transition-colors duration-300 ${
+            isInView ? "text-red-500 scale-105" : "text-neutral-500"
+          }`}
+        >
+          {event.time}
+        </span>
+      </div>
+    </div>
+  );
+};
+
 export default function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -253,10 +388,7 @@ export default function Timeline() {
 
       <div className="relative max-w-5xl mx-auto">
         {/* Central Line */}
-        <div
-          ref={lineRef}
-          className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[1px] bg-neutral-800 transform md:-translate-x-1/2"
-        >
+        <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[1px] bg-neutral-800 transform md:-translate-x-1/2">
           <motion.div
             style={{ height: heightTransform, opacity: opacityTransform }}
             className="absolute top-0 left-0 w-full bg-red-600"
@@ -264,115 +396,9 @@ export default function Timeline() {
         </div>
 
         <div className="space-y-12">
-          {timelineEvents.map((event, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div
-                key={index}
-                className="relative flex flex-col md:flex-row items-center w-full"
-              >
-                {/* Left Column */}
-                <div className="w-full md:w-1/2 pl-20 md:pl-0 md:pr-16 mb-4 md:mb-0 flex md:justify-end">
-                  {isEven ? (
-                    // Even Index (0, 2...): Time on Left
-                    <div
-                      className={`hidden md:inline-block ${
-                        event.isHighlight
-                          ? "bg-red-600 text-white border-transparent"
-                          : "text-neutral-500 border-transparent bg-transparent"
-                      } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider`}
-                    >
-                      {event.time}
-                    </div>
-                  ) : (
-                    // Odd Index (1, 3...): Card on Left
-                    <div className="group relative bg-[#0a0a0a] border border-white/5 p-6 rounded-xl hover:bg-[#0f0f0f] transition-all duration-300 hover:border-red-600/20 w-full md:max-w-md text-left ml-auto">
-                      <div className="flex items-start gap-4 mb-2">
-                        <div
-                          className={`p-2 rounded-lg shrink-0 ${
-                            event.isHighlight
-                              ? "bg-white/10 text-white"
-                              : "bg-white/5 text-neutral-500"
-                          }`}
-                        >
-                          {event.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-red-500 transition-colors">
-                            {event.title}
-                          </h3>
-                          <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">
-                            {event.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Center Dot */}
-                <div className="absolute left-[28px] md:left-1/2 transform -translate-x-1/2 w-4 h-4 z-10 flex items-center justify-center">
-                  <div
-                    className={`w-3 h-3 rounded-full border-2 ${
-                      event.isHighlight
-                        ? "bg-red-600 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
-                        : "bg-black border-neutral-700"
-                    }`}
-                  />
-                </div>
-
-                {/* Right Column */}
-                <div className="w-full md:w-1/2 pl-20 md:pl-16 flex md:justify-start">
-                  {isEven ? (
-                    // Even Index (0, 2...): Card on Right
-                    <div className="group relative bg-[#0a0a0a] border border-white/5 p-6 rounded-xl hover:bg-[#0f0f0f] transition-all duration-300 hover:border-red-600/20 w-full md:max-w-md text-left mr-auto">
-                      <div className="flex items-start gap-4 mb-2">
-                        <div
-                          className={`p-2 rounded-lg shrink-0 ${
-                            event.isHighlight
-                              ? "bg-white/10 text-white"
-                              : "bg-white/5 text-neutral-500"
-                          }`}
-                        >
-                          {event.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-red-500 transition-colors">
-                            {event.title}
-                          </h3>
-                          <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">
-                            {event.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    // Odd Index (1, 3...): Time on Right
-                    <div
-                      className={`hidden md:inline-block ${
-                        event.isHighlight
-                          ? "bg-red-600 text-white border-transparent"
-                          : "text-neutral-500 border-transparent bg-transparent"
-                      } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider`}
-                    >
-                      {event.time}
-                    </div>
-                  )}
-                </div>
-
-                {/* Mobile Time (Absolute) - Visible only on mobile */}
-                <div className="md:hidden absolute top-0 left-20 -translate-y-[140%]">
-                  <span
-                    className={`text-xs font-mono font-bold ${
-                      event.isHighlight ? "text-red-500" : "text-neutral-500"
-                    }`}
-                  >
-                    {event.time}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+          {timelineEvents.map((event, index) => (
+            <TimelineRow key={index} event={event} index={index} />
+          ))}
         </div>
       </div>
     </section>
