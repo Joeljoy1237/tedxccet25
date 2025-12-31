@@ -45,13 +45,13 @@ export default function About() {
   const activeContent = content.find((c) => c.id === activeTab) || content[0];
 
   return (
-    <section className="py-20 px-6 bg-black text-white relative">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-[2vw] bg-black text-white relative">
+      <div className=" ">
         <h2 className="text-center text-4xl font-bold mb-16 tracking-widest uppercase">
           About
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start px-[2vw]">
           {/* Left Column: Navigation & Text */}
           <div className="space-y-8">
             {/* Tabs */}
@@ -60,13 +60,14 @@ export default function About() {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`px-6 py-2 text-lg font-bold uppercase transition-all duration-300 rounded-md text-left ${
+                  className={`px-[1vw] py-2 text-lg font-bold transition-all duration-300 rounded-md text-left ${
                     activeTab === item.id
-                      ? "bg-red-600 text-white pl-8 pr-16 min-w-full"
+                      ? "bg-red-600 text-white pr-16 min-w-full"
                       : "text-neutral-500 hover:text-white"
                   }`}
                 >
                   {item.label}
+                  
                 </button>
               ))}
             </div>
@@ -81,7 +82,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className="space-y-4"
               >
-                <p className="text-neutral-300 leading-relaxed text-justify">
+                <p className="text-neutral-300 leading-relaxed text-justify px-[1vw]">
                   {activeContent.description}
                 </p>
               </motion.div>

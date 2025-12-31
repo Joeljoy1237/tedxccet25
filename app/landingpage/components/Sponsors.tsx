@@ -16,6 +16,8 @@ const sponsors = [
       />
     ),
   },
+
+  
 ];
 
 export default function Sponsors() {
@@ -36,7 +38,7 @@ export default function Sponsors() {
         </div>
 
         {/* Logos Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-70">
+    {/*    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-70">
           {sponsors.map((sponsor, index) => (
             <motion.div
               key={index}
@@ -50,7 +52,55 @@ export default function Sponsors() {
               {sponsor.logo}
             </motion.div>
           ))}
-        </div>
+        </div>  
+
+        */}
+
+      
+              {/* Logos Grid */}
+            <div
+              className="
+                grid
+                gap-10
+                items-center
+                justify-items-center
+                opacity-70
+
+                /* Mobile */
+                [grid-template-columns:repeat(auto-fit,minmax(120px,1fr))]
+
+                /* Tablet */
+                md:[grid-template-columns:repeat(auto-fit,minmax(140px,1fr))]
+
+                /* Desktop */
+                lg:[grid-template-columns:repeat(auto-fit,minmax(160px,1fr))]
+              "
+            >
+              {sponsors.map((sponsor, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: Math.min(index * 0.08, 0.4),
+                    duration: 0.45,
+                    ease: "easeOut",
+                  }}
+                  viewport={{ once: true }}
+                  className="
+                    text-neutral-500
+                    hover:text-white
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                  "
+                  title={sponsor.name}
+                >
+                  {sponsor.logo}
+                </motion.div>
+              ))}
+            </div>
+
 
         {/* CTA */}
         <div className="pt-8 space-y-6 border-t border-white/5 max-w-2xl mx-auto">

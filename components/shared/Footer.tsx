@@ -19,12 +19,12 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white pt-20 pb-10 border-t border-white/10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className=" mx-[2vw] px-[2vw] relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
           {/* Left Column: Branding */}
           <div className="space-y-6">
-            <h2 className="text-3xl font-black tracking-tighter text-white">
-              TEDx<span className="text-red-600">CCET</span>
+            <h2 className="text-3xl font-black tracking-tighter text-red-600">
+              TEDx<span className="text-white">CCET</span>
             </h2>
             <p className="text-sm text-neutral-400 font-medium">
               DAUNTØ – Redesigning Fear. Redefining the Future.
@@ -37,7 +37,8 @@ export default function Footer() {
             </p>
             <div className="flex gap-4 pt-2">
               <Link
-                href="#"
+                href="https://www.instagram.com/tedxccet/"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="Instagram"
               >
@@ -51,14 +52,16 @@ export default function Footer() {
                 <Twitter className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
               </Link>
               <Link
-                href="#"
+                href="https://www.linkedin.com/in/tedxccet/"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
               </Link>
               <Link
-                href="#"
+                href="https://www.youtube.com/results?search_query=tedxccet"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="YouTube"
               >
@@ -105,10 +108,10 @@ export default function Footer() {
               <li className="flex items-center gap-3 text-neutral-400 text-sm">
                 <Mail className="w-5 h-5 text-red-600 shrink-0" />
                 <a
-                  href="mailto:hello@tedxccet.com"
+                  href="mailto:tedxccet@carmelcet.in"
                   className="hover:text-white transition-colors"
                 >
-                  hello@tedxccet.com
+                  tedxccet@carmelcet.in
                 </a>
               </li>
               <li className="flex items-center gap-3 text-neutral-400 text-sm">
@@ -117,7 +120,7 @@ export default function Footer() {
                   href="tel:+919876543210"
                   className="hover:text-white transition-colors"
                 >
-                  +91 98765 43210
+                  +91 xxxxxxxxxx
                 </a>
               </li>
             </ul>

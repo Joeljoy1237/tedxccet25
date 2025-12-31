@@ -1,7 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  MotionValue,
+} from "framer-motion";
 
 const timelineEvents = [
   {
@@ -219,11 +225,51 @@ const timelineEvents = [
 interface TimelineRowProps {
   event: (typeof timelineEvents)[0];
   index: number;
+  scrollYProgress: MotionValue<number>;
 }
 
-const TimelineRow = ({ event, index }: TimelineRowProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+const TimelineRow = ({ event, index, scrollYProgress }: TimelineRowProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
+  const [threshold, setThreshold] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      if (ref.current && dotRef.current) {
+        const container = ref.current.offsetParent as HTMLElement;
+        if (container) {
+          const rowTop = ref.current.offsetTop;
+          const dotTop = dotRef.current.offsetTop;
+          const dotHeight = dotRef.current.offsetHeight;
+          // Calculate the center of the dot relative to the container
+          const targetY = rowTop + dotTop + dotHeight / 2;
+          const containerHeight = container.offsetHeight;
+
+          // Calculate the progress value (0-1) where the red line hits this target
+          setThreshold(targetY / containerHeight);
+        }
+      }
+    };
+
+    // Measure initially and on resize
+    measure();
+    window.addEventListener("resize", measure);
+
+    // Also measure after a short timeout to ensure layout is settled
+    const timer = setTimeout(measure, 100);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Activate when the red line (scrollYProgress) reaches the dot
+    setActive(latest >= threshold);
+  });
+
   const isEven = index % 2 === 0;
 
   return (
@@ -237,7 +283,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
           // Even Index: Time on Left
           <div
             className={`hidden md:inline-block ${
-              isInView
+              active
                 ? "bg-red-600 text-white shadow-lg shadow-red-600/20 scale-105"
                 : "text-neutral-500 bg-transparent"
             } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider transition-all duration-300`}
@@ -248,7 +294,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
           // Odd Index: Card on Left
           <div
             className={`group relative bg-[#0a0a0a] border ${
-              isInView
+              active
                 ? "border-red-600/40 shadow-xl shadow-red-900/10 scale-105"
                 : "border-white/5 hover:border-red-600/20"
             } p-6 rounded-xl transition-all duration-500 w-full md:max-w-md text-left ml-auto`}
@@ -256,7 +302,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
             <div className="flex items-start gap-4 mb-2">
               <div
                 className={`p-2 rounded-lg shrink-0 transition-colors duration-300 ${
-                  isInView
+                  active
                     ? "bg-red-600 text-white"
                     : "bg-white/5 text-neutral-500"
                 }`}
@@ -266,7 +312,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
               <div>
                 <h3
                   className={`text-lg md:text-xl font-bold mb-1 transition-colors duration-300 ${
-                    isInView
+                    active
                       ? "text-red-500"
                       : "text-white group-hover:text-red-500"
                   }`}
@@ -283,10 +329,13 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
       </div>
 
       {/* Center Dot */}
-      <div className="absolute left-[28px] md:left-1/2 transform -translate-x-1/2 w-4 h-4 z-10 flex items-center justify-center">
+      <div
+        ref={dotRef}
+        className="absolute left-[28px] md:left-1/2 transform -translate-x-1/2 w-4 h-4 z-10 flex items-center justify-center"
+      >
         <div
           className={`w-3 h-3 rounded-full border-2 transition-all duration-500 ${
-            isInView
+            active
               ? "bg-red-600 border-red-600 shadow-[0_0_15px_rgba(220,38,38,0.8)] scale-125"
               : "bg-black border-neutral-700"
           }`}
@@ -299,7 +348,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
           // Even Index: Card on Right
           <div
             className={`group relative bg-[#0a0a0a] border ${
-              isInView
+              active
                 ? "border-red-600/40 shadow-xl shadow-red-900/10 scale-105"
                 : "border-white/5 hover:border-red-600/20"
             } p-6 rounded-xl transition-all duration-500 w-full md:max-w-md text-left mr-auto`}
@@ -307,7 +356,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
             <div className="flex items-start gap-4 mb-2">
               <div
                 className={`p-2 rounded-lg shrink-0 transition-colors duration-300 ${
-                  isInView
+                  active
                     ? "bg-red-600 text-white"
                     : "bg-white/5 text-neutral-500"
                 }`}
@@ -317,7 +366,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
               <div>
                 <h3
                   className={`text-lg md:text-xl font-bold mb-1 transition-colors duration-300 ${
-                    isInView
+                    active
                       ? "text-red-500"
                       : "text-white group-hover:text-red-500"
                   }`}
@@ -334,7 +383,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
           // Odd Index: Time on Right
           <div
             className={`hidden md:inline-block ${
-              isInView
+              active
                 ? "bg-red-600 text-white shadow-lg shadow-red-600/20 scale-105"
                 : "text-neutral-500 bg-transparent"
             } font-mono font-bold text-xs md:text-sm px-3 py-1 rounded-sm uppercase tracking-wider transition-all duration-300`}
@@ -348,7 +397,7 @@ const TimelineRow = ({ event, index }: TimelineRowProps) => {
       <div className="md:hidden absolute top-0 left-20 -translate-y-[140%]">
         <span
           className={`text-xs font-mono font-bold transition-colors duration-300 ${
-            isInView ? "text-red-500 scale-105" : "text-neutral-500"
+            active ? "text-red-500 scale-105" : "text-neutral-500"
           }`}
         >
           {event.time}
@@ -397,7 +446,12 @@ export default function Timeline() {
 
         <div className="space-y-12">
           {timelineEvents.map((event, index) => (
-            <TimelineRow key={index} event={event} index={index} />
+            <TimelineRow
+              key={index}
+              event={event}
+              index={index}
+              scrollYProgress={scrollYProgress}
+            />
           ))}
         </div>
       </div>
