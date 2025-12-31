@@ -9,7 +9,7 @@ export default function HeroText() {
     <div className="w-full md:w-1/2">
       {/* Headline */}
       <h1
-        className="md:text-[70px] text-[12vw] leading-[0.9em] font-extrabold uppercase"
+        className="md:text-[70px] text-[12vw] leading-[0.8em] font-extrabold uppercase"
         style={{ fontFamily: "var(--font-raleway)" }}
       >
         AN <span className="text-red-600 blankRedScroll">INDEPENDENTLY</span>
