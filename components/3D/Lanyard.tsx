@@ -87,10 +87,12 @@ export default function Lanyard({
     const colors = mounted && resolvedTheme === "light" ? THEME_COLORS.light : THEME_COLORS.dark;
 
     return (
-        <div className="absolute inset-0 z-10 w-full h-full pointer-events-auto !bg-transparent">
+        <div className="absolute inset-0 z-10 w-full h-full pointer-events-none !bg-transparent">
             <Canvas
                 className="!bg-transparent"
-                style={{ background: 'transparent' }}
+                style={{ background: 'transparent', pointerEvents: 'none' }}
+                eventSource={typeof document !== 'undefined' ? document.body : undefined}
+                eventPrefix="client"
                 camera={{ position, fov }}
                 dpr={[1, isMobile ? 1.5 : 2]}
                 gl={{ alpha: transparent }}

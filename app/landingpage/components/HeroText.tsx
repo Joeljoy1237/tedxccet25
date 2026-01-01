@@ -6,7 +6,7 @@ import { IoTicket } from "react-icons/io5";
 export default function HeroText() {
   // Hero text component
   return (
-    <div className="w-full md:w-1/2">
+    <div className="w-full md:w-1/2 pointer-events-auto">
       {/* Headline */}
       <h1
         className="md:text-[70px] text-[12vw] leading-[0.8em] font-extrabold uppercase"
