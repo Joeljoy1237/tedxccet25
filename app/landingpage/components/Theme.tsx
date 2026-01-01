@@ -11,15 +11,14 @@ export default function Theme() {
 
       {/* Main Title  DAUNTØ*/}
       <h2 className="text-5xl md:text-7xl font-bold mb-12 tracking-tight">
-        DAUNT <span className="text-red-600">
-
-<TextType 
-  text={["Ø", "LESS"]}
-  typingSpeed={100}
-  pauseDuration={3500}
-  showCursor={true}
-  cursorCharacter="_"
-/>
+        DAUNT<span className="text-red-600">
+          <TextType 
+          text={["Ø","LESS"]}
+          typingSpeed={100}
+          pauseDuration={3500}
+          showCursor={true}
+          cursorCharacter="_"
+        />
           </span>
       </h2>
 
@@ -34,7 +33,7 @@ export default function Theme() {
         </p>
 
         <p>
-          <span className="text-red-600 font-bold">DAUNTØ</span> is a
+          <span className="text-red-600 font-bold">DAUNT </span> is a
           declaration. The zero represents the void where fear once lived—now
           emptied, now ready to be filled with{" "}
           <span className="text-white font-bold">

@@ -9,7 +9,7 @@ const Lanyard = dynamic(() => import("@/components/3D/Lanyard"), {
 interface Xprops {
   className?: string;
 }
-console.log("hiiiiiiiii");
+
 import { Suspense } from "react";
 
 export default function X(props: Xprops) {

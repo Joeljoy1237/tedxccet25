@@ -75,30 +75,29 @@ export default function Hero2() {
         <div className="absolute inset-0 grain pointer-events-none z-10"></div>
       </div>
 
-
       {/* Hero Section */}
-      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12 px-6">
+      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12  ">
         {/* Main Content Wrapper */}
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="mx-6 w-[90%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Text Content */}
-          <div className="lg:col-span-8 flex flex-col justify-center text-center lg:text-left">
-           
-
+          <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left  ">
             {/* Massive Title */}
             <div className="relative mb-6">
               <h1 className="text-7xl md:text-8xl lg:text-9xl font-display font-semibold tracking-tighter text-white leading-[0.9] text-glow mix-blend-screen">
-                DAUNT<span className="text-red-600">
-                    <TextType 
-                      text={["Ø", "LESS"]}
-                      typingSpeed={100}
-                      pauseDuration={3500}
-                      showCursor={true}
-                      cursorCharacter="_"
-                    />
+                DAUNT
+                <span className="text-red-600">
+                  <TextType
+                    text={["Ø", "LESS"]}
+                    typingSpeed={100}
+                    pauseDuration={3500}
+                    showCursor={true}
+                    cursorCharacter="_"
+                  />
                 </span>
               </h1>
-{/*               <div className="hidden md:block absolute -top-10 -left-10 w-32 h-32 border-l border-t border-red-600/30 opacity-50"></div>
- */}            </div>
+              {/*               <div className="hidden md:block absolute -top-10 -left-10 w-32 h-32 border-l border-t border-red-600/30 opacity-50"></div>
+               */}{" "}
+            </div>
 
             {/* Subtitle */}
             <h2 className="text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-8">
@@ -107,7 +106,6 @@ export default function Hero2() {
             </h2>
 
             {/* Description */}
-           
 
             {/* Info Bar (Date/Location) */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-12 text-base text-neutral-300">
@@ -137,12 +135,9 @@ export default function Hero2() {
 
           {/* Visual Element / The "X" Gallery */}
           {/* Full screen interactive Lanyard overlay */}
-                <div className="absolute inset-0 z-1 h-full w-full pointer-events-none">
-                  <HeroX className="w-full h-full" />
-                </div>
-          
-               
-
+          <div className="absolute inset-0 z-1 h-full w-full mx-16 pointer-events-none">
+            <HeroX className="w-full h-full" />
+          </div>
         </div>
 
         {/* Floating Abstract Elements for Depth */}
