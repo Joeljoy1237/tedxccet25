@@ -36,7 +36,7 @@ const reasons = [
 export default function ReasonsToAttend() {
   return (
     <section className="py-20 px-6 bg-black text-white relative">
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-[3vw]">
         <h2 className="text-center text-3xl md:text-4xl font-bold mb-16 uppercase tracking-wider">
           Six Reasons to Attend <span className="text-red-600">TEDxCCET</span>
         </h2>

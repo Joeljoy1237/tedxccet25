@@ -8,6 +8,7 @@ import Speakers from "./components/Speakers";
 import PreviousTalks from "./components/PreviousTalks";
 import Timeline from "./components/Timeline";
 import Sponsors from "./components/Sponsors";
+import Hero2 from "./components/Hero2";
 
 export default function LandingPage() {
   return (

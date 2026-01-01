@@ -48,7 +48,7 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-4">
-        <Link href="/login" className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-red-600 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105">
+        <Link href="/login" className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105">
           <span>Login</span>
           <LogIn className="w-4 h-4" />
         </Link>
