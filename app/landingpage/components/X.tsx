@@ -1,20 +1,23 @@
-import React from "react";
-import Image from "next/image";
+"use client";
+
+import dynamic from "next/dynamic";
+
+const Lanyard = dynamic(() => import("@/components/3D/Lanyard"), {
+  ssr: false,
+});
 
 interface Xprops {
   className?: string;
 }
 
+import { Suspense } from "react";
+
 export default function X(props: Xprops) {
   return (
-    <Image
-      priority
-      src="/X-hero.webp"
-      height={600}
-      width={700}
-      alt="TEDx X Logo"
-      sizes="(max-width: 768px) 100vw, 50vw"
-      className={props.className}
-    />
+    <div className={`${props.className} relative h-full w-full`}>
+      <Suspense fallback={<div className="text-white text-center">Loading 3D...</div>}>
+        <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+      </Suspense>
+    </div>
   );
 }
