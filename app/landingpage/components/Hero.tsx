@@ -7,8 +7,8 @@ export default function Hero() {
     <section className="relative min-h-screen bg-black pl-[2vw]  overflow-hidden">
       <BackgroundSlideshow />
 
-      {/* Full screen interactive Lanyard overlay */}
-      <div className="absolute inset-0 z-1 h-full w-full pointer-events-none">
+      {/* Full screen interactive Lanyard overlay - Hidden on mobile */}
+      <div className="hidden md:block absolute inset-0 z-1 h-full w-full pointer-events-none">
         <HeroX className="w-full h-full" />
       </div>
 
