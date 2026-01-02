@@ -420,6 +420,7 @@ export default function Timeline() {
 
   return (
     <section
+      id="timeline"
       className="py-24 px-6 bg-black text-white relative font-sans"
       ref={containerRef}
     >

@@ -3,7 +3,7 @@ import TextType from "@/components/TextType";
 
 export default function Theme() {
   return (
-    <section className="py-24 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
+    <section className="py-10 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
       {/* Pill Label */}
       <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
         The Theme
@@ -11,42 +11,41 @@ export default function Theme() {
 
       {/* Main Title  DAUNTØ*/}
       <h2 className="text-5xl md:text-7xl font-bold mb-12 tracking-tight">
-        DAUNT<span className="text-red-600">
-          <TextType 
-          text={["Ø","LESS"]}
-          typingSpeed={100}
-          pauseDuration={3500}
-          showCursor={true}
-          cursorCharacter="_"
-        />
-          </span>
+        DAUNT
+        <span className="text-red-600">
+          <TextType
+            text={["Ø", "LESS"]}
+            typingSpeed={100}
+            pauseDuration={3500}
+            showCursor={true}
+            cursorCharacter="_"
+          />
+        </span>
       </h2>
 
       {/* Content */}
-      <div className="max-w-4xl space-y-8 text-lg md:text-xl text-neutral-300 leading-relaxed font-light">
+      <div className="max-w-4xl space-y-8 text-lg md:text-xl text-neutral-300 leading-relaxed font-light ">
         <p>
-          Fear is the oldest story we tell ourselves. It whispers limits, builds
-          walls, and keeps us small. But what if fear wasn't the end—{" "}
-          <span className="text-white font-bold">
-            what if it was the beginning?
-          </span>
+          <span className="text-red-600 font-bold">DAUNT∅</span> {"(Dauntless)"}{" "}
+          symbolizes the journey of redesigning fear and redefining the future.
+          "Daunt" represents the limits that hold us back, while "∅" signifies
+          erasing them to start from scratch—reframing fear into a force that
+          reshapes our destiny.
         </p>
 
         <p>
-          <span className="text-red-600 font-bold">DAUNT </span> is a
-          declaration. The zero represents the void where fear once lived—now
-          emptied, now ready to be filled with{" "}
+          Fear is not a final destination, but a transition ready to be reset
+          and reimagined. By lowering fear to zero, we gain the freedom to{" "}
           <span className="text-white font-bold">
-            courage, innovation, and possibility
+            invent, innovate, and grow
           </span>
           .
         </p>
 
         <p>
-          This isn't about being fearless. It's about being{" "}
-          <span className="text-white font-bold">dauntless</span>— moving
-          forward despite the fear, transforming it into fuel for the future we
-          deserve.
+          <span className="text-red-600 font-bold">DAUNT∅</span> encourages us
+          to address our fears directly—not to avoid them, but to surpass
+          boundaries and recalibrate what lies ahead.
         </p>
       </div>
 

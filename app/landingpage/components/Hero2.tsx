@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { Inter, Manrope } from "next/font/google";
 import {
   ArrowRight,
@@ -30,6 +31,14 @@ const manrope = Manrope({
 });
 
 export default function Hero2() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <div
       className={`${inter.variable} ${manrope.variable} relative bg-black text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
@@ -61,10 +70,13 @@ export default function Hero2() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Abstract Gallery / Texture Background */}
         <div className="absolute inset-0 opacity-20">
-          <img
-            src="/background2.avif"
+          <video
+            ref={videoRef}
+            src="/Video_Generation_Complete.mp4"
             className="w-full h-full object-cover grayscale mix-blend-overlay"
-            alt="Texture"
+            autoPlay
+            muted
+            loop
           />
         </div>
 
@@ -78,7 +90,7 @@ export default function Hero2() {
       {/* Hero Section */}
       <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12  ">
         {/* Main Content Wrapper */}
-        <div className="mx-6 w-[90%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="mx-6 w-[93%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Text Content */}
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left  ">
             {/* Massive Title */}
@@ -114,10 +126,12 @@ export default function Hero2() {
                 <Calendar className="w-5 h-5 text-red-500" />
                 <span>September 7, 2024</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <MapPin className="w-5 h-5 text-red-500" />
-                <span>Carmel College of Engineering</span>
-              </div>
+              <Link href="/gettingthere">
+                <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">
+                  <MapPin className="w-5 h-5 text-red-500" />
+                  <span>Carmel College of Engineering</span>
+                </div>
+              </Link>
             </div>
 
             {/* CTAs */}
@@ -142,16 +156,6 @@ export default function Hero2() {
         </div>
 
         {/* Floating Abstract Elements for Depth */}
-        <div className="absolute bottom-12 right-12 hidden lg:block opacity-30">
-          <div className="grid grid-cols-3 gap-2">
-            <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
-            <div className="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-            <div className="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-            <div className="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-            <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
-            <div className="w-1.5 h-1.5 bg-neutral-600 rounded-full"></div>
-          </div>
-        </div>
       </main>
     </div>
   );

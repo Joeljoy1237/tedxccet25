@@ -1,0 +1,95 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Manrope } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+export default function Welcome() {
+  const flickerContent = (
+    <div className="flex flex-row gap-2 md:text-3xl lg:text-4xl text-[7vw] font-semibold flex-wrap w-full items-center justify-center relative z-10">
+      <span className="">
+        <span className="w flicker-text reflect">W</span>
+        <span className="e flicker-text reflect">E</span>
+        <span className="l flicker-text reflect">L</span>
+        <span className="c flicker-text reflect">C</span>
+        <span className="o flicker-text reflect">O</span>
+        <span className="m flicker-text reflect">M</span>
+        <span className="e flicker-text reflect">E</span>
+      </span>
+      <span className="">
+        <span className="w flicker-text reflect">T</span>
+        <span className="e flicker-text reflect">O</span>
+      </span>
+      <span className="text-red-600 font-black ">
+        <span className="t flicker-text redText reflect">T</span>
+        <span className="e flicker-text redText reflect">E</span>
+        <span className="d flicker-text redText reflect">D</span>
+        <span className="x flicker-text redText reflect">x</span>
+      </span>{" "}
+      <span className="">
+        <span className="font-bold ccet1 flicker-text reflect">C</span>
+        <span className="font-bold ccet2 flicker-text reflect">C</span>
+        <span className="font-bold ccet3 flicker-text reflect">E</span>
+        <span className="font-bold ccet4 flicker-text reflect">T</span>
+      </span>{" "}
+      <span className="">
+        <span className="flicker-text reflect">2</span>
+        <span className="flicker-text reflect">0</span>
+        <span className="flicker-text reflect">2</span>
+        <span className="flicker-text reflect">5</span>
+      </span>
+    </div>
+  );
+
+  return (
+    <section
+      className={`py-20 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
+    >
+      <div className="mx-auto px-6 text-center">
+        <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-16 select-none relative">
+          {/* Main Title */}
+          <h2 className="flex flex-row gap-2 flex-wrap w-full items-center justify-center relative z-10">
+            {flickerContent}
+          </h2>
+
+          {/* Reflection */}
+          <h2
+            className="flex flex-row gap-2 flex-wrap w-full items-center justify-center absolute top-[5.5em] left-0 right-0 opacity-30 origin-top transform scale-y-[-1] pointer-events-none text-white/50"
+            aria-hidden="true"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,2))",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,2))",
+            }}
+          >
+            {flickerContent}
+          </h2>
+        </div>
+
+        {/* Descriptive Text */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-neutral-400 text-lg md:text-sm leading-relaxed mx-6 md:text-center text-justify"
+        >
+          Welcome to <span className="text-red-600 font-bold">TEDx</span> CCET,
+          where brilliant minds ignite ideas worth spreading! Join us at Carmel
+          College of Engineering & Technology for an exhilarating event
+          showcasing Kerala's innovators and inspiring speakers. Immerse
+          yourself in thought-provoking talks, engaging workshops and networking
+          opportunities that promise to inspire, educate and empower. Don't miss
+          this chance to be part of a transformative experience shaping the
+          future of technology and innovation in our community.
+        </motion.p>
+      </div>
+    </section>
+  );
+}

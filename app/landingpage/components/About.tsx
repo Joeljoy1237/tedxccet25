@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Manrope } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 type TabContent = {
   id: string;
@@ -20,7 +26,6 @@ const content: TabContent[] = [
     title: "TED",
     description:
       "“By spreading ideas worthy enough to be shared, the power of inspiration and change is created”. A global community striving towards spreading ideas from every discipline and culture, that is TED in a nutshell. It is a non-profit organisation that helps people get the deeper meaning of ideas, attitudes and the world itself. From its origin in 1984, TED talks have touched people’s hearts. It is continued to be watched all around the world. The impact a TED event creates is unmatched. TED conferences and events inspire and motivate people towards becoming a better version of themselves",
-    image: "/images/bg4.jpg", // Placeholder image
   },
   {
     id: "tedx",
@@ -28,7 +33,6 @@ const content: TabContent[] = [
     title: "TEDx",
     description:
       "TEDx events are independently organized and licensed TED-like events organized by enthusiastic communities and organizers in line with TED’s mission ‘ideas worth spreading’. Its goal is to create a unique gathering in the community that will unleash new ideas, inspire and inform. It provides a platform where ideas are shared openly and connections are made through conversation. The event screens TED Talks videos and invites live speakers to drive ideation and start conversations. TEDx has reached a milestone of 100,000 talks and are now viewed more than 3 billion times annually.",
-    image: "/images/bg2.jpg", // Placeholder image
   },
   {
     id: "tedxccet",
@@ -45,62 +49,98 @@ export default function About() {
   const activeContent = content.find((c) => c.id === activeTab) || content[0];
 
   return (
-    <section className="py-20 px-[2vw] bg-black text-white relative">
-      <div className=" ">
-        <h2 className="text-center text-4xl font-bold mb-16 tracking-widest uppercase">
-          About
-        </h2>
+    <section id="about" className={`py-12 relative z-10 bg-black `}>
+      <div className="w-full px-6 lg:px-12 mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8 text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-4 text-glow">
+            ABOUT <span className="text-red-600">US</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start px-[2vw]">
-          {/* Left Column: Navigation & Text */}
-          <div className="space-y-8">
-            {/* Tabs */}
-            <div className="flex flex-col items-start gap-2">
-              {content.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`px-[1vw] py-2 text-lg font-bold transition-all duration-300 rounded-md text-left ${
-                    activeTab === item.id
-                      ? "bg-red-600 text-white pr-16 min-w-full"
-                      : "text-neutral-500 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  
-                </button>
-              ))}
-            </div>
-
-            {/* Content Text */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeContent.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-4"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start px-4">
+          {/* Left Column: Navigation */}
+          <div className="lg:col-span-3 flex flex-col gap-4">
+            {content.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`group relative px-6 py-4 text-left transition-all duration-300 rounded-xl border backdrop-blur-sm overflow-hidden ${
+                  activeTab === item.id
+                    ? "bg-red-600/10 border-red-600/50 text-white shadow-[0_0_30px_rgba(220,38,38,0.2)]"
+                    : "bg-white/5 border-white/5 text-neutral-400 hover:bg-white/10 hover:border-white/20 hover:text-white"
+                }`}
               >
-                <p className="text-neutral-300 leading-relaxed text-justify px-[1vw]">
-                  {activeContent.description}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="text-lg font-bold tracking-wide">
+                    {item.label}
+                  </span>
+                </div>
+
+                {/* Hover Effect */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out ${
+                    activeTab === item.id ? "opacity-100" : ""
+                  }`}
+                />
+              </button>
+            ))}
           </div>
 
-          {/* Right Column: Visual (Video) */}
-          <div className="relative h-[250px] md:h-[400px] w-full rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 shadow-2xl shadow-red-900/20">
-            <iframe
-              className="w-full h-full object-cover"
-              src="https://www.youtube.com/embed/d0NHOpeczUU?autoplay=1&mute=1&loop=1&playlist=d0NHOpeczUU&controls=0"
-              title="TEDxCCET"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          {/* Right Column: Content & Visual */}
+          <div className="lg:col-span-9 flex flex-col gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Text Content */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeContent.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-4"
+                >
+                  <h3 className="text-2xl font-bold text-white/90 mb-4 flex items-center gap-3">
+                    <span className="w-1 h-8 bg-red-600 rounded-full inline-block" />
+                    {activeContent.title}
+                  </h3>
+                  <p className="text-neutral-300 leading-relaxed text-lg font-light text-justify">
+                    {activeContent.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Visual (Video) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="relative  aspect-video w-full rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-2xl shadow-red-900/20 group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-red-900/20 to-transparent pointer-events-none z-10" />
+                <iframe
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  src="https://www.youtube.com/embed/d0NHOpeczUU?autoplay=1&mute=1&loop=1&playlist=d0NHOpeczUU&controls=0"
+                  title="TEDxCCET"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* CSS for custom effects (Scoped to this component mostly, but reusing global if available) */}
+      <style jsx>{`
+        .text-glow {
+          text-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
+        }
+      `}</style>
     </section>
   );
 }
