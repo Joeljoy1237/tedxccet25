@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Manrope, K2D } from "next/font/google";
+import localFont from "next/font/local";
 import {
   ArrowRight,
   Calendar,
@@ -30,15 +31,45 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const robofan = localFont({
+  src: "../../../public/fonts/Robofan Free.otf",
+  variable: "--font-robofan",
+});
+
+const k2d = K2D({
+  subsets: ["latin"],
+  variable: "--font-k2d",
+  display: "swap",
+  weight: "400",
+});
+
 export default function Hero2() {
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
-      className={`${inter.variable} ${manrope.variable} relative bg-black text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
+      className={`${inter.variable} ${manrope.variable} ${robofan.variable} ${k2d.variable} relative bg-black text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
     >
       {/* CSS for custom effects */}
       <style jsx global>{`
         .font-display {
           font-family: var(--font-manrope), sans-serif;
+        }
+        .font-robofan {
+          font-family: var(--font-robofan);
+        }
+        .font-k2d {
+          font-family: var(--font-k2d);
         }
         .text-glow {
           text-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
@@ -78,14 +109,14 @@ export default function Hero2() {
       </div>
 
       {/* Hero Section */}
-      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12  ">
+      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12 -bottom-18 ">
         {/* Main Content Wrapper */}
         <div className="mx-6 w-[93%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Text Content */}
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left  ">
             {/* Massive Title */}
-            <div className="relative mb-6">
-              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-semibold tracking-tighter text-white leading-[0.9] text-glow mix-blend-screen">
+            <div className="relative mb-6 ">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-manrope font-extrabold tracking-tight text-white leading-[0.9] text-glow mix-blend-screen">
                 DAUNT
                 <span className="text-red-600">
                   <TextType
@@ -140,9 +171,11 @@ export default function Hero2() {
 
           {/* Visual Element / The "X" Gallery */}
           {/* Full screen interactive Lanyard overlay */}
-          <div className="absolute inset-0 z-1 h-full w-full mx-16 pointer-events-none">
-            <HeroX className="w-full h-full" />
-          </div>
+          {isDesktop && (
+            <div className="absolute inset-0 z-1 h-full w-full mx-16 pointer-events-none">
+              <HeroX className="w-full h-full" />
+            </div>
+          )}
         </div>
 
         {/* Floating Abstract Elements for Depth */}

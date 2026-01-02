@@ -128,6 +128,7 @@ export default function About() {
                   title="TEDxCCET"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 />
               </motion.div>
             </div>

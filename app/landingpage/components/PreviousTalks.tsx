@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 
 const previousTalks = [
   {
@@ -9,7 +11,8 @@ const previousTalks = [
     videoId: "5IyDnOAQMkA", // Placeholder ID, replace with actual ID if known, using a safe default for now
   },
   {
-    title: "A revolution in how stories are shared, and experienced in the digital age",
+    title:
+      "A revolution in how stories are shared, and experienced in the digital age",
     speaker: "Alakananda R",
     videoId: "O0Je5uzxC70",
   },
@@ -41,6 +44,8 @@ const previousTalks = [
 ];
 
 export default function PreviousTalks() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <section className="py-10 px-6 bg-black text-white relative">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -56,15 +61,33 @@ export default function PreviousTalks() {
           {previousTalks.map((talk, index) => (
             <div key={index} className="space-y-4 group">
               {/* Video Container */}
-              <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 group-hover:border-red-600/50 transition-colors">
-                <iframe
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  src={`https://www.youtube.com/embed/${talk.videoId}?autoplay=1&mute=1&loop=1&playlist=${talk.videoId}&controls=0&showinfo=0&rel=0`}
-                  title={talk.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
+              <div
+                className="relative aspect-video rounded-xl overflow-hidden border border-white/10 group-hover:border-red-600/50 transition-colors cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {hoveredIndex === index ? (
+                  <iframe
+                    className="w-full h-full object-cover"
+                    src={`https://www.youtube.com/embed/${talk.videoId}?autoplay=1&mute=1&loop=1&playlist=${talk.videoId}&controls=0&showinfo=0&rel=0`}
+                    title={talk.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={`https://img.youtube.com/vi/${talk.videoId}/maxresdefault.jpg`}
+                      alt={talk.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      
+                    </div>
+                  </>
+                )}
+
                 {/* Overlay to prevent interaction with iframe if desired, or allow clicking */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               </div>

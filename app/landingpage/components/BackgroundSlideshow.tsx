@@ -14,7 +14,10 @@ const images = [
 export default function BackgroundSlideshow() {
   const [index, setIndex] = useState(0);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
+    setIsLoaded(true);
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change image every 5 seconds
@@ -27,7 +30,9 @@ export default function BackgroundSlideshow() {
       <AnimatePresence mode="popLayout">
         <motion.div
           key={images[index]}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={
+            !isLoaded ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 1.1 }
+          }
           animate={{ opacity: 0.6, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
