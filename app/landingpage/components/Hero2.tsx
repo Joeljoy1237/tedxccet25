@@ -61,12 +61,13 @@ export default function Hero2() {
       {/* Ambient Background Layers */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Abstract Gallery / Texture Background */}
-        <div className="absolute inset-0 opacity-20">
-          <img
+        <div className="relative min-h-screen bg-black pl-[2vw]  overflow-hidden">
+          {/* <img
             src="/background2.avif"
             className="w-full h-full object-cover grayscale mix-blend-overlay"
             alt="Background"
-          />
+          /> */}
+          <BackgroundSlideshow />
         </div>
 
         {/* Deep Red Atmospheric Glow */}
