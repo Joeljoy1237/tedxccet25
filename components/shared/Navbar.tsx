@@ -3,13 +3,33 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Ticket, Menu, X, LogIn } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[4vw] py-6 border-b border-white/10">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[4vw] py-6 transition-all duration-300 ${
+        isScrolled
+          ? "bg-black/50 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="flex items-center gap-2">
         <Link href="/">
           <Image
@@ -39,16 +59,25 @@ export default function Navbar() {
         <Link href="/sponsors" className="hover:text-red-600 transition-colors">
           Sponsors
         </Link>
-        <Link href="/previoustalks" className="hover:text-red-600 transition-colors">
-          Previous Talks
+        <Link
+          href="/previoustalks"
+          className="hover:text-red-600 transition-colors"
+        >
+        Talks
         </Link>
-        <Link href="/gettingthere" className="hover:text-red-600 transition-colors">
+        <Link
+          href="/gettingthere"
+          className="hover:text-red-600 transition-colors"
+        >
           Getting There
         </Link>
       </div>
 
       <div className="hidden md:flex items-center gap-4">
-        <Link href="/login" className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105">
+        <Link
+          href="/login"
+          className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105"
+        >
           <span>Login</span>
           <LogIn className="w-4 h-4" />
         </Link>
@@ -107,7 +136,7 @@ export default function Navbar() {
               className="hover:text-red-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Previous Talks
+              Talks
             </Link>
             <Link
               href="/gettingthere"

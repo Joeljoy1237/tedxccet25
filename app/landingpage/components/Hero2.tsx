@@ -62,7 +62,7 @@ export default function Hero2() {
         {/* Abstract Gallery / Texture Background */}
         <div className="absolute inset-0 opacity-20">
           <img
-            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop"
+            src="/background2.avif"
             className="w-full h-full object-cover grayscale mix-blend-overlay"
             alt="Texture"
           />
@@ -83,7 +83,7 @@ export default function Hero2() {
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left  ">
             {/* Massive Title */}
             <div className="relative mb-6">
-              <h1 className="text-7xl md:text-8xl lg:text-9xl font-display font-semibold tracking-tighter text-white leading-[0.9] text-glow mix-blend-screen">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-semibold tracking-tighter text-white leading-[0.9] text-glow mix-blend-screen">
                 DAUNT
                 <span className="text-red-600">
                   <TextType
@@ -108,7 +108,8 @@ export default function Hero2() {
             {/* Description */}
 
             {/* Info Bar (Date/Location) */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-12 text-base text-neutral-300">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-6 mb-12 text-base text-neutral-300">
+              {" "}
               <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                 <Calendar className="w-5 h-5 text-red-500" />
                 <span>September 7, 2024</span>
@@ -152,8 +153,6 @@ export default function Hero2() {
           </div>
         </div>
       </main>
-
-      
     </div>
   );
 }
