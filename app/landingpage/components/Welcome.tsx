@@ -51,7 +51,7 @@ export default function Welcome() {
       className={`py-20 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
     >
       <div className="mx-auto px-6 text-center">
-        <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-16 select-none relative">
+        <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-32 md:mb-20 lg:mb-12 select-none relative">
           {/* Main Title */}
           <h2 className="flex flex-row gap-2 flex-wrap w-full items-center justify-center relative z-10">
             {flickerContent}
@@ -59,7 +59,7 @@ export default function Welcome() {
 
           {/* Reflection */}
           <h2
-            className="flex flex-row gap-2 flex-wrap w-full items-center justify-center absolute top-[5.5em] left-0 right-0 opacity-30 origin-top transform scale-y-[-1] pointer-events-none text-white/50"
+            className="flex flex-row gap-2 flex-wrap w-full items-center justify-center absolute top-0 left-0 right-0 opacity-30 origin-bottom transform scale-y-[-1] pointer-events-none text-white/50"
             aria-hidden="true"
             style={{
               maskImage:
