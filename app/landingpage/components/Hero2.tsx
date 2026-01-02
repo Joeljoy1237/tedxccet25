@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import { Inter, Manrope } from "next/font/google";
 import {
@@ -31,14 +31,6 @@ const manrope = Manrope({
 });
 
 export default function Hero2() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
-    }
-  }, []);
-
   return (
     <div
       className={`${inter.variable} ${manrope.variable} relative bg-black text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
@@ -70,13 +62,10 @@ export default function Hero2() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Abstract Gallery / Texture Background */}
         <div className="absolute inset-0 opacity-20">
-          <video
-            ref={videoRef}
-            src="/Video_Generation_Complete.mp4"
+          <img
+            src="/background2.avif"
             className="w-full h-full object-cover grayscale mix-blend-overlay"
-            autoPlay
-            muted
-            loop
+            alt="Background"
           />
         </div>
 
