@@ -134,7 +134,7 @@ export default function Hero2() {
 
             {/* Subtitle */}
             <h2 className="text-2xl md:text-3xl font-light text-white/90 tracking-tight mb-8">
-              Redesigning Fear. <br className="hidden md:block" />
+              Redesigning Fear. <br />
               <span className="text-neutral-500">Redefining the Future.</span>
             </h2>
 

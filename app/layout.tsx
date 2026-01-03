@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
+import Loader from "./components/ui/Loader";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -18,8 +21,6 @@ export const metadata: Metadata = {
   description: "TEDXCCET",
 };
 
-import { Providers } from "./providers";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,7 +32,9 @@ export default function RootLayout({
         className={`${geistMono.variable} ${raleway.variable} antialiased font-sans`}
       >
         <Providers>
+          <SmoothScroll />
           {children}
+          <Loader />
         </Providers>
       </body>
     </html>

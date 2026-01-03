@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
@@ -463,3 +463,4 @@ export const GlobalSpotlight: React.FC<{
 
   return null;
 };
+ */

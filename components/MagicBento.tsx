@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
+/* import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
 
 export interface BentoCardProps {
@@ -909,3 +909,4 @@ const MagicBento: React.FC<BentoProps> = ({
 };
 
 export default MagicBento;
+ */
