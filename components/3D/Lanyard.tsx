@@ -89,10 +89,8 @@ export default function Lanyard({
     return (
         <div className="absolute inset-0 z-10 w-full h-full pointer-events-none !bg-transparent">
             <Canvas
-                className="!bg-transparent"
-                style={{ background: 'transparent', pointerEvents: 'none' }}
-                eventSource={typeof document !== 'undefined' ? document.body : undefined}
-                eventPrefix="client"
+                className="!bg-transparent pointer-events-auto"
+                style={{ background: 'transparent' }}
                 camera={{ position, fov }}
                 dpr={[1, isMobile ? 1.5 : 2]}
                 gl={{ alpha: transparent }}
@@ -273,7 +271,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
     return (
         <>
             {/* Position group to the RIGHT side */}
-            <group position={[4, 4, 0]}>
+            <group position={[4, 4.5, 0]}>
                 <RigidBody ref={fixed} {...segmentProps} type="fixed" />
                 <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
                     <BallCollider args={[0.1]} />
@@ -298,21 +296,28 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
                     <group
                         scale={2.25}
                         position={[0, -1.2, -0.05]}
-                        onPointerOver={() => hover(true)}
-                        onPointerOut={() => hover(false)}
-                        onPointerUp={(e: any) => {
-                            e.target.releasePointerCapture(e.pointerId);
-                            drag(false);
-                        }}
-                        onPointerDown={(e: any) => {
-                            e.target.setPointerCapture(e.pointerId);
-                            drag(
-                                new THREE.Vector3()
-                                    .copy(e.point)
-                                    .sub(vec.copy(card.current!.translation() as THREE.Vector3))
-                            );
-                        }}
                     >
+                        {/* Invisible hitbox - exactly matches card body dimensions */}
+                        <mesh
+                            onPointerOver={() => hover(true)}
+                            onPointerOut={() => hover(false)}
+                            onPointerUp={(e: any) => {
+                                e.target.releasePointerCapture(e.pointerId);
+                                drag(false);
+                            }}
+                            onPointerDown={(e: any) => {
+                                e.target.setPointerCapture(e.pointerId);
+                                drag(
+                                    new THREE.Vector3()
+                                        .copy(e.point)
+                                        .sub(vec.copy(card.current!.translation() as THREE.Vector3))
+                                );
+                            }}
+                        >
+                            {/* Positioned behind card content to avoid z-fighting */}
+                            <boxGeometry args={[0.85, 1.25, 0.001]} />
+                            <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+                        </mesh>
                         {/* ID Card - Minimalist design */}
                         <IDCardMesh colors={colors} />
                     </group>
