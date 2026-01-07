@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Loader from "./components/ui/Loader";
+import Loader from "../components/Loader";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const geistMono = Geist_Mono({
@@ -17,8 +17,8 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "TEDXCCET",
-  description: "TEDXCCET",
+  title: "TEDxCCET",
+  description: "TEDxCCET",
 };
 
 export default function RootLayout({

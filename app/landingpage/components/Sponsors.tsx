@@ -103,7 +103,9 @@ export default function Sponsors() {
           <p className="text-neutral-400 text-lg">
             Want to partner with TEDxCCET?
           </p>
-          <button className="px-8 py-3 rounded-full border border-red-600 text-red-600 font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300 text-sm">
+          <button className="px-8 py-3 rounded-full border border-red-600 text-red-600 font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300 text-sm"
+          onClick={() => window.open("/gettingthere")}
+          >
             Become a Partner
           </button>
         </div>

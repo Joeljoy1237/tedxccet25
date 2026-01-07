@@ -5,6 +5,17 @@ import Image from "next/image";
 import { Ticket, Menu, X, LogIn } from "lucide-react";
 import { useState, useEffect } from "react";
 
+const NAV_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Theme", href: "/theme" },
+  { name: "Speakers", href: "/speakers" },
+  { name: "Sponsors", href: "/sponsors" },
+  { name: "Talks", href: "/previoustalks" },
+  { name: "Getting There", href: "/gettingthere" },
+  { name: "Team", href: "/team" },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,33 +55,15 @@ export default function Navbar() {
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8 text-md font-medium text-white/80">
-        <Link href="/" className="hover:text-red-600 transition-colors">
-          Home
-        </Link>
-        <Link href="/about" className="hover:text-red-600 transition-colors">
-          About
-        </Link>
-        <Link href="/theme" className="hover:text-red-600 transition-colors">
-          Theme
-        </Link>
-        <Link href="/speakers" className="hover:text-red-600 transition-colors">
-          Speakers
-        </Link>
-        <Link href="/sponsors" className="hover:text-red-600 transition-colors">
-          Sponsors
-        </Link>
-        <Link
-          href="/previoustalks"
-          className="hover:text-red-600 transition-colors"
-        >
-        Talks
-        </Link>
-        <Link
-          href="/gettingthere"
-          className="hover:text-red-600 transition-colors"
-        >
-          Getting There
-        </Link>
+        {NAV_LINKS.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="hover:text-red-600 transition-colors"
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
 
       <div className="hidden md:flex items-center gap-4">
@@ -96,55 +89,16 @@ export default function Navbar() {
       {isOpen && (
         <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 md:hidden">
           <div className="flex flex-col gap-4 text-base font-medium text-white/80">
-            <Link
-              href="/"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/theme"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Theme
-            </Link>
-            <Link
-              href="/speakers"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Speakers
-            </Link>
-            <Link
-              href="/sponsors"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Sponsors
-            </Link>
-            <Link
-              href="/previoustalks"
-              className="hover:text-red-600 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Talks
-            </Link>
-            <Link
-              href="/gettingthere"
-              className="text-red-600 font-bold hover:text-white transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Getting There
-            </Link>
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="hover:text-red-600 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
           <Link
             href="/login"

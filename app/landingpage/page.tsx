@@ -7,9 +7,9 @@ import Theme from "./components/Theme";
 import Speakers from "./components/Speakers";
 import PreviousTalks from "./components/PreviousTalks";
 import Timeline from "./components/Timeline";
-import Sponsors from "./components/Sponsors";
 import Hero2 from "./components/Hero2";
 import Welcome from "./components/Welcome";
+import DomeGallery from "./components/gallery";
 
 export default function LandingPage() {
   return (
@@ -17,12 +17,12 @@ export default function LandingPage() {
       <Navbar />
       <Hero2 />
       <Welcome />
-      <About />
+{/*       <DomeGallery />
+ */}      <About />
       <ReasonsToAttend />
       <Theme />
       <Speakers />
       <Timeline />
-      <Sponsors />
       <PreviousTalks />
       <Footer />
     </main>
