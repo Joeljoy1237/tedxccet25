@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable @typescript-eslint/no-namespace */
 "use client";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
-import { Environment, Lightformer, Text } from "@react-three/drei";
+import { Environment, Lightformer, Text, useTexture } from "@react-three/drei";
 import {
     BallCollider,
     CuboidCollider,
@@ -152,32 +152,14 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
     const j3 = useRef<RapierRigidBody>(null);
     const card = useRef<RapierRigidBody>(null);
 
-    const texture = useMemo(() => {
-        if (typeof document === 'undefined') return null;
-        const canvas = document.createElement("canvas");
-        canvas.width = 512;
-        canvas.height = 64;
-        const context = canvas.getContext("2d");
-        if (context) {
-            context.fillStyle = "#050505";
-            context.fillRect(0, 0, 512, 64);
-            context.font = "bold 28px Inter, Arial, sans-serif";
-            context.textBaseline = "middle";
-            context.textAlign = "center";
-            const drawText = (x: number) => {
-                context.fillStyle = "#eb0028";
-                context.fillText("TEDx", x - 35, 32);
-                context.fillStyle = "#ffffff";
-                context.fillText("CCET", x + 35, 32);
-            };
-            drawText(128);
-            drawText(384);
+    const strapTexture = useTexture("/Organizer_tag.png");
+    useEffect(() => {
+        if (strapTexture) {
+            strapTexture.wrapS = THREE.RepeatWrapping;
+            strapTexture.wrapT = THREE.RepeatWrapping;
+            strapTexture.anisotropy = 16;
         }
-        const tex = new THREE.CanvasTexture(canvas);
-        tex.wrapS = THREE.RepeatWrapping;
-        tex.wrapT = THREE.RepeatWrapping;
-        return tex;
-    }, []);
+    }, [strapTexture]);
 
     const vec = new THREE.Vector3();
     const ang = new THREE.Vector3();
@@ -278,10 +260,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
                 </RigidBody>
                 <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
                     <BallCollider args={[0.1]} />
-                    {/* React Logo on the rope (white band) */}
-                    <group scale={0.15} rotation={[Math.PI / 2, 0, Math.PI / 2]}>
-                        <StaticReactLogo color={colors.band === "#ffffff" ? "#222222" : "#ffffff"} scale={1} />
-                    </group>
                 </RigidBody>
                 <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
                     <BallCollider args={[0.1]} />
@@ -332,142 +310,42 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
                     resolution={isMobile ? [1000, 2000] : [1000, 1000]}
                     lineWidth={1}
                     useMap={true}
-                    map={texture!}
-                    repeat={[-3, 1]}
+                    map={strapTexture!}
+                    repeat={[1, 1]}
+                    transparent={false}
                 />
             </mesh>
         </>
     );
 }
 
-// React Logo component - 3D atom orbitals (animated)
-function ReactLogo({ color, scale = 1 }: { color: string; scale?: number }) {
-    const groupRef = useRef<THREE.Group>(null);
 
-    // Slowly rotate the logo
-    useFrame((_, delta) => {
-        if (groupRef.current) {
-            groupRef.current.rotation.z += delta * 0.5;
-        }
-    });
-
-    return (
-        <group ref={groupRef} scale={scale}>
-            {/* Center nucleus */}
-            <mesh>
-                <sphereGeometry args={[0.06, 16, 16]} />
-                <meshStandardMaterial color={color} metalness={0.3} roughness={0.4} />
-            </mesh>
-
-            {/* Orbital rings */}
-            {[0, Math.PI / 3, -Math.PI / 3].map((rotation, i) => (
-                <mesh key={i} rotation={[Math.PI / 2, rotation, 0]}>
-                    <torusGeometry args={[0.18, 0.012, 8, 48]} />
-                    <meshStandardMaterial color={color} metalness={0.2} roughness={0.5} />
-                </mesh>
-            ))}
-        </group>
-    );
-}
-
-// Static React Logo (no rotation) for lanyard strap
-function StaticReactLogo({ color, scale = 1 }: { color: string; scale?: number }) {
-    return (
-        <group scale={scale}>
-            {/* Center nucleus */}
-            <mesh>
-                <sphereGeometry args={[0.06, 12, 12]} />
-                <meshStandardMaterial color={color} metalness={0.2} roughness={0.5} />
-            </mesh>
-
-            {/* Orbital rings */}
-            {[0, Math.PI / 3, -Math.PI / 3].map((rotation, i) => (
-                <mesh key={i} rotation={[Math.PI / 2, rotation, 0]}>
-                    <torusGeometry args={[0.18, 0.015, 6, 32]} />
-                    <meshStandardMaterial color={color} metalness={0.1} roughness={0.6} />
-                </mesh>
-            ))}
-        </group>
-    );
-}
 
 // Minimal Modern ID Card design - TEDx Theme
 function IDCardMesh({ colors }: { colors: ThemeColors }) {
     const cardWidth = 0.85;
     const cardHeight = 1.25;
-    const tedRed = "#eb0028"; // Official TED Red
+    const cardTexture = useTexture("/Volunteer.png");
+    useEffect(() => {
+        if (cardTexture) {
+            cardTexture.wrapS = cardTexture.wrapT = THREE.ClampToEdgeWrapping;
+            cardTexture.repeat.set(1, 1);
+            cardTexture.anisotropy = 16;
+        }
+    }, [cardTexture]);
 
     return (
         <group>
-            {/* Main card body - Matte Black for TEDx vibe */}
+            {/* Main card body with texture */}
             <mesh castShadow receiveShadow>
                 <boxGeometry args={[cardWidth, cardHeight, 0.012]} />
-                <meshPhysicalMaterial
-                    color="#050505"
+                <meshStandardMaterial
+                    map={cardTexture}
                     metalness={0.1}
-                    roughness={0.8}
-                    clearcoat={0}
+                    roughness={0.5}
+                    transparent={true}
                 />
             </mesh>
-
-            {/* Red Accent Strip at bottom */}
-            <mesh position={[0, -cardHeight / 2 + 0.04, 0.007]}>
-                <planeGeometry args={[cardWidth * 0.8, 0.015]} />
-                <meshBasicMaterial color={tedRed} />
-            </mesh>
-
-            {/* Logo Group */}
-            <group position={[0, 0.15, 0.01]}>
-                {/* TED */}
-                <Text
-                    position={[-0.04, 0, 0]}
-                    fontSize={0.18}
-                    color="white"
-                    font="/fonts/Inter-Regular.woff"
-                    fontWeight="800"
-                    anchorX="right"
-                    anchorY="middle"
-                    letterSpacing={-0.05}
-                >
-                    TED
-                </Text>
-                {/* x */}
-                <Text
-                    position={[-0.03, 0.01, 0]}
-                    fontSize={0.18}
-                    color={tedRed}
-                    font="/fonts/Inter-Regular.woff"
-                    fontWeight="800"
-                    anchorX="left"
-                    anchorY="middle"
-                >
-                    x
-                </Text>
-                {/* CCET */}
-                <Text
-                    position={[0.0, -0.16, 0]}
-                    fontSize={0.09}
-                    color="white"
-                    font="/fonts/Inter-Regular.woff"
-                    fontWeight="400"
-                    anchorX="center"
-                    anchorY="middle"
-                    letterSpacing={0.15}
-                >
-                    CCET
-                </Text>
-
-                {/* Tagline */}
-                <Text
-                    position={[0, -0.28, 0]}
-                    fontSize={0.018}
-                    color="#666"
-                    anchorX="center"
-                    font="/fonts/Inter-Regular.woff"
-                >
-                    x = independently organized TED event
-                </Text>
-            </group>
 
             {/* ===== CLAMP & CLIP ===== */}
             <group position={[0, cardHeight / 2 + 0.05, 0]}>
