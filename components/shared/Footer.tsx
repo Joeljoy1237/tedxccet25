@@ -39,6 +39,7 @@ export default function Footer() {
               <Link
                 href="https://www.instagram.com/tedxccet/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="Instagram"
               >
@@ -54,6 +55,7 @@ export default function Footer() {
               <Link
                 href="https://www.linkedin.com/in/tedxccet/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="LinkedIn"
               >
@@ -62,6 +64,7 @@ export default function Footer() {
               <Link
                 href="https://www.youtube.com/results?search_query=tedxccet"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
                 aria-label="YouTube"
               >

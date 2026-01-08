@@ -5,10 +5,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const images = [
-  "/images/bg2.jpg",
-  "/images/bg3.jpg",
-  "/images/bg4.jpg",
-  "/images/bg6.jpg",
+  "/images/bg2.webp",
+  "/images/bg3.webp",
+  "/images/bg4.webp",
+  "/images/bg6.webp",
 ];
 
 export default function BackgroundSlideshow() {
@@ -27,7 +27,7 @@ export default function BackgroundSlideshow() {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence>
         <motion.div
           key={images[index]}
           initial={

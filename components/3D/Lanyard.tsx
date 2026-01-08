@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable @typescript-eslint/no-namespace */
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Suspense } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { Environment, Lightformer, Text, useTexture } from "@react-three/drei";
 import {
@@ -60,6 +60,7 @@ interface LanyardProps {
     gravity?: [number, number, number];
     fov?: number;
     transparent?: boolean;
+    paused?: boolean;
 }
 
 export default function Lanyard({
@@ -67,6 +68,7 @@ export default function Lanyard({
     gravity = [0, -40, 0],
     fov = 20,
     transparent = true,
+    paused = false,
 }: LanyardProps) {
     const [isMobile, setIsMobile] = useState<boolean>(
         () => typeof window !== "undefined" && window.innerWidth < 768
@@ -87,21 +89,24 @@ export default function Lanyard({
     const colors = mounted && resolvedTheme === "light" ? THEME_COLORS.light : THEME_COLORS.dark;
 
     return (
-        <div className="absolute inset-0 z-10 w-full h-full pointer-events-none !bg-transparent">
+        <div className="absolute inset-0 z-10 w-full h-full pointer-events-none bg-transparent!">
             <Canvas
-                className="!bg-transparent pointer-events-auto"
+                className="bg-transparent! pointer-events-auto"
                 style={{ background: 'transparent' }}
                 camera={{ position, fov }}
                 dpr={[1, isMobile ? 1.5 : 2]}
                 gl={{ alpha: transparent }}
+                frameloop={paused ? "never" : "always"}
                 onCreated={({ gl }) =>
                     gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
                 }
             >
                 <ambientLight intensity={Math.PI} />
-                <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
-                    <Band isMobile={isMobile} colors={colors} />
-                </Physics>
+                <Suspense fallback={null}>
+                    <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+                       <Band isMobile={isMobile} colors={colors} />
+                    </Physics>
+                </Suspense>
                 <Environment blur={0.75}>
                     <Lightformer
                         intensity={2}

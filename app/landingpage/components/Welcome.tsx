@@ -11,7 +11,7 @@ const manrope = Manrope({
 
 export default function Welcome() {
   const flickerContent = (
-    <div className="flex flex-row gap-2 md:text-3xl lg:text-4xl text-[7vw] font-semibold flex-wrap w-full items-center justify-center relative z-10">
+    <div className="flex flex-row gap-2 text-4xl md:text-6xl font-black uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
       <span className="">
         <span className="w flicker-text reflect">W</span>
         <span className="e flicker-text reflect">E</span>
@@ -48,9 +48,9 @@ export default function Welcome() {
 
   return (
     <section
-      className={`py-20 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
+      className={`py-24 px-6 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
     >
-      <div className="mx-auto px-6 text-center">
+      <div className="mx-[3vw] text-center">
         <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-32 md:mb-20 lg:mb-12 select-none relative">
           {/* Main Title */}
           <h2 className="flex flex-row gap-2 flex-wrap w-full items-center justify-center relative z-10">
@@ -78,7 +78,7 @@ export default function Welcome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-neutral-400 text-lg md:text-sm leading-relaxed mx-6 md:text-center text-justify"
+          className="text-neutral-400 text-lg leading-relaxed max-w-4xl mx-auto md:text-center text-justify"
         >
           Welcome to <span className="text-red-600 font-bold">TEDx</span> CCET,
           where brilliant minds ignite ideas worth spreading! Join us at Carmel

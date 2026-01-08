@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 import { Triangle, RedLine, BrokenFrame } from "@/components/GeometricShapes";
 import { Speaker } from "@/data/speakers";
@@ -94,10 +95,13 @@ const SpeakerSection = ({ speaker, index }: SpeakerSectionProps) => {
             {/* Image container with geometric overlay */}
             <div className="relative aspect-[3/4] overflow-hidden group">
               {/* Actual speaker image */}
-              <img
+              <Image
                 src={speaker.imageUrl}
                 alt={speaker.name}
-                className="absolute inset-0 w-full h-full object-cover img-grayscale-hover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="absolute inset-0 object-cover img-grayscale-hover"
+                priority={index < 2}
               />
 
               {/* Geometric overlays on portrait */}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import Image from "next/image";
 
 const previousTalks = [
   {
@@ -47,7 +48,7 @@ export default function PreviousTalks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-10 px-6 bg-black text-white relative">
+    <section className="py-24 px-6 bg-black text-white relative">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center">
@@ -77,9 +78,11 @@ export default function PreviousTalks() {
                   />
                 ) : (
                   <>
-                    <img
+                    <Image
                       src={`https://img.youtube.com/vi/${talk.videoId}/maxresdefault.jpg`}
-                      alt={talk.title}
+                        alt={talk.title}
+                        quality={25}
+                      fill
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">

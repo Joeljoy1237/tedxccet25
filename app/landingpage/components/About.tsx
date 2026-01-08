@@ -49,7 +49,7 @@ export default function About() {
   const activeContent = content.find((c) => c.id === activeTab) || content[0];
 
   return (
-    <section id="about" className={`py-12 relative z-10  bg-black `}>
+    <section id="about" className={`py-24 relative z-10  bg-black `}>
       <div className="w-full px-4 lg:px-12 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

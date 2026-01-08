@@ -3,7 +3,7 @@ import TextType from "@/components/TextType";
 
 export default function Theme() {
   return (
-    <section className="py-10 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
+    <section className="py-24 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
       {/* Pill Label */}
       <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
         The Theme

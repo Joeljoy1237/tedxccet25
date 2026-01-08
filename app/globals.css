@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+body {
+  /* background-image: url('/bg2.svg'); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -119,8 +127,8 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  html, body {
+    @apply bg-background text-foreground relative;
     font-family: var(--font-raleway), sans-serif;
   }
 }

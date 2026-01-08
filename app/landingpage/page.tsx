@@ -1,5 +1,4 @@
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+
 import Hero from "./components/Hero";
 import About from "./components/About";
 import ReasonsToAttend from "./components/ReasonsToAttend";
@@ -14,7 +13,6 @@ import DomeGallery from "./components/gallery";
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
-      <Navbar />
       <Hero2 />
       <Welcome />
 {/*       <DomeGallery />
@@ -24,7 +22,6 @@ export default function LandingPage() {
       <Speakers />
       <Timeline />
       <PreviousTalks />
-      <Footer />
     </main>
   );
 }

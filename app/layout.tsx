@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Loader from "../components/Loader";
 import SmoothScroll from "@/components/SmoothScroll";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -17,8 +19,61 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "TEDxCCET",
-  description: "TEDxCCET",
+  metadataBase: new URL("https://tedxccet.com"),
+  title: {
+    default: "TEDxCCET | Carmel College of Engineering & Technology",
+    template: "%s | TEDxCCET",
+  },
+  description:
+    "Join us at TEDxCCET, hosted by Carmel College of Engineering & Technology. Discover ideas worth spreading from Kerala's most inspiring innovators, thinkers, and change-makers.",
+  keywords: [
+    "TEDx",
+    "TEDxCCET",
+    "Carmel College of Engineering & Technology",
+    "CCET",
+    "Alappuzha",
+    "Kerala",
+    "Technology",
+    "Entertainment",
+    "Design",
+    "Ideas Worth Spreading",
+    "Innovation",
+    "Talks",
+  ],
+  authors: [{ name: "TEDxCCET Team" }],
+  creator: "TEDxCCET",
+  publisher: "TEDxCCET",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://tedxccet.com",
+    title: "TEDxCCET | Carmel College of Engineering & Technology",
+    description:
+      "Join us at TEDxCCET for an exhilarating event showcasing brilliant minds and ideas worth spreading.",
+    siteName: "TEDxCCET",
+    images: [
+      {
+        url: "/og-image.jpg", // We will need to ensure this image exists or is added
+        width: 1200,
+        height: 630,
+        alt: "TEDxCCET Event",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TEDxCCET | Carmel College of Engineering & Technology",
+    description:
+      "Ideas worth spreading at Carmel College of Engineering & Technology. Join the conversation.",
+    images: ["/og-image.jpg"],
+    creator: "@tedxccet", // Assuming handle, can be updated
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -33,7 +88,9 @@ export default function RootLayout({
       >
         <Providers>
           <SmoothScroll />
+          <Navbar />
           {children}
+          <Footer />
           <Loader />
         </Providers>
       </body>

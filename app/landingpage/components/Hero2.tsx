@@ -58,7 +58,7 @@ export default function Hero2() {
 
   return (
     <div
-      className={`${inter.variable} ${manrope.variable} ${robofan.variable} ${k2d.variable} relative bg-black text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
+      className={`${inter.variable} ${manrope.variable} ${robofan.variable} ${k2d.variable} relative bg-transparent text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
     >
       {/* CSS for custom effects */}
       <style jsx global>{`
@@ -74,9 +74,7 @@ export default function Hero2() {
         .text-glow {
           text-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
         }
-        .grain {
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-        }
+
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -92,7 +90,7 @@ export default function Hero2() {
       {/* Ambient Background Layers */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Abstract Gallery / Texture Background */}
-        <div className="relative min-h-screen bg-black pl-[2vw]  overflow-hidden">
+        <div className="relative min-h-screen bg-transparent pl-[2vw]  overflow-hidden">
           {/* <img
             src="/background2.avif"
             className="w-full h-full object-cover grayscale mix-blend-overlay"
@@ -105,7 +103,7 @@ export default function Hero2() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80vh] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/30 via-black/80 to-black pointer-events-none"></div>
 
         {/* Grain Overlay */}
-        <div className="absolute inset-0 grain pointer-events-none z-10"></div>
+
       </div>
 
       {/* Hero Section */}
