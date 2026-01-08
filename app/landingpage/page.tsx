@@ -1,22 +1,26 @@
 
-import Hero from "./components/Hero";
-import About from "./components/About";
-import ReasonsToAttend from "./components/ReasonsToAttend";
-import Theme from "./components/Theme";
-import Speakers from "./components/Speakers";
-import PreviousTalks from "./components/PreviousTalks";
-import Timeline from "./components/Timeline";
+import dynamic from "next/dynamic";
 import Hero2 from "./components/Hero2";
 import Welcome from "./components/Welcome";
-import DomeGallery from "./components/gallery";
+
+const About = dynamic(() => import("./components/About"), { ssr: true });
+const ReasonsToAttend = dynamic(() => import("./components/ReasonsToAttend"), {
+  ssr: true,
+});
+const Theme = dynamic(() => import("./components/Theme"), { ssr: true });
+const Speakers = dynamic(() => import("./components/Speakers"), { ssr: true });
+const PreviousTalks = dynamic(() => import("./components/PreviousTalks"), {
+  ssr: true,
+});
+const Timeline = dynamic(() => import("./components/Timeline"), { ssr: true });
 
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
       <Hero2 />
       <Welcome />
-{/*       <DomeGallery />
- */}      <About />
+      {/* <DomeGallery /> */}
+      <About />
       <ReasonsToAttend />
       <Theme />
       <Speakers />

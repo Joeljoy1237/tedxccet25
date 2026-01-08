@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useCallback } from "react";
+import { useEffect, useMemo, useRef, useCallback, useState } from "react";
 import { useGesture } from "@use-gesture/react";
 
 type ImageItem = string | { src: string; alt?: string };
@@ -174,6 +174,17 @@ export default function DomeGallery({
   autoRotate = true,
   autoRotateSpeed = 0.1,
 }: DomeGalleryProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const activeSegments = isMobile ? Math.max(10, Math.floor(segments / 2)) : segments;
+
   const rootRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const sphereRef = useRef<HTMLDivElement>(null);
@@ -214,7 +225,7 @@ export default function DomeGallery({
     document.body.classList.remove("dg-scroll-lock");
   }, []);
 
-  const items = useMemo(() => buildItems(images, segments), [images, segments]);
+  const items = useMemo(() => buildItems(images, activeSegments), [images, activeSegments]);
 
   const applyTransform = (xDeg: number, yDeg: number) => {
     const el = sphereRef.current;
@@ -647,7 +658,7 @@ export default function DomeGallery({
       offsetY,
       sizeX,
       sizeY,
-      segments
+      activeSegments
     );
     const parentY = normalizeAngle(parentRot.rotateY);
     const globalY = normalizeAngle(rotationRef.current.y);
