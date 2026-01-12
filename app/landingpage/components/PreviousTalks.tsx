@@ -48,7 +48,7 @@ export default function PreviousTalks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 px-6 bg-black text-white relative">
+    <section className="py-14 px-6 bg-black text-white relative">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center">

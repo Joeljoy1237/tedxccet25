@@ -4,38 +4,38 @@ const reasons = [
   {
     title: "Inspiration",
     description:
-      "Hear empowering stories by remarkable individuals that will inspire you to reach greater heights in life.",
+      "Inspiring speakers share transformative ideas that broaden perspectives and motivate meaningful personal growth.",
   },
   {
     title: "Creative and Diverse",
     description:
-      "Explore a rich blend of creative and diverse talks and performances that will expand your perspectives.",
+      "Network with curious minds, innovators and leaders, to build connections that spark collaboration and future opportunities.",
   },
   {
     title: "Networking",
     description:
-      "Engage with passionate, like-minded individuals to grow your network through meaningful connections.",
+      "Experience diverse topics such as technology, creativity, science and society, delivered through engaging storytelling formats by experts.",
   },
   {
     title: "Learning",
     description:
-      "Gain new insights and valuable lessons from each talk, fueling your growth and expanding your knowledge.",
+      "Gain fresh insights and practical takeaways you can apply immediately to your studies, career and life.",
   },
   {
     title: "Transformation",
     description:
-      "Spark your imagination, discover groundbreaking ideas, and unlock new paths to personal brilliance.",
+      "Be part of a campus event celebrating ideas, curiosity and the power of shared learning.",
   },
   {
     title: "Unforgettable Experience",
     description:
-      "Enjoy a day of unique, entertaining, and memorable segments that will leave a lasting impression on you.",
+      "Get inspired to think boldly, challenge assumptions and create a positive impact within your community.",
   },
 ];
 
 export default function ReasonsToAttend() {
   return (
-    <section className="py-24 px-6 bg-black/40 text-white relative">
+    <section className="py-12 px-6 bg-black/40 text-white relative">
       <div className="mx-[3vw]">
         {/* Pill Label - Added for consistency if needed, but for now just matching font */}
         <h2 className="text-center text-4xl md:text-6xl font-black uppercase tracking-tighter mb-16">
@@ -46,10 +46,10 @@ export default function ReasonsToAttend() {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="p-8 rounded-lg border-l-4 border-red-600 bg-black transition-colors duration-300"
+              className="p-4 rounded-lg border-l-4 border-red-600 bg-black transition-colors duration-300"
             >
-              <h3 className="text-[21px] font-bold mb-4">{reason.title}</h3>
-              <p className="text-neutral-400 text-base leading-relaxed">
+             
+              <p className="text-neutral-200 text-base leading-relaxed">
                 {reason.description}
               </p>
             </div>

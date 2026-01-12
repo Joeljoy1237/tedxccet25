@@ -1,7 +1,7 @@
-
 import dynamic from "next/dynamic";
 import Hero2 from "./components/Hero2";
 import Welcome from "./components/Welcome";
+
 
 const About = dynamic(() => import("./components/About"), { ssr: true });
 const ReasonsToAttend = dynamic(() => import("./components/ReasonsToAttend"), {
@@ -13,6 +13,8 @@ const PreviousTalks = dynamic(() => import("./components/PreviousTalks"), {
   ssr: true,
 });
 const Timeline = dynamic(() => import("./components/Timeline"), { ssr: true });
+const Gallery2 = dynamic(() => import("./components/gallery2"), { ssr: true });
+const GalleryMasonry = dynamic(() => import("./components/gallery_masonry"), { ssr: true });
 
 export default function LandingPage() {
   return (
@@ -20,6 +22,8 @@ export default function LandingPage() {
       <Hero2 />
       <Welcome />
       {/* <DomeGallery /> */}
+     {/*  <Gallery2 /> */}
+    {/*  <GalleryMasonry /> */}
       <About />
       <ReasonsToAttend />
       <Theme />

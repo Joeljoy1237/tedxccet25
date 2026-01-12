@@ -78,16 +78,17 @@ export default function Welcome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-neutral-400 text-lg leading-relaxed max-w-4xl mx-auto md:text-center text-justify"
+          className="text-neutral-400 text-lg leading-relaxed max-w-screen mx-auto md:text-center text-justify"
         >
-          Welcome to <span className="text-red-600 font-bold">TEDx</span> CCET,
-          where brilliant minds ignite ideas worth spreading! Join us at Carmel
-          College of Engineering & Technology for an exhilarating event
-          showcasing Kerala's innovators and inspiring speakers. Immerse
-          yourself in thought-provoking talks, engaging workshops and networking
-          opportunities that promise to inspire, educate and empower. Don't miss
-          this chance to be part of a transformative experience shaping the
-          future of technology and innovation in our community.
+          We are thrilled to bring the global spirit of <span className="text-red-600 font-bold">TEDx</span>—a program of local, self-organized
+           events dedicated to "ideas worth spreading"—to the heart of Carmel College of Engineering and Technology.
+            On March 21st, join our community of innovators as we bridge technical excellence with our 2026 theme: 
+            <span className="text-red-600 font-bold">DAUNT∅ (Dauntless)</span>.
+
+            By redesigning fear and redefining the future, we invite you to explore ideas that surpass boundaries
+             and recalibrate what lies ahead. Together, we will address the challenges that shape us, proving that
+              through consistency and courage, we can transform our collective vision of tomorrow.
+
         </motion.p>
       </div>
     </section>
