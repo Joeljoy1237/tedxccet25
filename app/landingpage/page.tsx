@@ -13,17 +13,14 @@ const PreviousTalks = dynamic(() => import("./components/PreviousTalks"), {
   ssr: true,
 });
 const Timeline = dynamic(() => import("./components/Timeline"), { ssr: true });
-const Gallery2 = dynamic(() => import("./components/gallery2"), { ssr: true });
-const GalleryMasonry = dynamic(() => import("./components/gallery_masonry"), { ssr: true });
+
 
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
       <Hero2 />
       <Welcome />
-      {/* <DomeGallery /> */}
-     {/*  <Gallery2 /> */}
-    {/*  <GalleryMasonry /> */}
+
       <About />
       <ReasonsToAttend />
       <Theme />
