@@ -148,7 +148,7 @@ export default function Hero2() {
               <Link href="/gettingthere">
                 <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">
                   <MapPin className="w-5 h-5 text-red-500" />
-                  <span>Carmel College of Engineering</span>
+                  <span>Carmel College of Engineering and Technology</span>
                 </div>
               </Link>
             </div>

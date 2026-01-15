@@ -29,7 +29,7 @@ export default function Welcome() {
         <span className="t flicker-text redText reflect">T</span>
         <span className="e flicker-text redText reflect">E</span>
         <span className="d flicker-text redText reflect">D</span>
-        <span className="x flicker-text redText reflect">x</span>
+        <sup><span className="x flicker-text redText reflect text-4xl">x</span></sup>
       </span>{" "}
       <span className="">
         <span className="font-bold ccet1 flicker-text reflect">C</span>
