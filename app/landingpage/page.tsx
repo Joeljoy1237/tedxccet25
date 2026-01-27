@@ -25,7 +25,7 @@ export default function LandingPage() {
       <ReasonsToAttend />
       <Theme />
       <Speakers />
-      <Timeline />
+      {/* <Timeline /> */}
       <PreviousTalks />
     </main>
   );

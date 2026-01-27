@@ -57,7 +57,7 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-8 text-center"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 text-glow">
+          <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-16">{/* text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 text-glow */}
             ABOUT <span className="text-red-600">US</span>
           </h2>
         </motion.div>

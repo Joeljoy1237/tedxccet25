@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Raleway } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import Loader from "../components/Loader";
@@ -16,6 +17,16 @@ const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const robofan = localFont({
+  src: "../public/fonts/Robofan Free.otf",
+  variable: "--font-robofan",
+});
+
+const introDemo = localFont({
+  src: "../public/fonts/IntroDemoBlackCaps.otf",
+  variable: "--font-intro",
 });
 
 export const metadata: Metadata = {
@@ -84,7 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistMono.variable} ${raleway.variable} antialiased font-sans`}
+        className={`${geistMono.variable} ${raleway.variable} ${robofan.variable} ${introDemo.variable} antialiased font-sans`}
       >
         <Providers>
           <SmoothScroll />

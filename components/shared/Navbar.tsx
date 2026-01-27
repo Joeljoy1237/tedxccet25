@@ -14,7 +14,7 @@ const NAV_LINKS = [
   { name: "Sponsors", href: "/sponsors" },
   { name: "Talks", href: "/previoustalks" },
   { name: "Getting There", href: "/gettingthere" },
-  { name: "Team", href: "/team" },
+ /*  { name: "Team", href: "/team" }, */
 ];
 
 export default function Navbar() {
