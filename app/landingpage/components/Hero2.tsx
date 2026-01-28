@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Inter, Manrope, K2D } from "next/font/google";
 import {
@@ -116,9 +117,11 @@ export default function Hero2() {
                     cursorCharacter="_"
                     replacements={{
                       Ø: (
-                        <img
+                        <Image
                           src="/fi.png"
                           alt="fi"
+                          width={50}
+                          height={50}
                           className="inline-block h-[0.8em] w-auto align-baseline mb-[-0.05em]"
                         />
                       ),
