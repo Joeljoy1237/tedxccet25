@@ -3,22 +3,31 @@ import TextType from "@/components/TextType";
 
 export default function Theme() {
   return (
-    <section className="py-24 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
+    <section className="py-14 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
       {/* Pill Label */}
       <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
         The Theme
       </div>
 
       {/* Main Title  DAUNTØ*/}
-      <h2 className="text-5xl md:text-7xl font-bold mb-12 font-robofan tracking-wider">
+      <h2 className="text-5xl md:text-7xl font-bold mb-12 font-robofan text-red-600 tracking-wider">
         DAUNT
-        <span className="text-red-600">
+        <span className="text-white">
           <TextType
             text={["Ø", "LESS"]}
             typingSpeed={100}
             pauseDuration={3500}
             showCursor={true}
             cursorCharacter="_"
+            replacements={{
+                      Ø: (
+                        <img
+                          src="/fi.png"
+                          alt="fi"
+                          className="inline-block h-[0.8em] w-auto align-baseline mb-[-0.05em]"
+                        />
+                      ),
+                    }}
           />
         </span>
       </h2>
@@ -26,7 +35,7 @@ export default function Theme() {
       {/* Content */}
       <div className="max-w-screen-xl mx-[3vw] space-y-8 text-lg md:text-xl text-neutral-300 leading-relaxed font-light md:text-justify">
         <p>
-          <span className="text-red-600 font-bold">DAUNT∅</span> {"(Dauntless)"}{" "}
+          <span className="text-red-600 font-bold">DAUNT <span className="text-white">∅</span></span> {"(Dauntless)"}{" "}
           symbolizing the journey of redesigning fear and redefining the future. "Daunt," which means fear that holds us back, and "∅" (null), 
           which indicates erasing the limitations and starting from scratch. The combination of these two literals showcases the power to reframe 
           fear and transform it into a force that reshapes the future. symbolizing the journey of redesigning fear and redefining the future. "Daunt,"

@@ -29,6 +29,11 @@ const introDemo = localFont({
   variable: "--font-intro",
 });
 
+const introLight = localFont({
+  src: "../public/fonts/intro-cond.light-free.otf",
+  variable: "--font-intro-light",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://tedxccet.com"),
   title: {
@@ -95,7 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistMono.variable} ${raleway.variable} ${robofan.variable} ${introDemo.variable} antialiased font-sans`}
+        className={`${geistMono.variable} ${raleway.variable} ${robofan.variable} ${introDemo.variable} ${introLight.variable} antialiased font-sans`}
       >
         <Providers>
           <SmoothScroll />

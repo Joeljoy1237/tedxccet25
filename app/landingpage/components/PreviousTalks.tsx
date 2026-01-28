@@ -52,7 +52,7 @@ export default function PreviousTalks() {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tighter">
+          <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-16">
             PREVIOUS <span className="text-red-600">TALKS</span>
           </h2>
         </div>

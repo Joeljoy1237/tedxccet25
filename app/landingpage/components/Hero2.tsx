@@ -52,7 +52,7 @@ export default function Hero2() {
 
   return (
     <div
-      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased overflow-x-hidden selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
+      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
     >
       {/* CSS for custom effects */}
       <style jsx global>{`
@@ -114,6 +114,15 @@ export default function Hero2() {
                     pauseDuration={3500}
                     showCursor={true}
                     cursorCharacter="_"
+                    replacements={{
+                      Ø: (
+                        <img
+                          src="/fi.png"
+                          alt="fi"
+                          className="inline-block h-[0.8em] w-auto align-baseline mb-[-0.05em]"
+                        />
+                      ),
+                    }}
                   />
                 </span>
               </h1>
@@ -122,7 +131,7 @@ export default function Hero2() {
             </div>
 
             {/* Subtitle */}
-            <h2 className="text-2xl md:text-3xl font-light font-intro text-white/90 mb-8">
+            <h2 className="text-2xl md:text-[1.7rem] font-light font-intro text-white/90 mb-8">
               {" "}
               {/* font-none tracking-tight */}
               Redesigning Fear <br />
@@ -153,7 +162,7 @@ export default function Hero2() {
                 <Ticket className="w-4 h-4" />
               </button>
 
-              <Link href="/about">
+              <Link href="/about" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-500 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
                   Learn More
                   <ChevronRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />

@@ -48,7 +48,7 @@ export default function Welcome() {
 
   return (
     <section
-      className={`py-24 px-6 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
+      className={`py-14 px-6 relative z-10 bg-black text-white ${manrope.variable} font-[family-name:var(--font-manrope)]`}
     >
       <div className="mx-[3vw] text-center">
         <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-32 md:mb-20 lg:mb-12 select-none relative">
@@ -78,7 +78,7 @@ export default function Welcome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-neutral-400 text-lg leading-relaxed max-w-screen mx-auto md:text-center text-justify"
+          className="mt-20 text-neutral-400 text-lg leading-relaxed font-raleway max-w-screen mx-auto md:text-center text-justify"
         >
           We are thrilled to bring the global spirit of <span className="text-red-600 font-bold">TEDx</span>—a program of local, self-organized
            events dedicated to "ideas worth spreading"—to the heart of Carmel College of Engineering and Technology.

@@ -35,11 +35,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white pt-20 pb-10 border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-black text-white md:pt-20 pb-10 border-t border-white/10 relative overflow-hidden">
       <div className=" mx-[2vw] px-[2vw] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
           {/* Left Column: Branding */}
-          <div className="space-y-6">
+          <div className="col-span-2 md:col-span-1 space-y-6">
             <h2 className="text-3xl font-black tracking-tighter text-red-600">
               TEDx<span className="text-white">CCET</span>
             </h2>
@@ -116,18 +116,21 @@ export default function Footer() {
           </div>
 
           {/* Right Column: Contact */}
-          <div>
+          <div className="-ml-16 md:-ml-0">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-6">
               Contact
             </h3>
             <ul className="space-y-6">
               <li className="flex items-start gap-3 text-neutral-400 text-sm">
-                <MapPin className="w-5 h-5 text-red-600 shrink-0" />
-                <span>
+                <MapPin className="w-5 h-5 md:mt-2 text-red-600 shrink-0 " />
+                <Link
+                  href="/gettingthere"
+                  className="hover:text-white transition-colors"
+                >
                   Carmel College of Engineering & Technology,
                   <br />
                   Punnapra, Alappuzha, Kerala 688004
-                </span>
+                </Link>
               </li>
               <li className="flex items-center gap-3 text-neutral-400 text-sm">
                 <Mail className="w-5 h-5 text-red-600 shrink-0" />

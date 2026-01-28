@@ -17,6 +17,7 @@ body {
   --font-mono: var(--font-geist-mono);
   --font-robofan: var(--font-robofan);
   --font-intro: var(--font-intro);
+  --font-intro-light: var(--font-intro-light);
   --font-raleway: var(--font-raleway);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -134,6 +135,7 @@ body {
   body {
     @apply bg-background text-foreground relative;
     font-family: var(--font-raleway), sans-serif;
+    overflow-x: hidden;
   }
 }
 
