@@ -100,7 +100,7 @@ export default function Hero2() {
       {/* Hero Section */}
       <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12 -bottom-18 ">
         {/* Main Content Wrapper */}
-        <div className="mx-6 w-[93%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="w-full px-6 lg:w-[93%] lg:px-0 lg:mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Text Content */}
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left relative z-20">
             {/* Massive Title */}
@@ -177,7 +177,7 @@ export default function Hero2() {
           {/* Visual Element / The "X" Gallery */}
           {/* Full screen interactive Lanyard overlay */}
           {isDesktop && (
-            <div className="absolute inset-0 z-1 h-full w-full mx-16 pointer-events-none">
+            <div className="absolute inset-x-16 inset-y-0 z-1 pointer-events-none">
               <HeroX className="w-full h-full" />
             </div>
           )}

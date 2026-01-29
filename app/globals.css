@@ -135,7 +135,6 @@ body {
   body {
     @apply bg-background text-foreground relative;
     font-family: var(--font-raleway), sans-serif;
-    overflow-x: hidden;
   }
 }
 
