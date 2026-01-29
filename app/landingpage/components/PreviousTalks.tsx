@@ -52,7 +52,7 @@ export default function PreviousTalks() {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-16">
+          <h2 className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16">
             PREVIOUS <span className="text-[#EB0028]">TALKS</span>
           </h2>
         </div>
@@ -80,15 +80,13 @@ export default function PreviousTalks() {
                   <>
                     <Image
                       src={`https://img.youtube.com/vi/${talk.videoId}/maxresdefault.jpg`}
-                        alt={talk.title}
-                        quality={25}
+                      alt={talk.title}
+                      quality={25}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      
-                    </div>
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center"></div>
                   </>
                 )}
 

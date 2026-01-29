@@ -216,10 +216,10 @@ export default function Timeline() {
         <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
           Schedule
         </div>
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
+        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-4">
           Event <span className="text-red-600">Timeline</span>
         </h2>
-        <p className="text-neutral-400 text-lg">
+        <p className="text-neutral-400 text-lg lg:text-xl">
           A full day of inspiration, connection, and transformation.
         </p>
       </div>

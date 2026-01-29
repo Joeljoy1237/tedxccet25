@@ -11,7 +11,7 @@ export default function Speakers() {
         <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
           Speakers
         </div>
-        <h2 className="text-4xl md:text-6xl font-black uppercase mb-4">
+        <h2 className="text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-4">
           VOICES OF <span className="text-[#EB0028]">COURAGE</span>
         </h2>
         <p className="text-xl text-neutral-400 max-w-2xl mx-auto">

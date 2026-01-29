@@ -11,7 +11,7 @@ const manrope = Manrope({
 
 export default function Welcome() {
   const flickerContent = (
-    <div className="flex flex-row font-[1000] gap-2 text-4xl md:text-6xl uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
+    <div className="flex flex-row font-[1000] gap-2 text-4xl md:text-6xl lg:text-6xl uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
       <span className="">
         <span className="w flicker-text reflect">W</span>
         <span className="e flicker-text reflect">E</span>
@@ -29,7 +29,11 @@ export default function Welcome() {
         <span className="t flicker-text redText reflect">T</span>
         <span className="e flicker-text redText reflect">E</span>
         <span className="d flicker-text redText reflect">D</span>
-        <sup><span className="x flicker-text redText md:text-4xl text-base reflect ">x</span></sup>
+        <sup>
+          <span className="x flicker-text redText md:text-4xl text-base reflect ">
+            x
+          </span>
+        </sup>
       </span>{" "}
       <span className="">
         <span className="font-bold ccet1 flicker-text reflect">C</span>
@@ -78,17 +82,20 @@ export default function Welcome() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 text-neutral-400 text-lg leading-relaxed font-raleway max-w-screen mx-auto md:text-center text-justify"
+          className="mt-20 text-neutral-400 text-lg lg:text-xl leading-relaxed font-raleway max-w-screen mx-auto md:text-center text-justify"
         >
-          We are thrilled to bring the global spirit of <span className="text-red-600 font-bold">TEDx</span>—a program of local, self-organized
-           events dedicated to "ideas worth spreading"—to the heart of Carmel College of Engineering and Technology.
-            On March 21st, join our community of innovators as we bridge technical excellence with our 2026 theme: 
-            <span className="text-red-600 font-bold">DAUNT∅ (Dauntless)</span>.
-
-            By redesigning fear and redefining the future, we invite you to explore ideas that surpass boundaries
-             and recalibrate what lies ahead. Together, we will address the challenges that shape us, proving that
-              through consistency and courage, we can transform our collective vision of tomorrow.
-
+          We are thrilled to bring the global spirit of{" "}
+          <span className="text-red-600 font-bold">TEDx</span>—a program of
+          local, self-organized events dedicated to "ideas worth spreading"—to
+          the heart of Carmel College of Engineering and Technology. On March
+          21st, join our community of innovators as we bridge technical
+          excellence with our 2026 theme:
+          <span className="text-red-600 font-bold">DAUNT∅ (Dauntless)</span>. By
+          redesigning fear and redefining the future, we invite you to explore
+          ideas that surpass boundaries and recalibrate what lies ahead.
+          Together, we will address the challenges that shape us, proving that
+          through consistency and courage, we can transform our collective
+          vision of tomorrow.
         </motion.p>
       </div>
     </section>

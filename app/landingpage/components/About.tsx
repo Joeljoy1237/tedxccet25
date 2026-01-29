@@ -57,7 +57,8 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-8 text-center"
         >
-          <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-16">{/* text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 text-glow */}
+          <h2 className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16">
+            {/* text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 text-glow */}
             ABOUT <span className="text-[#EB0028]">US</span>
           </h2>
         </motion.div>
@@ -92,7 +93,7 @@ export default function About() {
           </div>
 
           {/* Right Column: Content & Visual */}
-           {/* Column 2: Text Content (4 cols) */}
+          {/* Column 2: Text Content (4 cols) */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             <AnimatePresence mode="wait">
               <motion.div
@@ -107,7 +108,7 @@ export default function About() {
                   <span className="w-1 h-8 bg-red-600 rounded-full inline-block" />
                   {activeContent.title}
                 </h3>
-                <p className="text-neutral-300 leading-relaxed md:text-base text-sm font-light text-justify">
+                <p className="text-neutral-300 leading-relaxed md:text-base lg:text-lg lg:leading-loose text-sm font-light text-justify">
                   {activeContent.description}
                 </p>
               </motion.div>

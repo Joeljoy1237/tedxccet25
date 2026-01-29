@@ -38,7 +38,7 @@ export default function ReasonsToAttend() {
     <section className="py-12 px-6 bg-black/40 text-white relative">
       <div className="mx-[3vw]">
         {/* Pill Label - Added for consistency if needed, but for now just matching font */}
-        <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-10">
+        <h2 className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-10">
           Six Reasons to <span className="text-[#EB0028]">Attend</span>
         </h2>
 
@@ -48,8 +48,7 @@ export default function ReasonsToAttend() {
               key={index}
               className="p-4 rounded-lg border-l-4 border-red-600 bg-black transition-colors duration-300"
             >
-             
-              <p className="text-neutral-200 text-base leading-relaxed">
+              <p className="text-neutral-200 text-base lg:text-base leading-relaxed">
                 {reason.description}
               </p>
             </div>

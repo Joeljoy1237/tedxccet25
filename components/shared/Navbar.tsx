@@ -14,7 +14,7 @@ const NAV_LINKS = [
   { name: "Sponsors", href: "/sponsors" },
   { name: "Talks", href: "/previoustalks" },
   { name: "Getting There", href: "/gettingthere" },
- /*  { name: "Team", href: "/team" }, */
+  /*  { name: "Team", href: "/team" }, */
 ];
 
 export default function Navbar() {
@@ -68,7 +68,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-white/80">
+        <div className="hidden lg:flex items-center gap-8 text-sm lg:text-base font-medium text-white/80">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
