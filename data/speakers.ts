@@ -55,5 +55,16 @@ export const speakers: Speaker[] = [
     quote: "Meaning gives melody its life.",
     layout: "left",
   },
+  {
+    name: "Divya Sudheer",
+    role: "DGCA-approved SEP Instructor",
+    title: " A320 / A321 / XLR Expert",
+    org: "Divya's Aviation (YouTube channel)",
+    image: "/speakers_s2/Divya_Sudheer.png",
+    imageUrl: "/speakers_s2/Divya_Sudheer.png",
+    achievement: "",
+    quote: "Aviation isn't just a career; it's a commitment to precision, safety, and the seamless journey of every passenger.",
+    layout: "left",
+  },
   
 ];
