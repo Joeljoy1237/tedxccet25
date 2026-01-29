@@ -105,7 +105,7 @@ export default function Hero2() {
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left relative z-20">
             {/* Massive Title */}
             <div className="relative mb-6 ">
-              <h1 className="text-6xl sm:text-6xl md:text-8xl lg:text-9xl font-robofan font-extrabold text-[#EB0028]  leading-[0.9] tracking-wider">
+              <h1 className="text-6xl sm:text-6xl md:text-8xl lg:text-10xl font-robofan font-extrabold text-[#EB0028]  leading-[0.9] tracking-wider">
                 {/* text-glow mix-blend-screen text-[#EB0028] manrope font-bold */}
                 DAUNT
                 <span className="text-white">
