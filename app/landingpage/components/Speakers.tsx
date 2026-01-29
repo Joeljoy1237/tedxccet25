@@ -12,7 +12,7 @@ export default function Speakers() {
           Speakers
         </div>
         <h2 className="text-4xl md:text-6xl font-black uppercase mb-4">
-          VOICES OF <span className="text-red-600">COURAGE</span>
+          VOICES OF <span className="text-[#EB0028]">COURAGE</span>
         </h2>
         <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
           Pioneers, visionaries, and change-makers who turned their fear into

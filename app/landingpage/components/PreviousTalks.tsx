@@ -53,7 +53,7 @@ export default function PreviousTalks() {
         {/* Header */}
         <div className="text-center">
           <h2 className="text-center text-4xl md:text-6xl font-black uppercase mb-16">
-            PREVIOUS <span className="text-red-600">TALKS</span>
+            PREVIOUS <span className="text-[#EB0028]">TALKS</span>
           </h2>
         </div>
 

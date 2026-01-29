@@ -11,7 +11,7 @@ export default function Theme() {
       </div>
 
       {/* Main Title  DAUNTØ*/}
-      <h2 className="text-5xl md:text-7xl font-bold mb-12 font-robofan text-red-600 tracking-wider">
+      <h2 className="text-5xl md:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider">
         DAUNT
         <span className="text-white">
           <TextType

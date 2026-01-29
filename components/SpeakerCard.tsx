@@ -45,13 +45,13 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
 
             {/* Geometric Accents */}
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-red-600/90 clip-angular transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center">
+            {/* <div className="absolute bottom-0 right-0 w-16 h-16 bg-red-600/90 clip-angular transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center">
               <Triangle
                 direction="up"
                 size="sm"
                 className="w-4 h-4 text-white"
               />
-            </div>
+            </div> */}
 
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
               <RedLine orientation="vertical" length="40px" thickness={2} />

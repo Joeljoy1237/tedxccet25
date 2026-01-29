@@ -25,7 +25,7 @@ export default function Welcome() {
         <span className="w flicker-text reflect">T</span>
         <span className="e flicker-text reflect">O</span>
       </span>
-      <span className="text-red-600 font-black ">
+      <span className="text-[#EB0028] font-black ">
         <span className="t flicker-text redText reflect">T</span>
         <span className="e flicker-text redText reflect">E</span>
         <span className="d flicker-text redText reflect">D</span>

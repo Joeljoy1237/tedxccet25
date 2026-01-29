@@ -105,7 +105,7 @@ export default function Hero2() {
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left relative z-20">
             {/* Massive Title */}
             <div className="relative mb-6 ">
-              <h1 className="text-6xl sm:text-6xl md:text-8xl lg:text-9xl font-robofan font-extrabold text-red-500  leading-[0.9] tracking-wider">
+              <h1 className="text-6xl sm:text-6xl md:text-8xl lg:text-9xl font-robofan font-extrabold text-[#EB0028]  leading-[0.9] tracking-wider">
                 {/* text-glow mix-blend-screen text-[#EB0028] manrope font-bold */}
                 DAUNT
                 <span className="text-white">
@@ -146,13 +146,13 @@ export default function Hero2() {
             {/* Info Bar (Date/Location) */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start font-intro gap-6 mb-12 text-sm sm:text-base text-neutral-300">
               {" "}
-              <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                <Calendar className="w-5 h-5 text-red-500" />
+              <div className="w-full sm:w-auto flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                <Calendar className="w-5 h-5 text-[#EB0028] shrink-0" />
                 <span>September 7, 2024</span>
               </div>
-              <Link href="/gettingthere">
-                <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">
-                  <MapPin className="w-5 h-5 text-red-500" />
+              <Link href="/gettingthere" className="w-full sm:w-auto">
+                <div className="w-full flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">
+                  <MapPin className="w-5 h-5 text-[#EB0028] shrink-0" />
                   <span>Carmel College of Engineering and Technology</span>
                 </div>
               </Link>

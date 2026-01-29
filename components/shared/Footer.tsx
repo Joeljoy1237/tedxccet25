@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
           {/* Left Column: Branding */}
           <div className="col-span-2 md:col-span-1 space-y-6">
-            <h2 className="text-3xl font-black tracking-tighter text-red-600">
+            <h2 className="text-3xl font-black tracking-tighter text-[#EB0028]">
               TEDx<span className="text-white">CCET</span>
             </h2>
             <p className="text-sm text-neutral-400 font-medium">
