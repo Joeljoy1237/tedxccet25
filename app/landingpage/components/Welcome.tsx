@@ -11,7 +11,7 @@ const manrope = Manrope({
 
 export default function Welcome() {
   const flickerContent = (
-    <div className="flex flex-row gap-2 text-4xl md:text-6xl font-black uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
+    <div className="flex flex-row font-[1000] gap-2 text-4xl md:text-6xl uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
       <span className="">
         <span className="w flicker-text reflect">W</span>
         <span className="e flicker-text reflect">E</span>

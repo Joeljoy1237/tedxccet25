@@ -105,7 +105,7 @@ export default function Hero2() {
           <div className="lg:col-span-8 flex flex-col justify-left text-left lg:text-left relative z-20">
             {/* Massive Title */}
             <div className="relative mb-6 ">
-              <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-robofan font-extrabold text-red-500  leading-[0.9] tracking-wider">
+              <h1 className="text-6xl sm:text-6xl md:text-8xl lg:text-9xl font-robofan font-extrabold text-red-500  leading-[0.9] tracking-wider">
                 {/* text-glow mix-blend-screen text-[#EB0028] manrope font-bold */}
                 DAUNT
                 <span className="text-white">
@@ -134,7 +134,7 @@ export default function Hero2() {
             </div>
 
             {/* Subtitle */}
-            <h2 className="text-2xl md:text-[1.7rem] font-light font-intro text-white/90 mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-light font-intro text-white/90 mb-8">
               {" "}
               {/* font-none tracking-tight */}
               Redesigning Fear <br />
@@ -144,7 +144,7 @@ export default function Hero2() {
             {/* Description */}
 
             {/* Info Bar (Date/Location) */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start font-intro gap-6 mb-12 text-base text-neutral-300">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start font-intro gap-6 mb-12 text-sm sm:text-base text-neutral-300">
               {" "}
               <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                 <Calendar className="w-5 h-5 text-red-500" />
@@ -160,13 +160,13 @@ export default function Hero2() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center font-intro gap-4 w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-black text-base font-semibold rounded-lg hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+              <button className="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
                 Get Tickets
                 <Ticket className="w-4 h-4" />
               </button>
 
               <Link href="/about" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-500 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
+                <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-500 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
                   Learn More
                   <ChevronRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
                 </button>
