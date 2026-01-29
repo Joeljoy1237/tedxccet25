@@ -11,7 +11,7 @@ export default function Theme() {
       </div>
 
       {/* Main Title  DAUNTØ*/}
-      <h2 className="text-5xl md:text-7xl lg:text-6xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider">
+      <h2 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider">
         DAUNT
         <span className="text-white">
           <TextType
@@ -36,7 +36,7 @@ export default function Theme() {
       </h2>
 
       {/* Content */}
-      <div className="max-w-screen mx-[3vw] lg:mx-auto space-y-8 text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-center">
+      <div className="max-w-screen mx-[3vw] lg:mx-auto space-y-8 text-lg md:text-xl lg:text-xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-justify">
         <p>
           <span className="text-red-600 font-bold">
             DAUNT <span className="text-white">∅</span>
