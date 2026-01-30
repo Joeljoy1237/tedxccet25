@@ -36,7 +36,7 @@ export default function Theme() {
       </h2>
 
       {/* Content */}
-      <div className="max-w-screen mx-[3vw] space-y-8 text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-justify">
+      <div className="max-w-screen mx-[3vw] space-y-8 text-lg md:text-xl lg:text-xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-justify">
         <p>
           <span className="text-red-600 font-bold">
             DAUNT <span className="text-white">∅</span>
