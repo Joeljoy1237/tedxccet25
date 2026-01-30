@@ -62,13 +62,13 @@ export default function Navbar() {
               alt="TEDxCCET Logo"
               width={120}
               height={220}
-              className="w-24 md:w-36 h-auto transition-all duration-300"
+              className="w-32 md:w-36 h-auto transition-all duration-300"
             />
           </Link>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8 text-sm md:text-base lg:text-base font-medium text-white/80">
+        <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-white/80">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
@@ -82,13 +82,13 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Link
+          {/* <Link
             href="/login"
             className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#EB0028] rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]"
           >
             <span>Login</span>
             <LogIn className="w-4 h-4" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -140,14 +140,14 @@ export default function Navbar() {
                 transition={{ delay: 0.5 }}
                 className="mt-8"
               >
-                <Link
+                {/* <Link
                   href="/login"
                   className="flex items-center gap-3 px-8 py-3 text-lg font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
                   onClick={() => setIsOpen(false)}
                 >
                   <span>Login / Register</span>
                   <LogIn className="w-5 h-5" />
-                </Link>
+                </Link> */}
               </motion.div>
             </div>
           </motion.div>

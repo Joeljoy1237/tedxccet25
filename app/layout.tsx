@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist_Mono, Raleway } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -108,6 +109,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <Loader />
+          <Analytics />
         </Providers>
       </body>
     </html>
