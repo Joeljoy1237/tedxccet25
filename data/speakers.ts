@@ -60,7 +60,7 @@ export const speakers: Speaker[] = [
     name: "Dr. Jose Chacko",
     role: "Cardiac Surgeon and Author",
     title: "DOCTOR AND AUTHOR",
-    org: "Organization Name",
+    org: "Medical Author",
     image: "/speakers_s2/Dr_Jose_Chacko.png",
     imageUrl: "/speakers_s2/Dr_Jose_Chacko.png",
     achievement: "",

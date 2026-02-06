@@ -47,10 +47,7 @@ export default function Theme() {
           from scratch. The combination of these two literals showcases the
           power to reframe fear and transform it into a force that reshapes the
           future. symbolizing the journey of redesigning fear and redefining the
-          future. "Daunt," which means fear that holds us back, and "∅" (null),
-          which indicates erasing the limitations and starting from scratch. The
-          combination of these two literals showcases the power to reframe fear
-          and transform it into a force that reshapes the future.
+          future.
         </p>
 
         <p>
