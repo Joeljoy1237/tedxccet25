@@ -148,7 +148,7 @@ export default function Hero2() {
               {" "}
               <div className="w-full sm:w-auto flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                 <Calendar className="w-5 h-5 text-[#EB0028] shrink-0" />
-                <span>September 7, 2024</span>
+                <span>February 17, 2026</span>
               </div>
               <Link href="/gettingthere" className="w-full sm:w-auto">
                 <div className="w-full flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">
