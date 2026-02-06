@@ -49,7 +49,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[60] flex items-center font-sans tracking-wide justify-between px-[4vw] py-4 md:py-6 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[60] flex items-center font-intro tracking-wide justify-between px-[4vw] py-4 md:py-6 transition-all duration-300 ${
           isScrolled || isOpen
             ? "bg-black/50 backdrop-blur-md border-b border-white/10"
             : "bg-transparent border-b border-transparent"
