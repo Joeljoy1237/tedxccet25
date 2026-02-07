@@ -330,7 +330,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
 function IDCardMesh({ colors }: { colors: ThemeColors }) {
     const cardWidth = 0.85;
     const cardHeight = 1.25;
-    const cardTexture = useTexture("/Volunteer.png");
+    const cardTexture = useTexture("/Volunteer-sample-2026.png");
     useEffect(() => {
         if (cardTexture) {
             cardTexture.wrapS = cardTexture.wrapT = THREE.ClampToEdgeWrapping;
