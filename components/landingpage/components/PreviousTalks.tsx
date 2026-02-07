@@ -120,7 +120,7 @@ export default function PreviousTalks() {
 
               {/* Text Content */}
               <div>
-                <h3 className="text-red-600 font-bold text-lg leading-tight mb-1">
+                <h3 className="text-red-500 font-bold text-lg leading-tight mb-1">
                   {talk.title}
                 </h3>
                 <p className="text-neutral-400 text-sm font-medium uppercase tracking-wide">

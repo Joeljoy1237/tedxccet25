@@ -53,7 +53,7 @@ export default function Hero2() {
 
   return (
     <div
-      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased selection:bg-red-600 selection:text-white font-[family-name:var(--font-inter)]`}
+      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased selection:bg-red-500 selection:text-white font-[family-name:var(--font-inter)]`}
     >
       {/* CSS for custom effects */}
       <style jsx global>{`
@@ -129,7 +129,7 @@ export default function Hero2() {
                   />
                 </span>
               </h1>
-              {/*               <div className="hidden md:block absolute -top-10 -left-10 w-32 h-32 border-l border-t border-red-600/30 opacity-50"></div>
+              {/*               <div className="hidden md:block absolute -top-10 -left-10 w-32 h-32 border-l border-t border-red-500/30 opacity-50"></div>
                */}{" "}
             </div>
 
@@ -138,7 +138,7 @@ export default function Hero2() {
               {" "}
               {/* font-none tracking-tight */}
               Redesigning Fear <br />
-              <span className="text-neutral-500">Redefining the Future</span>
+              <span className="text-neutral-400">Redefining the Future</span>
             </h2>
 
             {/* Description */}
@@ -166,9 +166,9 @@ export default function Hero2() {
               </button>
 
               <Link href="/about" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-500 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
-                  Learn More
-                  <ChevronRight className="w-4 h-4 text-neutral-500 group-hover:text-white transition-colors" />
+                <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-400 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
+                  Learn more about TEDxCCET
+                  <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
                 </button>
               </Link>
             </div>

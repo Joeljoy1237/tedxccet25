@@ -48,7 +48,7 @@ export default function Footer() {
             <p className="text-sm text-neutral-400 font-medium">
               DAUNTØ – Redesigning Fear. Redefining the Future.
             </p>
-            <p className="text-sm text-neutral-500 leading-relaxed max-w-md">
+            <p className="text-sm text-neutral-400 leading-relaxed max-w-md">
               This independent TEDx event is operated under license from TED.
               TEDxCCET brings together bright minds to give talks that are
               idea-focused, and on a wide range of subjects, to foster learning,
@@ -124,7 +124,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-6">
               <li className="flex items-start gap-3 text-neutral-400 text-sm">
-                <MapPin className="w-5 h-5 md:mt-2 text-red-600 shrink-0 " />
+                <MapPin className="w-5 h-5 md:mt-2 text-red-500 shrink-0 " />
                 <Link
                   href="/gettingthere"
                   className="hover:text-white transition-colors"
@@ -135,7 +135,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="flex items-center gap-3 text-neutral-400 text-sm">
-                <Mail className="w-5 h-5 text-red-600 shrink-0" />
+                <Mail className="w-5 h-5 text-red-500 shrink-0" />
                 <a
                   href="mailto:tedxccet@carmelcet.in"
                   className="hover:text-white transition-colors"
@@ -145,7 +145,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3 text-neutral-400 text-sm">
-                <Phone className="w-5 h-5 text-red-600 shrink-0" />
+                <Phone className="w-5 h-5 text-red-500 shrink-0" />
                 <a
                   href="tel:+918590123899"
                   className="hover:text-white transition-colors"
@@ -159,7 +159,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
           <p>
             &copy; 2026 TEDxCCET. This independent TEDx event is operated under
             license from TED.

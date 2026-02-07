@@ -6,7 +6,7 @@ export default function Theme() {
   return (
     <section className="py-14 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
       {/* Pill Label */}
-      <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
+      <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-500 uppercase">
         The Theme
       </div>
 
@@ -41,7 +41,7 @@ export default function Theme() {
       {/* Content */}
       <div className="max-w-screen mx-[3vw] space-y-8 text-lg md:text-xl lg:text-xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-justify">
         <p>
-          <span className="text-red-600 font-bold">
+          <span className="text-red-500 font-bold">
             DAUNT <span className="text-white">∅</span>
           </span>{" "}
           {"(Dauntless)"} symbolizing the journey of redesigning fear and

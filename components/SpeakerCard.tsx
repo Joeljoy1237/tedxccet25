@@ -60,14 +60,14 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
               <h3 className="text-2xl font-bold text-white mb-1 group-hover/card:text-red-500 transition-colors">
                 {speaker.name}
               </h3>
-              <p className="text-red-600 text-xs font-bold tracking-widest uppercase">
+              <p className="text-red-500 text-xs font-bold tracking-widest uppercase">
                 {speaker.title}
               </p>
             </div>
 
             {/* Quote */}
             <div className="relative pl-4 mb-4 flex-grow">
-              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-red-600/30 group-hover/card:bg-red-600 transition-colors" />
+              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-red-500/30 group-hover/card:bg-red-500 transition-colors" />
               <p className="text-neutral-400 text-sm italic leading-relaxed line-clamp-4">
                 "{speaker.quote}"
               </p>
@@ -76,11 +76,11 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
             {/* Role & Org */}
             <div className="mt-auto pt-4 border-t border-white/5">
               <p className="text-white text-sm font-semibold">{speaker.role}</p>
-              <p className="text-neutral-500 text-xs">{speaker.org}</p>
+              <p className="text-neutral-400 text-xs">{speaker.org}</p>
             </div>
 
             {/* View Profile Indicator */}
-            <div className="mt-4 text-xs font-bold text-red-600 flex items-center gap-1 opacity-0 translate-x-[-10px] group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-300 uppercase tracking-[0.2em]">
+            <div className="mt-4 text-xs font-bold text-red-500 flex items-center gap-1 opacity-0 translate-x-[-10px] group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-300 uppercase tracking-[0.2em]">
               View Profile <span>&rarr;</span>
             </div>
           </div>

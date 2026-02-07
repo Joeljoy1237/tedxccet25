@@ -8,7 +8,7 @@ export default function Speakers() {
     <div id="speakers" className="bg-black text-white relative">
       <div className="text-center py-10 px-6 relative z-10 bg-transparent">
         {/* Pill Label */}
-        <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
+        <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-500 uppercase">
           Speakers
         </div>
         <h2 

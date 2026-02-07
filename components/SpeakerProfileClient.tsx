@@ -46,7 +46,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
       >
         <Link 
           href="/speakers" 
-          className="text-red-600 hover:text-red-500 mb-12 inline-flex items-center gap-2 transition-colors font-bold tracking-widest uppercase text-xs group"
+          className="text-red-500 hover:text-red-500 mb-12 inline-flex items-center gap-2 transition-colors font-bold tracking-widest uppercase text-xs group"
         >
           <span className="group-hover:-translate-x-1 transition-transform">&larr;</span> Back to all speakers
         </Link>
@@ -86,7 +86,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
                   <Search className="w-5 h-5 text-white group-hover:text-red-500 transition-colors" />
                   <span className="text-white font-bold tracking-tight">Search on Google</span>
                 </div>
-                <span className="text-red-600 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                <span className="text-red-500 group-hover:translate-x-1 transition-transform">&rarr;</span>
               </Link>
             )}
           </div>
@@ -99,7 +99,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-red-600 text-sm font-black tracking-[0.3em] uppercase mb-4">
+            <h2 className="text-red-500 text-sm font-black tracking-[0.3em] uppercase mb-4">
               {speaker.title}
             </h2>
             <h1 className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight">
@@ -130,12 +130,12 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="mt-12 p-8 border-l-4 border-red-600 bg-red-600/5 relative group"
+            className="mt-12 p-8 border-l-4 border-red-500 bg-red-500/5 relative group"
           >
             <p className="text-2xl font-bold text-white leading-snug italic">
               "{speaker.quote}"
             </p>
-            <div className="absolute top-2 right-4 text-6xl text-red-600/10 font-serif select-none">
+            <div className="absolute top-2 right-4 text-6xl text-red-500/10 font-serif select-none">
               "
             </div>
           </motion.div>
