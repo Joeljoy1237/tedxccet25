@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { BrokenFrame, RedLine, Triangle } from '@/components/GeometricShapes'
 import Image from 'next/image'
@@ -18,6 +18,10 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
     window.scrollTo(0, 0);
   }, []);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const bioThreshold = 2;
+  const hasLongBio = speaker.detailedBio.length > bioThreshold;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -33,7 +37,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
   }
 
   return (
-    <div className="max-w-6xl mx-auto relative z-10">
+    <div className="relative z-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -46,9 +50,13 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
       >
         <Link 
           href="/speakers" 
-          className="text-red-500 hover:text-red-500 mb-12 inline-flex items-center gap-2 transition-colors font-bold tracking-widest uppercase text-xs group"
+          className="text-red-500 hover:text-red-400 mb-12 inline-flex items-center gap-2 transition-colors font-black tracking-[0.2em] uppercase text-xs group relative w-fit"
         >
-          <span className="group-hover:-translate-x-1 transition-transform">&larr;</span> Back to all speakers
+          <span className="group-hover:-translate-x-1 transition-transform duration-300">&larr;</span>
+          <span className="relative">
+            Back to all speakers
+            <span className="absolute -bottom-1 left-0 w-full h-px bg-red-500/30 group-hover:bg-red-500 transition-colors" />
+          </span>
         </Link>
       </motion.div>
 
@@ -58,7 +66,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="lg:col-span-5"
+          className="lg:col-span-4"
         >
           <BrokenFrame className="w-full aspect-4/5 max-w-md mx-auto lg:mx-0">
             <div className="relative w-full h-full overflow-hidden bg-neutral-900">
@@ -93,7 +101,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
         </motion.div>
 
         {/* Speaker Info Column */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,14 +123,29 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-6 text-neutral-400 leading-relaxed text-lg lg:text-xl"
+            className="space-y-4 text-neutral-400 leading-relaxed text-lg lg:text-xl"
           >
             {speaker.detailedBio.length > 0 ? (
-              speaker.detailedBio.map((para, i) => (
+              (isExpanded ? speaker.detailedBio : speaker.detailedBio.slice(0, bioThreshold)).map((para, i) => (
                 <p key={i}>{para}</p>
               ))
             ) : (
               <p>{speaker.achievement || speaker.quote}</p>
+            )}
+
+            {hasLongBio && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="mt-4 text-red-500 hover:text-red-400 font-black tracking-[0.2em] uppercase text-xs flex items-center gap-2 group transition-colors relative"
+              >
+                <span className="relative">
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                  <span className="absolute -bottom-1 left-0 w-full h-px bg-red-500/30 group-hover:bg-red-500 transition-colors" />
+                </span>
+                <span className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                  &darr;
+                </span>
+              </button>
             )}
           </motion.div>
 
@@ -130,7 +153,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="mt-12 p-8 border-l-4 border-red-500 bg-red-500/5 relative group"
+            className="mt-8 p-8 border-l-4 border-red-500 bg-red-500/5 relative group"
           >
             <p className="text-2xl font-bold text-white leading-snug italic">
               "{speaker.quote}"

@@ -49,8 +49,8 @@ export default function PreviousTalks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-14 px-6 bg-black text-white relative">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section className="py-14 px-[4vw] bg-black text-white relative">
+      <div className="space-y-16">
         {/* Video Structured Data for SEO */}
         <Script
           id="previous-talks-jsonld"
@@ -115,7 +115,7 @@ export default function PreviousTalks() {
                 )}
 
                 {/* Overlay to prevent interaction with iframe if desired, or allow clicking */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Text Content */}

@@ -59,7 +59,7 @@ export default async function SpeakerPage({ params }: Props) {
   }
 
   return (
-    <main className="bg-black min-h-screen pt-24 pb-20 px-6 overflow-hidden relative">
+    <main className="bg-black min-h-screen pt-24 pb-20 px-[4vw] overflow-hidden relative">
       {/* Background Accents - Keep these in server component or client, but Triangle is fine here if it doesn't use motion internally or if we wrap it */}
       {/* Triangle uses motion, so it MUST be in a client component or the page must be client */}
       {/* Since I want SEO, I'll keep the page as server and move everything UI-related to the client component */}

@@ -26,7 +26,11 @@ export const speakers: Speaker[] = [
     quote: "Translating complex digital crimes into effective legal remedies and justice.",
     layout: "left",
     googleLink: "https://www.google.com/search?q=Advocate+Jince+T.+Thomas+Cyber+Crime+Lawyer",
-    detailedBio: [],
+    detailedBio: [
+      "Advocate Jince T. Thomas is a prominent Cyber Crime Lawyer practicing at the High Court of Kerala, where he specializes in the legal complexities of the digital age. As an Honorary Assistant Commander at the Kerala Police Cyberdome, he plays a pivotal role in bridging the gap between law enforcement and technical investigative procedures.",
+      "With a career dedicated to combating digital offenses, Adv. Jince has been at the forefront of handling high-profile cybercrime cases, ranging from financial fraud to data privacy violations. His expertise is frequently sought not only in the courtroom but also in advisory capacities for shaping cyber policy and security frameworks.",
+      "At TEDxCCET, he delves into the evolving landscape of digital justice, exploring how legal systems must adapt to the rapid pace of technological innovation to ensure a safer and more accountable digital world for all."
+    ],
   },
   {
     name: "Divya Sudheer",
@@ -40,7 +44,11 @@ export const speakers: Speaker[] = [
     quote: "Aviation isn't just a career; it's a commitment to precision, safety, and the seamless journey of every passenger.",
     layout: "left",
     googleLink: "https://www.google.com/search?q=Divya+Sudheer+Aviation+Instructor",
-    detailedBio: [],
+    detailedBio: [
+      "Divya Sudheer is a highly respected DGCA-approved SEP (Safety Emergency Procedures) Instructor, renowned for her expertise in the A320, A321, and XLR aircraft series. Her deep understanding of aviation safety protocols has made her a vital figure in training the next generation of cabin crew and aviation professionals.",
+      "Beyond her professional training role, she is a popular aviation educator through her YouTube channel, \"Divya's Aviation,\" where she simplifies complex aviation concepts for a global audience. Her commitment to precision and safety is matched by her passion for making aviation knowledge accessible and engaging.",
+      "Her talk at TEDxCCET explores the critical importance of safety culture and the meticulous preparation required behind every takeoff, emphasizing how excellence in aviation is built on a foundation of discipline and unwavering commitment to passenger well-being."
+    ],
   },
   
   {
@@ -55,7 +63,11 @@ export const speakers: Speaker[] = [
     quote: "Fearlessness is not about power—it is about standing by what is right, even when the cost is high.",
     layout: "right",
     googleLink: "https://www.google.com/search?q=Manoj+Abraham+IPS+Kerala+Police",
-    detailedBio: [],
+    detailedBio: [
+      "Manoj Abraham IPS is a distinguished senior Indian Police Service officer of the Kerala cadre, currently serving as the Director General of Police (DGP) for Fire & Rescue Services. He also holds the significant responsibility of Director of the Vigilance and Anti-Corruption Bureau (VACB), where he leads efforts to maintain integrity and transparency in public service.",
+      "Throughout his illustrious career, he has been recognized for his innovative approach to policing, particularly in the realm of community participation and the integration of technology in law enforcement. As one of the key architects of the Kerala Police Cyberdome, he has revolutionized how the force tackles modern-day security challenges.",
+      "At TEDxCCET, he shares insights into the true nature of courage and leadership in public service, advocating for a principled approach to governance that stands firm against corruption and prioritizes the safety and dignity of every citizen."
+    ],
   },
   {
     name: "Arvind Venugopal",
@@ -69,7 +81,11 @@ export const speakers: Speaker[] = [
     quote: "Meaning gives melody its life.",
     layout: "left",
     googleLink: "https://www.google.com/search?q=Arvind+Venugopal+Playback+Singer",
-    detailedBio: [],
+    detailedBio: [
+      "Arvind Venugopal is a talented playback singer and filmmaker who has carved a unique niche for himself in the vibrant Malayalam film industry. Known for his soulful voice and emotive performances, he has lent his vocals to numerous popular tracks, capturing the hearts of music lovers across the globe.",
+      "In addition to his musical accomplishments, Arvind is a creative filmmaker, bringing a cinematic perspective to his artistic endeavors. This multidisciplinary approach allows him to explore storytelling through both sound and vision, creating immersive experiences that resonate with a wide audience.",
+      "During his appearance at TEDxCCET, he discusses the profound connection between meaning and melody, illustrating how the stories behind the songs are what truly give them life and longevity in the hearts of listeners and creators alike."
+    ],
   },
   {
     name: "Dr. Jose Chacko",
