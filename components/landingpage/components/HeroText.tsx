@@ -70,19 +70,13 @@ export default function HeroText() {
       </div>
 
       {/* CTA */}
-      <div className="mt-6 flex gap-3">
-        <Button
-          title="Get Tickets"
-          icon={<IoTicket />}
-          position="right"
-          className="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold"
-        />
-
-        <Link href="/about">
-          <Button
-            title="Learn more"
-            className="px-5 py-2 rounded-lg font-semibold border border-white/20 text-white"
-          />
+      <div className="mt-8 flex flex-col sm:flex-row gap-4 pointer-events-auto">
+        <Link
+          href="#ticket-hero"
+          className="group relative px-8 py-3 bg-[#EB0028] text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95"
+        >
+          <span className="relative z-10">GET TICKETS</span>
+          <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
         </Link>
       </div>
     </div>

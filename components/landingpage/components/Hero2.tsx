@@ -160,10 +160,12 @@ export default function Hero2() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center font-intro gap-4 w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
-                Get Tickets
-                <Ticket className="w-4 h-4" />
-              </button>
+              <Link href="#ticket-hero" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-8 py-4 bg-white text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer">
+                  Get Tickets
+                  <Ticket className="w-4 h-4" />
+                </button>
+              </Link>
 
               <Link href="/about" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-400 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">

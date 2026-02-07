@@ -12,6 +12,9 @@ const Speakers = dynamic(() => import("./components/Speakers"), { ssr: true });
 const PreviousTalks = dynamic(() => import("./components/PreviousTalks"), {
   ssr: true,
 });
+const TicketHero = dynamic(() => import("./components/TicketHero"), {
+  ssr: true,
+});
 const Timeline = dynamic(() => import("./components/Timeline"), { ssr: true });
 
 
@@ -26,6 +29,7 @@ export default function LandingPage() {
       <Theme />
       <Speakers />
       {/* <Timeline /> */}
+      <TicketHero />
       <PreviousTalks />
     </main>
   );
