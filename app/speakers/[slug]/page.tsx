@@ -32,7 +32,7 @@ export async function generateMetadata(
   return {
     title: `${speaker.name} | Speaker at TEDxCCET`,
     description: `${speaker.name} is a ${speaker.role}. ${speaker.quote} ${speaker.detailedBio.length > 0 ? speaker.detailedBio[0] : ''}`,
-    keywords: [`TEDxCCET`, `Speaker`, speaker.name, speaker.role, `TEDx CCET 2025`, speaker.org],
+    keywords: [`TEDxCCET`, `Speaker`, speaker.name, speaker.role, `TEDx CCET 2026`, speaker.org],
     openGraph: {
       title: `${speaker.name} | TEDxCCET`,
       description: speaker.quote,

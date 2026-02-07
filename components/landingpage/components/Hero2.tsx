@@ -167,7 +167,7 @@ export default function Hero2() {
 
               <Link href="/about" className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-neutral-700 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-white/5 hover:border-neutral-400 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer">
-                  Learn more about TEDxCCET
+                  Learn more
                   <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
                 </button>
               </Link>
