@@ -61,28 +61,57 @@ export default async function SpeakerPage({ params }: Props) {
   }
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": speaker.name,
-    "jobTitle": speaker.role,
-    "affiliation": {
-      "@type": "Organization",
-      "name": speaker.org
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: speaker.name,
+    jobTitle: speaker.role,
+    worksFor: {
+      '@type': 'Organization',
+      name: speaker.org,
     },
-    "description": speaker.detailedBio.join(" "),
-    "image": `https://tedxccet.com${speaker.imageUrl}`,
-    "url": `https://tedxccet.com/speakers/${speaker.slug}`,
-    "sameAs": [
-      speaker.googleLink
-    ]
-  };
+    url: `https://tedxccet.com/speakers/${speaker.slug}`,
+    image: `https://tedxccet.com${speaker.imageUrl}`, // Ensure absolute URL
+    description: speaker.achievement || speaker.quote,
+    sameAs: [
+      speaker.googleLink,
+      // Add other social links if available in the speaker object
+    ].filter(Boolean),
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://tedxccet.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Speakers',
+        item: 'https://tedxccet.com/speakers',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: speaker.name,
+        item: `https://tedxccet.com/speakers/${speaker.slug}`,
+      },
+    ],
+  }
 
   return (
     <main className="bg-black min-h-screen pt-24 pb-20 px-[4vw] overflow-hidden relative">
-      <Script
-        id={`speaker-${speaker.slug}-jsonld`}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Background Accents */}
       <div className="absolute top-40 -left-20 opacity-20 pointer-events-none">
