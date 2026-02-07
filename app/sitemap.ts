@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { speakers } from '@/data/speakers'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tedxccet.com'
+  const baseUrl = 'https://tedxccet.in'
   
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [

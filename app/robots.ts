@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next'
- 
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/private/', '/login', '/landingpage'],
+      disallow: ['/private/', '/landingpage'],
     },
-    sitemap: 'https://tedxccet.com/sitemap.xml',
+    sitemap: 'https://tedxccet.in/sitemap.xml',
   }
 }
