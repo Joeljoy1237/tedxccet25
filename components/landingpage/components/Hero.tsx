@@ -1,4 +1,4 @@
-import HeroText from "@/app/landingpage/components/HeroText";
+import HeroText from "@/components/landingpage/components/HeroText";
 import HeroX from "./X";
 import BackgroundSlideshow from "./BackgroundSlideshow";
 

@@ -10,8 +10,11 @@ export default function Theme() {
         The Theme
       </div>
 
-      {/* Main Title  DAUNTØ*/}
-      <h2 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider">
+      {/* Main Title DAUNTØ */}
+      <h2 
+        className="text-5xl md:text-7xl lg:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider"
+        aria-label="DAUNTLESS"
+      >
         DAUNT
         <span className="text-white">
           <TextType
@@ -24,7 +27,7 @@ export default function Theme() {
               Ø: (
                 <Image
                   src="/fi.png"
-                  alt="fi"
+                  alt="Dauntless symbol ∅"
                   width={50}
                   height={50}
                   className="inline-block h-[0.8em] w-auto align-baseline mb-[-0.05em]"

@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist_Mono, Raleway } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
 import Loader from "../components/Loader";
@@ -34,6 +35,13 @@ const introLight = localFont({
   src: "../public/fonts/intro-cond.light-free.otf",
   variable: "--font-intro-light",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#EB0028",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tedxccet.com"),
@@ -91,6 +99,20 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
+  alternates: {
+    canonical: "https://tedxccet.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -104,6 +126,39 @@ export default function RootLayout({
         className={`${geistMono.variable} ${raleway.variable} ${robofan.variable} ${introDemo.variable} ${introLight.variable} antialiased font-sans`}
       >
         <Providers>
+          <Script
+            id="json-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "EducationEvent",
+                name: "TEDxCCET",
+                description: "Ideas Worth Spreading at Carmel College of Engineering & Technology",
+                url: "https://tedxccet.com",
+                location: {
+                  "@type": "Place",
+                  name: "Carmel College of Engineering & Technology",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Punnapra",
+                    addressRegion: "Alappuzha",
+                    addressCountry: "IN",
+                  },
+                },
+                organizer: {
+                  "@type": "Organization",
+                  name: "Carmel College of Engineering & Technology (CCET)",
+                  url: "https://www.carmelcet.in/",
+                },
+                about: {
+                  "@type": "Organization",
+                  name: "TEDxCCET",
+                  url: "https://tedxccet.com",
+                }
+              }),
+            }}
+          />
           <SmoothScroll />
           <Navbar />
           {children}

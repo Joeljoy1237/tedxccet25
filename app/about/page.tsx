@@ -1,5 +1,5 @@
 
-import About from "@/app/landingpage/components/About";
+import About from "@/components/landingpage/components/About";
 
 export default function AboutPage() {
   return (

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Timer } from "lucide-react";
-import Button from "@/app/landingpage/components/Button";
+import Button from "@/components/landingpage/components/Button";
 
 export default function LoginPage() {
   return (

@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: ['/private/', '/login', '/landingpage'],
     },
     sitemap: 'https://tedxccet.com/sitemap.xml',
   }

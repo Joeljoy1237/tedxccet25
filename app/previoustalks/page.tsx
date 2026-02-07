@@ -1,5 +1,5 @@
 
-import PreviousTalks from "@/app/landingpage/components/PreviousTalks";
+import PreviousTalks from "@/components/landingpage/components/PreviousTalks";
 
 export default function PreviousTalksPage() {
   return (

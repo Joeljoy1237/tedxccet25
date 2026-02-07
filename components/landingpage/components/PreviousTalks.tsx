@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import Script from "next/script";
 
 const previousTalks = [
   {
@@ -50,9 +51,32 @@ export default function PreviousTalks() {
   return (
     <section className="py-14 px-6 bg-black text-white relative">
       <div className="max-w-7xl mx-auto space-y-16">
+        {/* Video Structured Data for SEO */}
+        <Script
+          id="previous-talks-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              previousTalks.map((talk) => ({
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                name: talk.title,
+                description: `TEDx talks by ${talk.speaker}: ${talk.title}`,
+                thumbnailUrl: `https://img.youtube.com/vi/${talk.videoId}/maxresdefault.jpg`,
+                uploadDate: "2024-01-01T08:00:00+08:00", // Placeholder date
+                contentUrl: `https://www.youtube.com/watch?v=${talk.videoId}`,
+                embedUrl: `https://www.youtube.com/embed/${talk.videoId}`,
+              }))
+            ),
+          }}
+        />
+
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16">
+          <h2 
+            className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16"
+            aria-label="Previous TEDxCCET Talks"
+          >
             PREVIOUS <span className="text-[#EB0028]">TALKS</span>
           </h2>
         </div>
@@ -80,7 +104,7 @@ export default function PreviousTalks() {
                   <>
                     <Image
                       src={`https://img.youtube.com/vi/${talk.videoId}/maxresdefault.jpg`}
-                      alt={talk.title}
+                      alt={`TEDx talk: ${talk.title} by ${talk.speaker}`}
                       quality={25}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

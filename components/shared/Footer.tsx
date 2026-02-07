@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Instagram,
-  Twitter,
   Linkedin,
+  X,
   Youtube,
   MapPin,
   Mail,
@@ -40,9 +40,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
           {/* Left Column: Branding */}
           <div className="col-span-2 md:col-span-1 space-y-6">
-            <h2 className="text-3xl lg:text-4xl font-black tracking-tighter text-[#EB0028]">
-              TEDx<span className="text-white">CCET</span>
-            </h2>
+            <Link href="/" className="inline-block">
+              <h2 className="text-3xl lg:text-4xl font-black tracking-tighter text-[#EB0028]">
+                TEDx<span className="text-white">CCET</span>
+              </h2>
+            </Link>
             <p className="text-sm text-neutral-400 font-medium">
               DAUNTØ – Redesigning Fear. Redefining the Future.
             </p>
@@ -65,9 +67,9 @@ export default function Footer() {
               <Link
                 href="#"
                 className="w-10 h-10 rounded-full bg-neutral-900 border border-white/10 flex items-center justify-center hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 group"
-                aria-label="Twitter"
+                aria-label="X (formerly Twitter)"
               >
-                <Twitter className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
+                <X className="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/tedxccet/"
@@ -137,6 +139,7 @@ export default function Footer() {
                 <a
                   href="mailto:tedxccet@carmelcet.in"
                   className="hover:text-white transition-colors"
+                  aria-label="Send an email to tedxccet@carmelcet.in"
                 >
                   tedxccet@carmelcet.in
                 </a>
@@ -146,6 +149,7 @@ export default function Footer() {
                 <a
                   href="tel:+918590123899"
                   className="hover:text-white transition-colors"
+                  aria-label="Call +9-1 85-9012-3899"
                 >
                   +91 8590123899
                 </a>
@@ -157,7 +161,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
           <p>
-            &copy; 2025 TEDxCCET. This independent TEDx event is operated under
+            &copy; 2026 TEDxCCET. This independent TEDx event is operated under
             license from TED.
           </p>
           <div className="flex gap-6">

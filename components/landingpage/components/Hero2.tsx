@@ -13,7 +13,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 
-import HeroText from "@/app/landingpage/components/HeroText";
+import HeroText from "@/components/landingpage/components/HeroText";
 import HeroX from "./X";
 import BackgroundSlideshow from "./BackgroundSlideshow";
 import TextType from "@/components/TextType";
@@ -119,7 +119,7 @@ export default function Hero2() {
                       Ø: (
                         <Image
                           src="/fi.png"
-                          alt="fi"
+                          alt="Dauntless Icon"
                           width={50}
                           height={50}
                           className="inline-block h-[0.8em] w-auto align-baseline mb-[-0.05em]"
@@ -148,7 +148,7 @@ export default function Hero2() {
               {" "}
               <div className="w-full sm:w-auto flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                 <Calendar className="w-5 h-5 text-[#EB0028] shrink-0" />
-                <span>February 17, 2026</span>
+                <span>March 21, 2026</span>
               </div>
               <Link href="/gettingthere" className="w-full sm:w-auto">
                 <div className="w-full flex items-center gap-3 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-pointer">

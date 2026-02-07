@@ -1,5 +1,5 @@
 
-import Sponsors from "@/app/landingpage/components/Sponsors";
+import Sponsors from "@/components/landingpage/components/Sponsors";
 
 export default function SponsorsPage() {
   return (

@@ -45,7 +45,7 @@ export default function Welcome() {
         <span className="flicker-text reflect">2</span>
         <span className="flicker-text reflect">0</span>
         <span className="flicker-text reflect">2</span>
-        <span className="flicker-text reflect">5</span>
+        <span className="flicker-text reflect">6</span>
       </span>
     </div>
   );

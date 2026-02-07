@@ -1,5 +1,5 @@
 
-import Theme from "@/app/landingpage/components/Theme";
+import Theme from "@/components/landingpage/components/Theme";
 
 export default function ThemePage() {
   return (

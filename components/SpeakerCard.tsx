@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Triangle, RedLine, BrokenFrame } from "@/components/GeometricShapes";
 import { Speaker } from "@/data/speakers";
 import Image from "next/image";
+import Link from "next/link";
 
 interface SpeakerCardProps {
   speaker: Speaker;
@@ -29,7 +30,10 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
       </div>
 
       <BrokenFrame className="h-full">
-        <div className="relative bg-neutral-900/50 border border-white/5 hover:border-red-600/30 transition-colors duration-500 h-full flex flex-col">
+        <Link 
+          href={`/speakers/${speaker.slug}`}
+          className="relative bg-neutral-900/50 border border-white/5 hover:border-red-600/30 transition-colors duration-500 h-full flex flex-col group/card overflow-hidden block"
+        >
           {/* Image Container */}
           <div className="relative aspect-[4/5] overflow-hidden w-full">
             <Image
@@ -38,22 +42,13 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
               quality={50}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+              className="object-cover transition-transform duration-700 group-hover/card:scale-110 grayscale group-hover/card:grayscale-0"
             />
 
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
 
-            {/* Geometric Accents */}
-            {/* <div className="absolute bottom-0 right-0 w-16 h-16 bg-red-600/90 clip-angular transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex items-center justify-center">
-              <Triangle
-                direction="up"
-                size="sm"
-                className="w-4 h-4 text-white"
-              />
-            </div> */}
-
-            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+            <div className="absolute top-4 right-4 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100">
               <RedLine orientation="vertical" length="40px" thickness={2} />
             </div>
           </div>
@@ -62,7 +57,7 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
           <div className="p-6 flex flex-col flex-grow relative">
             {/* Name & Title */}
             <div className="mb-4">
-              <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-red-500 transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-1 group-hover/card:text-red-500 transition-colors">
                 {speaker.name}
               </h3>
               <p className="text-red-600 text-xs font-bold tracking-widest uppercase">
@@ -72,7 +67,7 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
 
             {/* Quote */}
             <div className="relative pl-4 mb-4 flex-grow">
-              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-red-600/30 group-hover:bg-red-600 transition-colors" />
+              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-red-600/30 group-hover/card:bg-red-600 transition-colors" />
               <p className="text-neutral-400 text-sm italic leading-relaxed line-clamp-4">
                 "{speaker.quote}"
               </p>
@@ -83,8 +78,13 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
               <p className="text-white text-sm font-semibold">{speaker.role}</p>
               <p className="text-neutral-500 text-xs">{speaker.org}</p>
             </div>
+
+            {/* View Profile Indicator */}
+            <div className="mt-4 text-xs font-bold text-red-600 flex items-center gap-1 opacity-0 translate-x-[-10px] group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-300 uppercase tracking-[0.2em]">
+              View Profile <span>&rarr;</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </BrokenFrame>
     </motion.div>
   );

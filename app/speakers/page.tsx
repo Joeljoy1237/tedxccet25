@@ -1,5 +1,5 @@
 
-import Speakers from "@/app/landingpage/components/Speakers";
+import Speakers from "@/components/landingpage/components/Speakers";
 
 export default function SpeakersPage() {
   return (
