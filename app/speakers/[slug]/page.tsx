@@ -29,23 +29,41 @@ export async function generateMetadata(
 
   const previousImages = (await parent).openGraph?.images || []
 
+  // Specific title for better ranking: Advocate Jince T. Thomas | TEDxCCET Talk
+  const title = `${speaker.name} | ${speaker.role} | TEDxCCET Talk`
+  const description = `Watch ${speaker.name}'s TEDx talk at TEDxCCET. ${speaker.name} is a ${speaker.role} who shares insights on ${speaker.quote.replace(/[".]/g, '')}. Discover more about ${speaker.name}'s journey and achievements.`
+  const keywords = [
+    speaker.name,
+    `${speaker.name} TEDx`,
+    `${speaker.name} TEDx talk`,
+    speaker.role,
+    speaker.org,
+    'TEDxCCET',
+    'TEDx Kerala',
+    'Ideas worth spreading',
+    speaker.title
+  ].filter(Boolean)
+
   return {
-    title: `${speaker.name} | Speaker at TEDxCCET`,
-    description: `${speaker.name} is a ${speaker.role}. ${speaker.quote} ${speaker.detailedBio.length > 0 ? speaker.detailedBio[0] : ''}`,
-    keywords: [`TEDxCCET`, `Speaker`, speaker.name, speaker.role, `TEDx CCET 2026`, speaker.org],
+    title,
+    description,
+    keywords,
     openGraph: {
-      title: `${speaker.name} | TEDxCCET`,
-      description: speaker.quote,
-      url: `https://tedxccet.com/speakers/${speaker.slug}`,
+      title,
+      description,
+      url: `https://tedxccet.in/speakers/${speaker.slug}`,
       siteName: 'TEDxCCET',
       images: [speaker.imageUrl, ...previousImages],
       type: 'profile',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${speaker.name} | TEDxCCET`,
-      description: speaker.quote,
+      title,
+      description,
       images: [speaker.imageUrl],
+    },
+    alternates: {
+      canonical: `https://tedxccet.in/speakers/${speaker.slug}`,
     },
   }
 }
@@ -69,8 +87,8 @@ export default async function SpeakerPage({ params }: Props) {
       '@type': 'Organization',
       name: speaker.org,
     },
-    url: `https://tedxccet.com/speakers/${speaker.slug}`,
-    image: `https://tedxccet.com${speaker.imageUrl}`, // Ensure absolute URL
+    url: `https://tedxccet.in/speakers/${speaker.slug}`,
+    image: `https://tedxccet.in${speaker.imageUrl}`, // Ensure absolute URL
     description: speaker.achievement || speaker.quote,
     sameAs: [
       speaker.googleLink,
@@ -86,19 +104,19 @@ export default async function SpeakerPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://tedxccet.com',
+        item: 'https://tedxccet.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Speakers',
-        item: 'https://tedxccet.com/speakers',
+        item: 'https://tedxccet.in/speakers',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: speaker.name,
-        item: `https://tedxccet.com/speakers/${speaker.slug}`,
+        item: `https://tedxccet.in/speakers/${speaker.slug}`,
       },
     ],
   }

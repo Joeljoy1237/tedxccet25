@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tedxccet.com"),
+  metadataBase: new URL("https://tedxccet.in"),
   title: {
     default: "TEDxCCET | Carmel College of Engineering & Technology",
     template: "%s | TEDxCCET",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://tedxccet.com",
+    url: "https://tedxccet.in",
     title: "TEDxCCET | Carmel College of Engineering & Technology",
     description:
       "Join us at TEDxCCET for an exhilarating event showcasing brilliant minds and ideas worth spreading.",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   alternates: {
-    canonical: "https://tedxccet.com",
+    canonical: "https://tedxccet.in",
   },
   robots: {
     index: true,
@@ -135,7 +135,7 @@ export default function RootLayout({
                 "@type": "EducationEvent",
                 name: "TEDxCCET",
                 description: "Ideas Worth Spreading at Carmel College of Engineering & Technology",
-                url: "https://tedxccet.com",
+                url: "https://tedxccet.in",
                 location: {
                   "@type": "Place",
                   name: "Carmel College of Engineering & Technology",
@@ -154,7 +154,7 @@ export default function RootLayout({
                 about: {
                   "@type": "Organization",
                   name: "TEDxCCET",
-                  url: "https://tedxccet.com",
+                  url: "https://tedxccet.in",
                 }
               }),
             }}
