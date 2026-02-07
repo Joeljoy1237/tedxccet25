@@ -16,10 +16,21 @@ const SpeakerCard = ({ speaker, index }: SpeakerCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      initial="hidden"
+      whileInView="visible"
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            duration: 0.6, 
+            delay: index * 0.1,
+            when: "beforeChildren" // Animate parent, then children
+          } 
+        }
+      }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }} // Optimize viewport margin
       className="relative group"
       itemScope
       itemType="https://schema.org/Person"

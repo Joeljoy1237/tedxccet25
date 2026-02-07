@@ -94,9 +94,9 @@ export default function Lanyard({
                 className="bg-transparent! pointer-events-auto"
                 style={{ background: 'transparent' }}
                 camera={{ position, fov }}
-                dpr={[1, isMobile ? 1.5 : 2]}
-                gl={{ alpha: transparent }}
-                frameloop={paused ? "never" : "always"}
+                dpr={[1, 1.5]} // Cap at 1.5 for performance
+                gl={{ alpha: transparent, powerPreference: "high-performance" }}
+                frameloop={paused ? "never" : "demand"} // Use demand to only render when needed
                 onCreated={({ gl }) =>
                     gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
                 }

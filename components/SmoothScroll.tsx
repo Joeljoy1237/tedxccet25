@@ -9,12 +9,12 @@ export default function SmoothScroll() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.1,
+      lerp: 0.07,
       smoothWheel: true,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Removed custom easing for default optimized one
       orientation: 'vertical',
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5, // Reduced from 2 for more natural touch feel
       infinite: false,
       syncTouch: false,
     });

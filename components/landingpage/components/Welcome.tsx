@@ -13,39 +13,39 @@ export default function Welcome() {
   const flickerContent = (
     <div className="flex flex-row font-[1000] gap-2 text-4xl md:text-6xl lg:text-6xl uppercase tracking-tighter flex-wrap w-full items-center justify-center relative z-10">
       <span className="">
-        <span className="w flicker-text reflect">W</span>
-        <span className="e flicker-text reflect">E</span>
-        <span className="l flicker-text reflect">L</span>
-        <span className="c flicker-text reflect">C</span>
-        <span className="o flicker-text reflect">O</span>
-        <span className="m flicker-text reflect">M</span>
-        <span className="e flicker-text reflect">E</span>
+        <span className="w flicker-text">W</span>
+        <span className="e flicker-text">E</span>
+        <span className="l flicker-text">L</span>
+        <span className="c flicker-text">C</span>
+        <span className="o flicker-text">O</span>
+        <span className="m flicker-text">M</span>
+        <span className="e flicker-text">E</span>
       </span>
       <span className="">
-        <span className="w flicker-text reflect">T</span>
-        <span className="e flicker-text reflect">O</span>
+        <span className="w flicker-text">T</span>
+        <span className="e flicker-text">O</span>
       </span>
       <span className="text-[#EB0028] font-black ">
-        <span className="t flicker-text redText reflect">T</span>
-        <span className="e flicker-text redText reflect">E</span>
-        <span className="d flicker-text redText reflect">D</span>
+        <span className="t flicker-text redText">T</span>
+        <span className="e flicker-text redText">E</span>
+        <span className="d flicker-text redText">D</span>
         <sup>
-          <span className="x flicker-text redText md:text-4xl text-base reflect ">
+          <span className="x flicker-text redText md:text-4xl text-base ">
             x
           </span>
         </sup>
       </span>{" "}
       <span className="">
-        <span className="font-bold ccet1 flicker-text reflect">C</span>
-        <span className="font-bold ccet2 flicker-text reflect">C</span>
-        <span className="font-bold ccet3 flicker-text reflect">E</span>
-        <span className="font-bold ccet4 flicker-text reflect">T</span>
+        <span className="font-bold ccet1 flicker-text">C</span>
+        <span className="font-bold ccet2 flicker-text">C</span>
+        <span className="font-bold ccet3 flicker-text">E</span>
+        <span className="font-bold ccet4 flicker-text">T</span>
       </span>{" "}
       <span className="">
-        <span className="flicker-text reflect">2</span>
-        <span className="flicker-text reflect">0</span>
-        <span className="flicker-text reflect">2</span>
-        <span className="flicker-text reflect">6</span>
+        <span className="flicker-text">2</span>
+        <span className="flicker-text">0</span>
+        <span className="flicker-text">2</span>
+        <span className="flicker-text">6</span>
       </span>
     </div>
   );
@@ -56,22 +56,8 @@ export default function Welcome() {
     >
       <div className="mx-[3vw] text-center">
         <div className="w-full items-center justify-center flex gap-5 overflow-visible mb-32 md:mb-20 lg:mb-12 select-none relative">
-          {/* Main Title */}
-          <h2 className="flex flex-row gap-2 flex-wrap w-full items-center justify-center relative z-10">
-            {flickerContent}
-          </h2>
-
-          {/* Reflection */}
-          <h2
-            className="flex flex-row gap-2 flex-wrap w-full items-center justify-center absolute top-0 left-0 right-0 opacity-30 origin-bottom transform scale-y-[-1] pointer-events-none text-white/50"
-            aria-hidden="true"
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,2))",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,2))",
-            }}
-          >
+          {/* Main Title with CSS Reflection */}
+          <h2 className="flex flex-row gap-2 flex-wrap w-full items-center justify-center relative z-10 welcome-heading">
             {flickerContent}
           </h2>
         </div>

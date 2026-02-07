@@ -42,18 +42,25 @@ export default function Hero2() {
   const [isDesktop, setIsDesktop] = React.useState(false);
 
   React.useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsDesktop(window.innerWidth >= 1024);
+      }, 150);
     };
 
     handleResize(); // Check on mount
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
     <div
-      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased selection:bg-red-500 selection:text-white font-[family-name:var(--font-inter)]`}
+      className={`${inter.variable} ${manrope.variable} ${k2d.variable} relative bg-transparent text-white antialiased selection:bg-red-500 selection:text-white font-(family-name:--font-inter)`}
     >
       {/* CSS for custom effects */}
       <style jsx global>{`
@@ -92,7 +99,7 @@ export default function Hero2() {
         </div>
 
         {/* Deep Red Atmospheric Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80vh] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/30 via-black/80 to-black pointer-events-none"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80vh] bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-red-900/30 via-black/80 to-black pointer-events-none"></div>
 
         {/* Grain Overlay */}
       </div>

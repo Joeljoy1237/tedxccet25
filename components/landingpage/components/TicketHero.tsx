@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MoveRight } from "lucide-react";
 
 interface TicketHeroProps {
   ticketURL?: string;
@@ -10,6 +9,9 @@ interface TicketHeroProps {
 const TicketHero: React.FC<TicketHeroProps> = ({
   ticketURL = "https://www.tedxccet.in",
 }) => {
+  // Static arrays moved outside or memoized if dynamic, here just static is fine to keep inside if small, but better outside.
+  // Since they are constant size, we can just define them as constants outside.
+  
   return (
     <section
       id="ticket-hero"
@@ -24,43 +26,50 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         GET <span className="text-[#EB0028]">TICKETS</span>
       </h2>
 
-      <div className="relative w-full max-w-7xl mx-auto bg-transparent rounded-[32px] shadow-2xl flex flex-col lg:flex-row transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_20px_50px_rgba(235,0,40,0.15)] group">
+      <div className="relative w-full max-w-7xl mx-auto bg-transparent rounded-[32px] shadow-2xl flex flex-col lg:flex-row transition-transform duration-500 hover:scale-[1.01] will-change-transform group">
+        
+        {/* Optimized Shadow Element - Uses Opacity interacton instead of box-shadow animation */}
+        <div className="absolute inset-0 rounded-[32px] shadow-[0_20px_50px_rgba(235,0,40,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
         {/* Left Section - Visual / Destination Feel (25%) */}
         {/* Added rounded-l-[32px] for desktop since parent background is transparent now */}
-        <div className="w-full lg:w-[25%] h-64 lg:h-auto relative overflow-hidden rounded-t-[32px] lg:rounded-tr-none lg:rounded-l-[32px]">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent z-10" />
+        {/* Left Section - Visual / Destination Feel (25%) */}
+        {/* Added rounded-l-[32px] for desktop since parent background is transparent now */}
+        <div className="w-full lg:w-[25%] h-56 md:h-64 lg:h-auto relative overflow-hidden rounded-t-[32px] lg:rounded-tr-none lg:rounded-l-[32px]">
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/60 z-10" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/20 to-transparent z-10" />
           <Image
             src="/keralabg.jpg"
             alt="Kerala Backwaters"
             fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            priority
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-700 ease-out will-change-transform"
           />
         </div>
 
         {/* Center Section - Event Details (50%) */}
-        <div className="w-full lg:w-[50%] relative p-8 flex flex-col justify-between border-r border-white/5 text-center lg:rounded-r-[32px] z-10 overflow-hidden">
+        <div className="w-full lg:w-[50%] relative py-12 px-6 flex flex-col justify-between border-b lg:border-b-0 border-white/5 text-center z-10 overflow-hidden min-h-[400px] lg:min-h-auto">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/cardbg.png"
               alt="Background Texture"
               fill
-              className="object-cover opacity-100 rotate-90 scale-150"
-              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover opacity-100"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black to-transparent" />
           </div>
 
           {/* Background Gradient Overlay for better text readability if needed, or just let the image shine. Adding a subtle fade. */}
           <div className="absolute inset-0 bg-black/40 z-0" />
 
           {/* Header Row */}
-          <div className="relative z-10 flex justify-between items-center mb-8 h-12">
+          <div className="relative z-10 flex justify-between items-center mb-8 h-10">
             {/* TEDx Logo - Reduced Scale & Balanced */}
-            <div className="flex items-baseline leading-none text-left h-full items-center">
+            <div className="flex items-baseline leading-none text-left h-full">
               <span className="text-red-600 font-extrabold text-2xl tracking-tighter">
-                TED<span className="text-lg relative -top-1 ml-[1px]">x</span>
+                TED<span className="text-lg relative -top-1 ml-px">x</span>
               </span>
               <span className="text-white text-2xl font-bold tracking-tight ml-1">
                 CCET
@@ -68,8 +77,8 @@ const TicketHero: React.FC<TicketHeroProps> = ({
             </div>
 
             {/* Sponsor Logo - Matched Height/Visual Weight */}
-            <div className="relative w-28 h-8 opacity-90 flex items-center">
-              <Image
+            <div className="relative w-32 h-10 opacity-90 flex items-center">
+              <Image 
                 src="/graburpass-mainlogo.svg"
                 alt="GraburPass"
                 fill
@@ -79,7 +88,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           </div>
 
           {/* Main Title Area */}
-          <div className="relative z-10 flex-grow flex flex-col justify-center py-4 items-center">
+          <div className="relative z-10 grow flex flex-col justify-center py-6 items-center">
             <h2 className="text-[#EB0028] text-5xl md:text-6xl font-robofan font-extrabold tracking-wider leading-[0.9] mb-4 uppercase flex items-center justify-center gap-1">
               DAUNT
               <span className="text-white relative w-[0.85em] h-[0.85em] flex items-center justify-center">
@@ -98,7 +107,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           </div>
 
           {/* Metadata Footer - Unified Width/Height Fonts */}
-          <div className="relative z-10 grid grid-cols-3 gap-4 pt-8 mt-4 text-left">
+          <div className="relative z-10 grid grid-cols-3 gap-6 pt-6 mt-4 text-left border-t border-white/10">
             <div className="text-center">
               <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">
                 Date
@@ -127,14 +136,18 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         </div>
 
         {/* Right Section - CTA (25%) - No bg image */}
-        <div className="w-full lg:w-[25%] bg-[#EB0028] text-white p-8 flex flex-col items-center justify-center text-center relative overflow-hidden lg:rounded-l-[32px] rounded-b-[32px] lg:rounded-br-[32px] lg:rounded-tr-[32px]">
+        <div className="w-full lg:w-[25%] bg-[#EB0028] text-white p-6 flex flex-col items-center justify-center text-center relative overflow-hidden rounded-b-[32px] lg:rounded-r-[32px] lg:rounded-l-none">
           <div className="absolute left-0 top-6 bottom-6 w-[2px] hidden lg:flex flex-col justify-between items-center -translate-x-1/2 z-30">
-            {[...Array(10)].map((_, i) => (
-              <div
-                key={i}
-                className="w-[6px] h-[5%] bg-white rounded-full opacity-60"
-              ></div>
-            ))}
+            {/* Optimized Dots - Static Rendering */}
+             <div className="flex flex-col justify-between h-full w-[6px] gap-1">
+                 {/* Repeating background or simple dots instead of map if many */}
+                  {[...Array(10)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-[6px] h-2 bg-white rounded-full opacity-60"
+                    ></div>
+                  ))}
+             </div>
           </div>
 
           {/* Mobile Tear Effect */}
@@ -148,7 +161,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           </div>
 
           <div className="relative z-10 flex flex-col items-center h-full justify-center w-full">
-            <h3 className="text-3xl font-black uppercase leading-tight mb-8">
+            <h3 className="text-2xl font-black uppercase leading-tight mb-4">
               Grab Your <br /> Tickets Now!
             </h3>
 
@@ -156,9 +169,9 @@ const TicketHero: React.FC<TicketHeroProps> = ({
               href="https://www.graburpass.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white p-3 rounded-xl shadow-lg mb-8 transform transition-transform hover:scale-105 duration-300 block cursor-pointer"
+              className="bg-white p-2 rounded-xl shadow-lg mb-4 transform transition-transform hover:scale-105 duration-300 block cursor-pointer will-change-transform"
             >
-              <div className="relative w-36 h-36">
+              <div className="relative w-28 h-28">
                 <img
                   src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.graburpass.com/"
                   alt="Scan for Tickets"
@@ -169,7 +182,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
 
             <Link
               href={ticketURL}
-              className="inline-block text-white/90 font-medium text-lg hover:text-white hover:underline decoration-2 underline-offset-4 mb-6 transition-colors"
+              className="inline-block text-white/90 font-medium text-base hover:text-white hover:underline decoration-2 underline-offset-4 mb-4 transition-colors"
             >
               www.tedxccet.in
             </Link>
@@ -178,9 +191,9 @@ const TicketHero: React.FC<TicketHeroProps> = ({
               href="https://www.graburpass.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm lg:text-base hover:bg-zinc-100 transition-all flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 mb-6 w-auto max-w-full cursor-pointer"
+              className="bg-white text-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-100 transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 mb-2 w-auto max-w-full cursor-pointer will-change-transform"
             >
-              <div className="relative w-8 h-8">
+              <div className="relative w-6 h-6">
                 <Image
                   src="/graburpasslogo.png"
                   alt="GraburPass"

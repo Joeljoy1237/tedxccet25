@@ -14,10 +14,7 @@ const images = [
 export default function BackgroundSlideshow() {
   const [index, setIndex] = useState(0);
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
-    setIsLoaded(true);
     const timer = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change image every 5 seconds
@@ -27,28 +24,24 @@ export default function BackgroundSlideshow() {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-      <AnimatePresence>
-        <motion.div
-          key={images[index]}
-          initial={
-            !isLoaded ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 1.1 }
-          }
-          animate={{ opacity: 0.6, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full"
+      {images.map((img, i) => (
+        <div
+          key={img}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+            i === index ? "opacity-60 z-1" : "opacity-0 z-0"
+          }`}
         >
           <Image
-            src={images[index]}
+            src={img}
             alt="Background"
             fill
-            priority
+            priority={i === 0}
+            sizes="100vw"
             className="object-cover"
           />
-        </motion.div>
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10" />{" "}
-      {/* Overlay */}
+        </div>
+      ))}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10" />
     </div>
   );
 }

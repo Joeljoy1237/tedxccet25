@@ -92,12 +92,23 @@ export const RedLine = ({
   const isHorizontal = orientation === "horizontal";
   const isDiagonal = orientation === "diagonal";
 
+  const variants = {
+    hidden: { 
+      scaleX: isHorizontal ? 0 : 1, 
+      scaleY: isHorizontal ? 1 : 0, 
+      opacity: 0 
+    },
+    visible: { 
+      scaleX: 1, 
+      scaleY: 1, 
+      opacity: 1,
+      transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const }
+    }
+  };
+
   return (
     <motion.div
-      initial={{ scaleX: isHorizontal ? 0 : 1, scaleY: isHorizontal ? 1 : 0, opacity: 0 }}
-      whileInView={{ scaleX: 1, scaleY: 1, opacity: 1 }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, amount: 0.5 }}
+      variants={variants}
       style={{
         width: isHorizontal ? length : `${thickness}px`,
         height: isHorizontal ? `${thickness}px` : length,
@@ -115,15 +126,25 @@ interface BrokenFrameProps {
 }
 
 export const BrokenFrame = ({ className = "", children }: BrokenFrameProps) => {
+  const cornerVariants = {
+    hidden: (custom: { x: number }) => ({ 
+      opacity: 0, 
+      x: custom.x 
+    }),
+    visible: (custom: { delay: number }) => ({ 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, delay: custom.delay }
+    })
+  };
+
   return (
     <div className={`relative ${className}`}>
       {/* Top-left corner */}
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="absolute top-0 left-0 w-16 h-16"
+        custom={{ x: -20, delay: 0.2 }}
+        variants={cornerVariants}
+        className="absolute top-0 left-0 w-16 h-16 pointer-events-none"
       >
         <div className="absolute top-0 left-0 w-full h-[3px] bg-tedx-red" />
         <div className="absolute top-0 left-0 w-[3px] h-full bg-tedx-red" />
@@ -131,11 +152,9 @@ export const BrokenFrame = ({ className = "", children }: BrokenFrameProps) => {
 
       {/* Bottom-right corner - intentionally incomplete (DAUNT∅) */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true }}
-        className="absolute bottom-0 right-0 w-12 h-12"
+        custom={{ x: 20, delay: 0.4 }}
+        variants={cornerVariants}
+        className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none"
       >
         <div className="absolute bottom-0 right-0 w-3/4 h-[3px] bg-tedx-red" />
         <div className="absolute bottom-0 right-0 w-[3px] h-3/4 bg-tedx-red" />
