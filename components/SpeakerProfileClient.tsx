@@ -22,27 +22,8 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
   const bioThreshold = 2;
   const hasLongBio = speaker.detailedBio.length > bioThreshold;
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: speaker.name,
-    jobTitle: speaker.role,
-    worksFor: {
-      '@type': 'Organization',
-      name: speaker.org,
-    },
-    description: speaker.quote,
-    image: `https://tedxccet.com${speaker.imageUrl}`,
-    url: `https://tedxccet.com/speakers/${speaker.slug}`,
-  }
-
   return (
-    <div className="relative z-10">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      
+    <div className="relative z-10" itemScope itemType="https://schema.org/Person">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -76,6 +57,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
                 fill
                 priority
                 className="object-cover transition-transform duration-700 hover:scale-105"
+                itemProp="image"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
             </div>
@@ -110,12 +92,12 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             <h2 className="text-red-500 text-sm font-black tracking-[0.3em] uppercase mb-4">
               {speaker.title}
             </h2>
-            <h1 className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-black text-white mb-6 leading-tight" itemProp="name">
               {speaker.name}
             </h1>
             <div className="flex items-center gap-4 mb-8">
               <RedLine orientation="horizontal" length="60px" thickness={3} />
-              <p className="text-xl font-medium text-neutral-300 italic">{speaker.role}</p>
+              <p className="text-xl font-medium text-neutral-300 italic" itemProp="jobTitle">{speaker.role}</p>
             </div>
           </motion.div>
 
@@ -124,6 +106,7 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-4 text-neutral-400 leading-relaxed text-lg lg:text-xl"
+            itemProp="description"
           >
             {speaker.detailedBio.length > 0 ? (
               (isExpanded ? speaker.detailedBio : speaker.detailedBio.slice(0, bioThreshold)).map((para, i) => (
@@ -162,6 +145,8 @@ export default function SpeakerProfileClient({ speaker }: SpeakerProfileClientPr
               "
             </div>
           </motion.div>
+
+          <p className="hidden" itemProp="worksFor">{speaker.org}</p>
         </div>
       </div>
     </div>

@@ -50,6 +50,8 @@ export async function generateMetadata(
   }
 }
 
+import Script from 'next/script'
+
 export default async function SpeakerPage({ params }: Props) {
   const { slug } = await params
   const speaker = speakers.find((s) => s.slug === slug)
@@ -58,12 +60,31 @@ export default async function SpeakerPage({ params }: Props) {
     notFound()
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": speaker.name,
+    "jobTitle": speaker.role,
+    "affiliation": {
+      "@type": "Organization",
+      "name": speaker.org
+    },
+    "description": speaker.detailedBio.join(" "),
+    "image": `https://tedxccet.com${speaker.imageUrl}`,
+    "url": `https://tedxccet.com/speakers/${speaker.slug}`,
+    "sameAs": [
+      speaker.googleLink
+    ]
+  };
+
   return (
     <main className="bg-black min-h-screen pt-24 pb-20 px-[4vw] overflow-hidden relative">
-      {/* Background Accents - Keep these in server component or client, but Triangle is fine here if it doesn't use motion internally or if we wrap it */}
-      {/* Triangle uses motion, so it MUST be in a client component or the page must be client */}
-      {/* Since I want SEO, I'll keep the page as server and move everything UI-related to the client component */}
-      
+      <Script
+        id={`speaker-${speaker.slug}-jsonld`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* Background Accents */}
       <div className="absolute top-40 -left-20 opacity-20 pointer-events-none">
         <Triangle direction="right" size="xl" className="rotate-12" />
       </div>
