@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +13,11 @@ const TicketHero: React.FC<TicketHeroProps> = ({
 }) => {
   // Static arrays moved outside or memoized if dynamic, here just static is fine to keep inside if small, but better outside.
   // Since they are constant size, we can just define them as constants outside.
-  
+
   return (
     <section
       id="ticket-hero"
-      className="w-full px-4 py-12 flex flex-col justify-center items-center font-sans bg-black relative z-10"
+      className="w-full px-4 pt-12 pb-16 flex flex-col justify-center items-center font-sans bg-black relative z-10"
     >
       {/* Section Title Pill */}
       <div className="mb-4 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
@@ -27,7 +29,6 @@ const TicketHero: React.FC<TicketHeroProps> = ({
       </h2>
 
       <div className="relative w-full max-w-7xl mx-auto bg-transparent rounded-[32px] shadow-2xl flex flex-col lg:flex-row transition-transform duration-500 hover:scale-[1.01] will-change-transform group">
-        
         {/* Optimized Shadow Element - Uses Opacity interacton instead of box-shadow animation */}
         <div className="absolute inset-0 rounded-[32px] shadow-[0_20px_50px_rgba(235,0,40,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -78,7 +79,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
 
             {/* Sponsor Logo - Matched Height/Visual Weight */}
             <div className="relative w-32 h-10 opacity-90 flex items-center">
-              <Image 
+              <Image
                 src="/graburpass-mainlogo.svg"
                 alt="GraburPass"
                 fill
@@ -107,7 +108,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           </div>
 
           {/* Metadata Footer - Unified Width/Height Fonts */}
-          <div className="relative z-10 grid grid-cols-3 gap-6 pt-6 mt-4 text-left border-t border-white/10">
+          <div className="relative z-10 grid grid-cols-3 gap-6 pt-6 mt-4 text-left">
             <div className="text-center">
               <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold mb-1">
                 Date
@@ -136,18 +137,18 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         </div>
 
         {/* Right Section - CTA (25%) - No bg image */}
-        <div className="w-full lg:w-[25%] bg-[#EB0028] text-white p-6 flex flex-col items-center justify-center text-center relative overflow-hidden rounded-b-[32px] lg:rounded-r-[32px] lg:rounded-l-none">
+        <div className="w-full lg:w-[25%] bg-[#EB0028] text-white p-6 flex flex-col items-center justify-center text-center relative rounded-b-[32px] lg:rounded-r-[32px] lg:rounded-l-none">
           <div className="absolute left-0 top-6 bottom-6 w-[2px] hidden lg:flex flex-col justify-between items-center -translate-x-1/2 z-30">
             {/* Optimized Dots - Static Rendering */}
-             <div className="flex flex-col justify-between h-full w-[6px] gap-1">
-                 {/* Repeating background or simple dots instead of map if many */}
-                  {[...Array(10)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-[6px] h-2 bg-white rounded-full opacity-60"
-                    ></div>
-                  ))}
-             </div>
+            <div className="flex flex-col justify-between h-full w-[6px] gap-1">
+              {/* Repeating background or simple dots instead of map if many */}
+              {[...Array(10)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-[6px] h-2 bg-white rounded-full opacity-60"
+                ></div>
+              ))}
+            </div>
           </div>
 
           {/* Mobile Tear Effect */}
@@ -207,6 +208,30 @@ const TicketHero: React.FC<TicketHeroProps> = ({
             <p className="text-[10px] opacity-80 whitespace-nowrap leading-relaxed">
               Be Present At The Seminar Hall Before 9:00 IST
             </p>
+          </div>
+
+          {/* Early Bird – Tooltip Look (Arrow on Top) */}
+          <div className="absolute -bottom-30 right-6 z-[100] md:-bottom-30 md:right-10">
+            <div
+              className="relative bg-black text-white px-4 py-3 rounded-md shadow-2xl border border-red-600 w-44 cursor-pointer"
+              onClick={() => navigator.clipboard.writeText("tedxccet26")}
+            >
+              {/* Arrow on top */}
+              <div className="absolute -top-1.5 right-8 w-3 h-3 bg-black rotate-45 border-l border-t border-red-600" />
+
+              <p className="text-[10px] uppercase tracking-widest font-bold text-red-500 mb-1 text-center">
+                Early Bird
+              </p>
+              <p className="text-xs text-zinc-300 text-center">
+                Use Coupon Code
+              </p>
+              <p className="text-sm font-black tracking-wider text-white mt-1 text-center border border-dashed border-white/20 p-1 rounded bg-white/5">
+                tedxccet26
+              </p>
+              <p className="text-[10px] text-white text-center mt-1">
+                (Click to copy)
+              </p>
+            </div>
           </div>
         </div>
       </div>

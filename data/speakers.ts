@@ -105,5 +105,60 @@ export const speakers: Speaker[] = [
       "At TEDxCCET, Dr. Chacko shares his journey and the vital lessons learned from the rhythmic beat of thousands of hearts, advocating for a healthcare approach that prioritizes understanding as much as intervention."
     ],
   },
+  {
+  name: "Col Sanjeev Nair (Retd)",
+  slug: "sanjeev-nair",
+  role: "Former CEO of Technopark, Kerala & Veteran Indian Army Officer",
+  title: "LEADER IN DEFENCE, TECHNOLOGY & INNOVATION",
+  org: "Technopark Kerala, Indian Army",
+  image: "/speakers_s2/ColSanjeevNair.png",
+  imageUrl: "/speakers_s2/ColSanjeevNair.png",
+  achievement: "",
+  quote: "Leadership is tested not in comfort, but in complexity and conflict.",
+  layout: "left",
+  googleLink: "https://www.google.com/search?q=Col+Sanjeev+Nair+Technopark",
+  detailedBio: [
+    "Col Sanjeev Nair (Retd) is a former CEO of Technopark, Kerala, and a highly respected veteran of the Indian Army with over 21 years of leadership experience across operations, project management, and mission-critical ICT and COMINT solutions.",
+    "During his military career, he commanded a regiment in Jammu and Kashmir and received two commendations for operational excellence, reflecting his ability to lead decisively in high-risk and high-stakes environments. His work spans cyber intelligence, data analytics, and defence technology integration.",
+    "Post-retirement, he led the Ministry of Defence’s iDEX innovation initiative, driving collaboration between startups and national defence needs. An alumnus of IIT Bombay with a Master’s in Communication Engineering and MDI Gurugram, his TEDxCCET talk focuses on leadership, innovation, and building resilient systems under pressure."
+  ],
+},
+{
+  name: "Dr. Saikat Kar",
+  slug: "saikat-kar",
+  role: "Physician-Scientist, Neuroscience Researcher & Educator",
+  title: "BUILDING SCIENCE FROM THE GROUND UP",
+  org: "Founder, CodonMind Nexus",
+  image: "/speakers_s2/Dr_saikat_kar.png",
+  imageUrl: "/speakers_s2/Dr_saikat_kar.png",
+  achievement: "",
+  quote: "True innovation begins when talent returns home to rebuild what was missing.",
+  layout: "right",
+  googleLink: "https://www.google.com/search?q=Dr+Saikat+Kar+CodonMind+Nexus",
+  detailedBio: [
+    "Dr. Saikat Kar is a physician-scientist, neuroscience researcher, and educator dedicated to building world-class scientific innovation from underserved regions. A first-generation graduate from Agartala, his journey reflects persistence, purpose, and a deep commitment to social impact.",
+    "He trained in integrative neuroscience at the University of Edinburgh and in clinical research at Harvard Medical School, gaining global exposure before making the deliberate choice to return to India. His work bridges cutting-edge neuroscience research with real-world clinical and educational applications.",
+    "He is the founder of CodonMind Nexus, Tripura’s first neuroscience-led innovation hub, where he has mentored over 600 students and contributed through research and patents. At TEDxCCET, he speaks about the powerful philosophy of “return and rebuild” and how community-driven science can transform regions."
+  ],
+},
+{
+  name: "PMA Gafoor",
+  slug: "pma-gafoor",
+  role: "Author, Counselor, Motivational Speaker & Storyteller",
+  title: "THE STORYTELLER OF PURPOSE",
+  org: "Independent Author & Visiting Faculty",
+  image: "/speakers_s2/PMA_Gafoor.png",
+  imageUrl: "/speakers_s2/PMA_Gafoor.png",
+  achievement: "",
+  quote: "Life changes when stories turn into self-awareness.",
+  layout: "left",
+  googleLink: "https://www.google.com/search?q=PMA+Gafoor+motivational+speaker",
+  detailedBio: [
+    "PMA Gafoor is a well-known author, counselor, motivational speaker, and storyteller from Kozhikode, Kerala. He is widely recognized as a visiting faculty member across Kerala, known for his deeply engaging and relatable sessions.",
+    "His talks uniquely blend powerful storytelling with practical life lessons, helping individuals navigate emotional well-being, personal growth, and purpose-driven living. Rather than abstract motivation, his approach focuses on reflection, awareness, and actionable change.",
+    "Through his writings and public engagements, he has inspired diverse audiences to approach life with clarity, enthusiasm, and resilience. At TEDxCCET, he shares insights on how stories shape identity and how conscious living can transform everyday life."
+  ],
+},
+
   
 ];
