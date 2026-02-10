@@ -25,7 +25,7 @@ export default function Sponsors() {
         {/* Ticketing Sponsor */}
         <div className="space-y-3">
           <h3 className="text-sm md:text-base font-bold text-red-600 uppercase tracking-widest">
-            Ticketing Sponsor
+            Ticketing Partner
           </h3>
 
           <motion.div
