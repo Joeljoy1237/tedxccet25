@@ -3,111 +3,72 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const sponsors = [
-  {
-    name: "CCET",
-    logo: (
-      <Image
-        src="/ccet.png"
-        alt="CCET Logo"
-        width={280}
-        height={308}
-        className="w-auto h-24 md:h-32 object-contain"
-      />
-    ),
-  },
-];
-
 export default function Sponsors() {
   return (
-    <section id="partners" className="py-10 px-6 bg-black text-white relative">
-      <div className="max-w-7xl mx-auto text-center space-y-16">
-        {/* Header */}
+    <section className="py-20 px-6 bg-black text-white">
+      <div className="max-w-7xl mx-auto text-center space-y-20">
+        {/* Header — YOUR design */}
         <div className="space-y-6">
           <div className="inline-block px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
             Partners
           </div>
+
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
             OUR <span className="text-red-600">PARTNERS</span>
           </h2>
+
           <p className="text-xl text-neutral-500 max-w-2xl mx-auto font-light">
             Organizations that share our vision for a dauntless future.
           </p>
         </div>
 
-        {/* Logos Grid */}
-        {/*    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-items-center opacity-70">
-          {sponsors.map((sponsor, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-neutral-500 hover:text-white transition-colors duration-300 transform hover:scale-110"
-              title={sponsor.name}
-            >
-              {sponsor.logo}
-            </motion.div>
-          ))}
-        </div>  
+        {/* Ticketing Sponsor */}
+        <div className="space-y-3">
+          <h3 className="text-sm md:text-base font-bold text-red-600 uppercase tracking-widest">
+            Ticketing Sponsor
+          </h3>
 
-        */}
-
-        {/* Logos Grid */}
-        <div
-          className="
-                grid
-                gap-10
-                items-center
-                justify-items-center
-                opacity-70
-
-                /* Mobile */
-                [grid-template-columns:repeat(auto-fit,minmax(120px,1fr))]
-
-                /* Tablet */
-                md:[grid-template-columns:repeat(auto-fit,minmax(140px,1fr))]
-
-                /* Desktop */
-                lg:[grid-template-columns:repeat(auto-fit,minmax(160px,1fr))]
-              "
-        >
-          {sponsors.map((sponsor, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: Math.min(index * 0.08, 0.4),
-                duration: 0.45,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true }}
-              className="
-                    text-neutral-500
-                    hover:text-white
-                    transition-all
-                    duration-300
-                    hover:scale-110
-                  "
-              title={sponsor.name}
-            >
-              {sponsor.logo}
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            onClick={() => window.open("https://www.graburpass.com/", "_blank")}
+            className="mx-auto max-w-md h-44 rounded-2xl border border-red-600/70 
+                       flex items-center justify-center cursor-pointer hover:bg-white/5 transition-colors"
+          >
+            <Image
+              src="/graburpass-mainlogo.svg"
+              alt="GrabUrPass"
+              width={180}
+              height={70}
+              className="object-contain transition"
+            />
+          </motion.div>
         </div>
 
-        {/* CTA */}
-        <div className="pt-8 space-y-6 border-t border-white/5 max-w-2xl mx-auto">
-          <p className="text-neutral-400 text-lg">
-            Want to partner with TEDxCCET?
-          </p>
-          <button className="px-8 py-3 rounded-full border border-red-600 text-red-600 font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300 text-sm"
-          onClick={() => window.open("/gettingthere")}
+        {/* Co-Powered By */}
+        <div className="space-y-3">
+          <h3 className="text-sm md:text-base font-bold text-red-600 uppercase tracking-widest">
+            Co-Powered By
+          </h3>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto max-w-md h-44 rounded-2xl border border-red-600/70 
+                       flex items-center justify-center"
           >
-            Become a Partner
-          </button>
+            <Image
+              src="/sponsors/obcydians.png"
+              alt="Obcydians"
+              width={160}
+              height={60}
+              className="object-contain transition"
+            />
+          </motion.div>
         </div>
       </div>
     </section>

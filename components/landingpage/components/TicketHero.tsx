@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Ticket } from "lucide-react";
 
 interface TicketHeroProps {
   ticketURL?: string;
@@ -17,7 +18,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
   return (
     <section
       id="ticket-hero"
-      className="w-full px-4 pt-12 pb-16 flex flex-col justify-center items-center font-sans bg-black relative z-10"
+      className="w-full px-4 pt-12 pb-1 flex flex-col justify-center items-center font-sans bg-black relative z-10"
     >
       {/* Section Title Pill */}
       <div className="mb-4 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
@@ -167,14 +168,14 @@ const TicketHero: React.FC<TicketHeroProps> = ({
             </h3>
 
             <Link
-              href="https://www.graburpass.com/"
+              href="https://www.graburpass.com/e/QuY6el"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white p-2 rounded-xl shadow-lg mb-4 transform transition-transform hover:scale-105 duration-300 block cursor-pointer will-change-transform"
             >
               <div className="relative w-28 h-28">
                 <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.graburpass.com/"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.graburpass.com/e/QuY6el"
                   alt="Scan for Tickets"
                   className="object-contain w-full h-full"
                 />
@@ -189,7 +190,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
             </Link>
 
             <Link
-              href="https://www.graburpass.com/"
+              href="https://www.graburpass.com/e/QuY6el"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-zinc-100 transition-all flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 mb-2 w-auto max-w-full cursor-pointer will-change-transform"
@@ -214,7 +215,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           <div className="absolute -bottom-30 right-6 z-[100] md:-bottom-30 md:right-10">
             <div
               className="relative bg-black text-white px-4 py-3 rounded-md shadow-2xl border border-red-600 w-44 cursor-pointer"
-              onClick={() => navigator.clipboard.writeText("tedxccet26")}
+              onClick={() => navigator.clipboard.writeText("TEDXCCET26")}
             >
               {/* Arrow on top */}
               <div className="absolute -top-1.5 right-8 w-3 h-3 bg-black rotate-45 border-l border-t border-red-600" />
@@ -226,12 +227,44 @@ const TicketHero: React.FC<TicketHeroProps> = ({
                 Use Coupon Code
               </p>
               <p className="text-sm font-black tracking-wider text-white mt-1 text-center border border-dashed border-white/20 p-1 rounded bg-white/5">
-                tedxccet26
+                TEDXCCET26
               </p>
               <p className="text-[10px] text-white text-center mt-1">
                 (Click to copy)
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Explicit CTA for those who miss the card button */}
+      <div className="w-full max-w-7xl mx-auto px-6 relative z-10 mt-38 lg:mt-8">
+        <div className="w-full lg:w-[75%] flex flex-col md:flex-row items-center md:items-start justify-between gap-16">
+          <div className="max-w-xl text-center md:text-left md:pr-8">
+            <p className="text-zinc-400 text-sm md:text-lg leading-relaxed">
+              Don't miss out on the opportunity to be part of{" "}
+              <span className="text-white font-bold">TEDxCCET 2026</span>.{" "}
+              <br className="hidden md:block" />
+              Secure your spot today and join the conversation.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center shrink-0">
+            <Link
+              href="https://www.graburpass.com/e/QuY6el"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-3 bg-[#EB0028] text-white px-10 py-5 rounded-md font-black text-sm md:text-base tracking-widest uppercase overflow-hidden transition-all duration-300 hover:bg-red-700 shadow-[0_0_40px_rgba(235,0,40,0.4)] hover:shadow-[0_0_60px_rgba(235,0,40,0.6)] transform hover:-translate-y-1 whitespace-nowrap"
+            >
+              <span className="relative z-10">Get Your Tickets</span>
+              <Ticket className="w-6 h-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+
+              {/* Button Shine Effect */}
+              <div className="absolute top-0 -left-[100%] w-[50%] h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-[25deg] group-hover:animate-shine" />
+            </Link>
+            <p className="mt-4 text-[10px] text-zinc-600 uppercase tracking-widest font-bold">
+              Limited Seats Available
+            </p>
           </div>
         </div>
       </div>

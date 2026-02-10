@@ -20,7 +20,12 @@ const Gallery2 = dynamic(() => import("./components/gallery2"), { ssr: true });
 const GalleryMasonry = dynamic(() => import("./components/gallery_masonry"), {
   ssr: true,
 });
-
+const Tariff = dynamic(() => import("./components/Tariff"), {
+  ssr: true,
+});
+const Tariff2 = dynamic(() => import("./components/Tariff2"), {
+  ssr: true,
+});
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
@@ -35,6 +40,7 @@ export default function LandingPage() {
       {/* <Timeline /> */}
       <TicketHero />
       <PreviousTalks />
+      <Tariff />
     </main>
   );
 }

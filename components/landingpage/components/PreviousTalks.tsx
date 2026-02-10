@@ -66,14 +66,14 @@ export default function PreviousTalks() {
                 uploadDate: "2024-01-01T08:00:00+08:00", // Placeholder date
                 contentUrl: `https://www.youtube.com/watch?v=${talk.videoId}`,
                 embedUrl: `https://www.youtube.com/embed/${talk.videoId}`,
-              }))
+              })),
             ),
           }}
         />
 
         {/* Header */}
         <div className="text-center">
-          <h2 
+          <h2
             className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16"
             aria-label="Previous TEDxCCET Talks"
           >
@@ -119,14 +119,19 @@ export default function PreviousTalks() {
               </div>
 
               {/* Text Content */}
-              <div>
-                <h3 className="text-red-500 font-bold text-lg leading-tight mb-1">
+              <a
+                href={`https://www.youtube.com/watch?v=${talk.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <h3 className="text-red-500 font-bold text-lg leading-tight mb-1 hover:underline">
                   {talk.title}
                 </h3>
-                <p className="text-neutral-400 text-sm font-medium uppercase tracking-wide">
+                <p className="text-neutral-400 text-sm font-medium uppercase tracking-wide hover:text-white transition-colors">
                   {talk.speaker}
                 </p>
-              </div>
+              </a>
             </div>
           ))}
         </div>

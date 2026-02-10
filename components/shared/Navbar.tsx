@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { name: "About", href: "/about" },
   { name: "Theme", href: "/theme" },
   { name: "Speakers", href: "/speakers" },
+  { name: "Season 1", href: "https://2024.tedxccet.in", target: "_blank" },
   { name: "Sponsors", href: "/sponsors" },
   { name: "Talks", href: "/previoustalks" },
   { name: "Getting There", href: "/gettingthere" },
@@ -73,6 +74,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
+              target={link.target}
               className="hover:text-red-600 transition-colors relative group"
             >
               {link.name}
@@ -83,7 +85,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link
-            href="https://www.graburpass.com/"
+            href="https://www.graburpass.com/e/QuY6el"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#EB0028] rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]"
@@ -128,6 +130,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    target={link.target}
                     className="text-3xl font-bold text-white/90 hover:text-red-600 transition-colors tracking-tight"
                     onClick={() => setIsOpen(false)}
                   >
@@ -143,7 +146,7 @@ export default function Navbar() {
                 className="mt-8"
               >
                 <Link
-                  href="https://www.graburpass.com/"
+                  href="https://www.graburpass.com/e/QuY6el"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-8 py-3 text-lg font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
