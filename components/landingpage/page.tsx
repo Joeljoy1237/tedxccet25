@@ -31,7 +31,6 @@ export default function LandingPage() {
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
       <Hero2 />
       <Welcome />
-      <Gallery2 />
       {/* <GalleryMasonry /> */}
       <About />
       <ReasonsToAttend />
@@ -39,6 +38,7 @@ export default function LandingPage() {
       <Speakers />
       {/* <Timeline /> */}
       <TicketHero />
+      <Gallery2 />
       <PreviousTalks />
       <Tariff />
     </main>
