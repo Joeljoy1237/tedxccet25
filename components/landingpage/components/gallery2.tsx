@@ -3,12 +3,28 @@
 
 import { galleryImages } from "@/data/galleryImages";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import AutoScroll from "embla-carousel-auto-scroll";
 
-// Duplicate images to create a seamless loop
-const duplicatedImages = [...galleryImages, ...galleryImages];
+const galleryImagesLoop = [...galleryImages, ...galleryImages]; // Reduced duplication, usually enough for seamless loop
 
 export default function Gallery2() {
+  // Carousel 1: Moves Left (play)
+  const [emblaRef1] = useEmblaCarousel({ loop: true, dragFree: true }, [
+    AutoScroll({ playOnInit: true, speed: 1, stopOnInteraction: false }),
+  ]);
+
+  // Carousel 2: Moves Right (reverse)
+  const [emblaRef2] = useEmblaCarousel({ loop: true, dragFree: true }, [
+    AutoScroll({
+      playOnInit: true,
+      speed: 1,
+      direction: "backward",
+      stopOnInteraction: false,
+    }),
+  ]);
+
   return (
     <div className="bg-black pb-24 px-0 text-white relative overflow-hidden">
       <div className="text-center py-24 px-6 relative z-10 bg-transparent">
@@ -26,71 +42,55 @@ export default function Gallery2() {
 
       <div className="flex flex-col gap-4 md:gap-8">
         {/* Top Row - Moving Left */}
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-4"
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-            style={{ width: "fit-content" }}
-          >
-            {duplicatedImages.map((image, index) => (
-              <Link
-                href="/team"
+        <div className="overflow-hidden" ref={emblaRef1}>
+          <div className="flex touch-pan-y gap-4 pl-4">
+            {galleryImagesLoop.map((image, index) => (
+              <div
                 key={`row1-${index}`}
-                className="relative flex-none w-[300px] md:w-[400px] aspect-[4/3] group overflow-hidden border border-[1px] border-red-900/30"
+                className="flex-[0_0_auto] min-w-0" // Embla slide requirement
               >
-                <img
-                  src={image.src}
-                  alt={image.alt || `Gallery Image ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/0 transition-colors duration-500" />
-              </Link>
+                <Link
+                  href="/team"
+                  className="relative block w-[300px] md:w-[400px] aspect-4/3 group overflow-hidden border border-red-900/30"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt || `Gallery Image ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 300px, 400px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/0 transition-colors duration-500" />
+                </Link>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom Row - Moving Right */}
-        <div className="relative w-full overflow-hidden">
-          <motion.div
-            className="flex gap-4"
-            animate={{
-              x: ["-50%", "0%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-            style={{ width: "fit-content" }}
-          >
-            {duplicatedImages.map((image, index) => (
-              <Link
-                href="/team"
+        <div className="overflow-hidden" ref={emblaRef2}>
+          <div className="flex touch-pan-y gap-4 pl-4">
+            {galleryImagesLoop.map((image, index) => (
+              <div
                 key={`row2-${index}`}
-                className="relative flex-none w-[300px] md:w-[400px] aspect-[4/3] group overflow-hidden border border-[1px] border-red-900/30"
+                className="flex-[0_0_auto] min-w-0"
               >
-                <img
-                  src={image.src}
-                  alt={image.alt || `Gallery Image ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/0 transition-colors duration-500" />
-              </Link>
+                <Link
+                  href="/team"
+                  className="relative block w-[300px] md:w-[400px] aspect-4/3 group overflow-hidden border border-red-900/30"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt || `Gallery Image ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 300px, 400px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/0 transition-colors duration-500" />
+                </Link>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

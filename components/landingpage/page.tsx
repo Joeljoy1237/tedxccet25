@@ -31,12 +31,10 @@ export default function LandingPage() {
     <main className="min-h-screen bg-black text-white font-sans selection:bg-red-600 selection:text-white">
       <Hero2 />
       <Welcome />
-      {/* <GalleryMasonry /> */}
       <About />
       <ReasonsToAttend />
       <Theme />
       <Speakers />
-      {/* <Timeline /> */}
       <TicketHero />
       <Gallery2 />
       <PreviousTalks />

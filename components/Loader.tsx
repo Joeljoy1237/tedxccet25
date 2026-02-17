@@ -32,6 +32,7 @@ export default function Loader() {
 
     const timeout = setTimeout(() => {
       setIsVisible(false);
+      clearInterval(timer); // Ensure timer is cleared when hiding
     }, totalDuration);
 
     return () => {
@@ -43,7 +44,7 @@ export default function Loader() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/60 backdrop-blur-xl transition-opacity duration-500">
+    <div className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-black/60 backdrop-blur-xl transition-opacity duration-500">
       <div
         className={`${orbitron.className} flex flex-col items-center w-full`}
       >

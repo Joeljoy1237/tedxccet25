@@ -23,13 +23,14 @@ export default function BackgroundSlideshow() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+    <div className="hidden md:block absolute inset-0 z-0 overflow-hidden bg-black">
       {images.map((img, i) => (
         <div
           key={img}
           className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
             i === index ? "opacity-60 z-1" : "opacity-0 z-0"
           }`}
+          aria-hidden={i !== index}
         >
           <Image
             src={img}

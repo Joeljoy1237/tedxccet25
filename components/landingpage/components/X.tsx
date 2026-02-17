@@ -20,7 +20,7 @@ export default function X(props: Xprops) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024); // Increased threshold to include tablets/smaller laptops if needed, but 1024 is safe for "mobile/tablet" optimization.
     };
 
     checkMobile();
@@ -33,7 +33,7 @@ export default function X(props: Xprops) {
   return (
     <div
       ref={containerRef}
-      className={`${props.className} relative h-full w-full`}
+      className={`${props.className} relative h-full w-full hidden lg:block`} 
     >
       <Suspense
         fallback={<div className="text-white text-center">Loading 3D...</div>}
