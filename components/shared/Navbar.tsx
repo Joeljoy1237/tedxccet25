@@ -90,7 +90,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#EB0028] rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]"
           >
-            <span>Get Ticket</span>
+            <span>Get Tickets</span>
             <Ticket className="w-4 h-4" />
           </Link>
         </div>
@@ -152,7 +152,7 @@ export default function Navbar() {
                   className="flex items-center gap-3 px-8 py-3 text-lg font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.3)]"
                   onClick={() => setIsOpen(false)}
                 >
-                  <span>Get Ticket</span>
+                  <span>Get Tickets</span>
                   <Ticket className="w-5 h-5" />
                 </Link>
               </motion.div>

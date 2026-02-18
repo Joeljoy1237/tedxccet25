@@ -5,10 +5,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
-import Loader from "../components/Loader";
-import SmoothScroll from "@/components/SmoothScroll";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import SiteLayout from "@/components/SiteLayout";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -164,12 +161,7 @@ export default function RootLayout({
               }),
             }}
           />
-          <SmoothScroll />
-          <Navbar />
-          {children}
-          <Footer />
-          <Loader />
-          <Analytics />
+          <SiteLayout>{children}</SiteLayout>
         </Providers>
       </body>
     </html>
