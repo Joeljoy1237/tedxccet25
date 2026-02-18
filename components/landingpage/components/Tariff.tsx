@@ -10,10 +10,12 @@ const GlowingBorderCard = ({
   children,
   className = "",
   highlight = false,
+  isSale = false,
 }: {
   children: React.ReactNode;
   className?: string;
   highlight?: boolean;
+    isSale?: boolean;
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -30,6 +32,15 @@ const GlowingBorderCard = ({
       ${highlight ? "ring-1 ring-red-500/50 shadow-[0_0_50px_rgba(235,0,40,0.2)] scale-[1.02] md:scale-[1.05] z-20" : "hover:border-white/20"}`}
       onMouseMove={handleMouseMove}
     >
+      {/* Sale Ribbon - Only for Flash Sale */}
+      {isSale && (
+        <div className="absolute top-0 right-0 overflow-hidden w-32 h-32 pointer-events-none z-30">
+          <div className="absolute top-6 -right-8 w-40 py-1 bg-red-600 text-white text-[10px] font-black uppercase tracking-widest text-center rotate-45 shadow-lg border-y border-white/20">
+            Flash Sale
+          </div>
+        </div>
+      )}
+
       {/* Phi background texture (very subtle) */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] rotate-12">
@@ -151,16 +162,9 @@ export default function Tariff() {
             >
               <GlowingBorderCard
                 highlight={tier.highlight}
-                className={`p-10 md:p-14 flex flex-col w-full h-full border-white/5 mx-auto min-h-[520px] justify-between relative ${tier.highlight ? "border-red-500/20" : ""}`}
+                isSale={tier.isSale}
+                className={`p-10 md:p-14 flex flex-col w-full h-full border-white/5 mx-auto max-w-[420px] min-h-[600px] justify-between relative ${tier.highlight ? "border-red-500/20" : ""}`}
               >
-                {/* Sale Ribbon - Only for Flash Sale */}
-                {tier.isSale && (
-                  <div className="absolute top-0 right-0 overflow-hidden w-32 h-32 pointer-events-none">
-                    <div className="absolute top-6 -right-8 w-40 py-1 bg-red-600 text-white text-[10px] font-black uppercase tracking-widest text-center rotate-45 shadow-lg border-y border-white/20">
-                      Flash Sale
-                    </div>
-                  </div>
-                )}
 
                 <div className="flex flex-col items-center mb-8 relative">
                   <div className={`flex items-center gap-2 px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest mb-6 px-4 ${tier.isSale ? "bg-red-600/10 border-red-600/20 text-[#EB0028]" : "bg-white/5 border-white/10 text-zinc-400"}`}>
@@ -205,7 +209,7 @@ export default function Tariff() {
                     href={tier.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group/btn relative w-full h-16 md:h-20 flex items-center justify-center rounded-2xl font-black text-sm md:text-base uppercase tracking-[0.3em] transition-all duration-500 overflow-hidden font-sans border-2 ${tier.isSale ? "text-white border-red-600 shadow-[0_0_30px_rgba(235,0,40,0.3)] hover:shadow-[0_0_50px_rgba(235,0,40,0.5)]" : "text-zinc-400 border-white/10 hover:border-white/20"}`}
+                    className={`group/btn relative w-full h-14 md:h-16 flex items-center justify-center rounded-2xl font-black text-sm md:text-base uppercase tracking-[0.3em] transition-all duration-500 overflow-hidden font-sans border-2 ${tier.isSale ? "text-white border-red-600 shadow-[0_0_30px_rgba(235,0,40,0.3)] hover:shadow-[0_0_50px_rgba(235,0,40,0.5)]" : "text-zinc-400 border-white/10 hover:border-white/20"}`}
                   >
                     {/* Background Layer */}
                     <div className={`absolute inset-0 transition-colors duration-500 ${tier.isSale ? "bg-[#EB0028] group-hover/btn:bg-red-700" : "bg-white/5 group-hover/btn:bg-white/10"}`} />
