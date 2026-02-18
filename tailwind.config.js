@@ -14,6 +14,13 @@ module.exports = {
         "11xl": "10rem",
         "12xl": "11rem",
       },
+      fontFamily: {
+        sans: ["var(--font-manrope)", "sans-serif"],
+        raleway: ["var(--font-raleway)", "sans-serif"],
+        robofan: ["var(--font-robofan)", "sans-serif"],
+        intro: ["var(--font-intro)", "sans-serif"],
+        "intro-light": ["var(--font-intro-light)", "sans-serif"],
+      },
     },
   },
   plugins: [],

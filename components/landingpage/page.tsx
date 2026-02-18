@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Hero2 from "./components/Hero2";
 import Welcome from "./components/Welcome";
+import Sponsors from "./components/Sponsors";
 
 const About = dynamic(() => import("./components/About"), { ssr: true });
 const ReasonsToAttend = dynamic(() => import("./components/ReasonsToAttend"), {
@@ -36,9 +37,10 @@ export default function LandingPage() {
       <Theme />
       <Speakers />
       <TicketHero />
-      <Gallery2 />
-      <PreviousTalks />
       <Tariff />
+      <Sponsors/>
+      <PreviousTalks />
+      <Gallery2 />
     </main>
   );
 }

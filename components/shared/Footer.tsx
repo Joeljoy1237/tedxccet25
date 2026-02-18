@@ -10,11 +10,19 @@ import {
   MapPin,
   Mail,
   Phone,
-  ArrowUp,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = (code: string) => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -118,7 +126,7 @@ export default function Footer() {
           </div>
 
           {/* Right Column: Contact */}
-          <div className="-ml-16 md:-ml-0">
+          <div className="-ml-16 md:ml-0">
             <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-6">
               Contact
             </h3>
@@ -176,18 +184,54 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
-      <button
-        onClick={scrollToTop}
-        className={`fixed bottom-10 right-6 md:right-10 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.4)] z-50 group ${
-          isVisible
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
-      </button>
+      {/* Early Bird Floating Button - Shown all the time */}
+      <div className="fixed bottom-10 right-6 md:right-10 z-100 group">
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => handleCopy("TEDXCCET26")}
+          className="relative"
+          aria-label="Early Bird Ticket"
+        >
+          {/* Ambient Pulse */}
+
+          {/* Circular Base */}
+          <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-red-600 bg-zinc-900/80 backdrop-blur-sm shadow-[0_0_30px_rgba(235,0,40,0.3)] flex items-center justify-center transition-transform duration-500 group-hover:rotate-6">
+
+            {/* Overflowing Bird Animation */}
+            <div className="absolute -inset-6 md:-inset-8 pointer-events-none select-none">
+              <Image
+                src="/early.gif"
+                alt="Early Bird"
+                fill
+                className="object-contain mix-blend-screen contrast-[2.5] brightness-[1.1]"
+                unoptimized
+              />
+            </div>
+
+            {/* Interaction Overlay (Text) */}
+            <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center z-20 pointer-events-none">
+              <span className="text-[10px] font-black text-red-500 uppercase tracking-tighter">Copy Code</span>
+            </div>
+          </div>
+
+          {/* Feedback Pop (Animated Presence in Interaction Layer handles Copied message) */}
+          <AnimatePresence>
+            {copied && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.5 }}
+                animate={{ opacity: 1, y: -40, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                className="absolute left-1/2 -translate-x-1/2 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg z-30"
+              >
+                Copied!
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+      </div>
     </footer>
   );
 }

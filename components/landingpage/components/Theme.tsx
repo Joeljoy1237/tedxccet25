@@ -1,18 +1,32 @@
+"use strict";
 "use client";
+
 import TextType from "@/components/TextType";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Theme() {
   return (
-    <section className="py-14 px-6 bg-black text-white relative flex flex-col items-center justify-center text-center ">
-      {/* Pill Label */}
-      <div className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-500 uppercase">
-        The Theme
-      </div>
+    <section className="py-10 md:py-14 lg:py-20 px-[4vw] bg-black text-white relative flex flex-col items-center justify-center text-center overflow-hidden">
+        {/* Background Pulse */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/5 blur-[100px] rounded-full animate-pulse pointer-events-none" />
 
-      {/* Main Title DAUNTØ */}
-      <h2 
-        className="text-5xl md:text-7xl lg:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider"
+      {/* Pill Label */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-500 uppercase relative z-10"
+      >
+        The Theme
+      </motion.div>
+
+      {/* Main Title DAUNTØ - RESTORED */}
+      <motion.h2
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="text-5xl md:text-7xl lg:text-7xl font-bold mb-12 font-robofan text-[#EB0028] tracking-wider relative z-10"
         aria-label="DAUNTLESS"
       >
         DAUNT
@@ -36,54 +50,46 @@ export default function Theme() {
             }}
           />
         </span>
-      </h2>
+      </motion.h2>
 
       {/* Content */}
-      <div className="max-w-screen mx-[3vw] space-y-8 text-lg md:text-xl lg:text-xl text-neutral-300 leading-relaxed font-light md:text-justify lg:text-justify">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="max-w-4xl mx-auto space-y-8 text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed font-sans font-light md:text-justify lg:text-justify relative z-10"
+      >
         <p>
           <span className="text-red-500 font-bold">
             DAUNT <span className="text-white">∅</span>
           </span>{" "}
-          {"(Dauntless)"} symbolizing the journey of redesigning fear and
-          redefining the future. "Daunt," which means fear that holds us back,
+          {"(Dauntless)"} <span className="text-white/80">symbolizing the journey of redesigning fear and
+          redefining the future.</span> "Daunt," which means fear that holds us back,
           and "∅" (null), which indicates erasing the limitations and starting
-          from scratch. The combination of these two literals showcases the
-          power to reframe fear and transform it into a force that reshapes the
-          future. symbolizing the journey of redesigning fear and redefining the
-          future.
-        </p>
-
-        <p>
-          Fear is a destined phase in everyone's life.{" "}
-          <span className="text-red-600 font-bold">DAUNT</span> highlights that
-          fear is not a final thought but rather a transition that has the
-          potential capability to be reset, rewritten and reimagined via courage
-          and clarity. People gain the freedom to invent, innovate, grow and
-          move forward without constraining themselves only by lowering their
-          fear to zero.
+          from scratch.
         </p>
 
         <p>
           The theme <span className="text-red-600 font-bold">DAUNT</span> ∅
           encourages an explorative and diverse journey across dimensions,
           recognizing that growth is slow, iterative and constructed through
-          challenges by undertaking consistency. The key motive is to address
-          the actual fear rather than avoiding it.
-          <span className="text-red-600 font-bold">DAUNT</span>∅ encourages
-          ideas that surpass boundaries and recalibrate what lies ahead. On the
-          <span className="text-red-600 font-bold">TEDx</span>CCET platform,
-          speakers from various fields express their vision under a unified
-          framework for this event. By sharing their thoughts and insights, they
-          help expand our understanding and inspire collective learning.
+          challenges by undertaking consistency.
         </p>
-      </div>
+      </motion.div>
 
       {/* Diamond Separator */}
-      <div className="mt-16 flex items-center gap-4 opacity-50">
-        <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-red-600"></div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 0.5, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6 }}
+        className="mt-24 flex items-center gap-4 opacity-50"
+      >
+        <div className="h-[1px] w-24 bg-linear-to-r from-transparent to-red-600"></div>
         <div className="w-3 h-3 bg-red-600 rotate-45 transform"></div>
-        <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-red-600"></div>
-      </div>
+        <div className="h-[1px] w-24 bg-linear-to-l from-transparent to-red-600"></div>
+      </motion.div>
     </section>
   );
 }

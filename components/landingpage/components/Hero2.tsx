@@ -87,25 +87,15 @@ export default function Hero2() {
       `}</style>
 
       {/* Ambient Background Layers */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Abstract Gallery / Texture Background */}
-        <div className="relative min-h-screen bg-transparent pl-[2vw]  overflow-hidden">
-          {/* <img
-            src="/background2.avif"
-            className="w-full h-full object-cover grayscale mix-blend-overlay"
-            alt="Background"
-          /> */}
-          <BackgroundSlideshow />
-        </div>
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <BackgroundSlideshow />
 
         {/* Deep Red Atmospheric Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[80vh] bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-red-900/30 via-black/80 to-black pointer-events-none"></div>
-
-        {/* Grain Overlay */}
+        <div className="absolute top-0 left-0 w-full h-[80vh] bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-red-900/30 via-black/80 to-black"></div>
       </div>
 
       {/* Hero Section */}
-      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-12 -bottom-18 ">
+      <main className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-32 pb-10 md:pt-48 md:pb-14 lg:pb-20 -bottom-18 ">
         {/* Main Content Wrapper */}
         <div className="w-full px-6 lg:w-[93%] lg:px-0 lg:mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Text Content */}

@@ -49,7 +49,7 @@ export default function PreviousTalks() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-14 px-[4vw] bg-black text-white relative">
+    <section className="py-10 md:py-14 lg:py-20 px-[4vw] bg-black text-white relative font-sans">
       <div className="space-y-16">
         {/* Video Structured Data for SEO */}
         <Script
@@ -74,7 +74,7 @@ export default function PreviousTalks() {
         {/* Header */}
         <div className="text-center">
           <h2
-            className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16"
+            className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16 font-robofan tracking-wider"
             aria-label="Previous TEDxCCET Talks"
           >
             PREVIOUS <span className="text-[#EB0028]">TALKS</span>

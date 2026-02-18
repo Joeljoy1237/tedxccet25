@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Geist_Mono, Raleway } from "next/font/google";
+import { Geist_Mono, Raleway, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
@@ -12,6 +12,11 @@ import Footer from "@/components/shared/Footer";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -123,7 +128,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistMono.variable} ${raleway.variable} ${robofan.variable} ${introDemo.variable} ${introLight.variable} antialiased font-sans`}
+        className={`${geistMono.variable} ${raleway.variable} ${manrope.variable} ${robofan.variable} ${introDemo.variable} ${introLight.variable} antialiased font-sans`}
       >
         <Providers>
           <Script

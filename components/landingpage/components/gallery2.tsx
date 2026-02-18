@@ -26,16 +26,16 @@ export default function Gallery2() {
   ]);
 
   return (
-    <div className="bg-black pb-24 px-0 text-white relative overflow-hidden">
-      <div className="text-center py-24 px-6 relative z-10 bg-transparent">
+    <div className="bg-black py-10 md:py-14 lg:py-20 px-0 text-white relative overflow-hidden">
+      <div className="text-center pb-16 px-[4vw] relative z-10 bg-transparent">
         {/* Pill Label */}
         <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
           Gallery
         </div>
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
+        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-wider mb-4 font-robofan">
           CAPTURED <span className="text-red-600">MOMENTS</span>
         </h2>
-        <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+        <p className="text-xl text-neutral-400 max-w-2xl mx-auto font-sans">
           Glimpses of energy, innovation, and inspiration.
         </p>
       </div>

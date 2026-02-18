@@ -209,7 +209,7 @@ export default function Timeline() {
   return (
     <section
       id="timeline"
-      className="py-14 px-6 bg-black text-white relative font-sans"
+      className="py-10 md:py-14 lg:py-20 px-[4vw] bg-black text-white relative font-sans"
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto mb-24 text-center">
