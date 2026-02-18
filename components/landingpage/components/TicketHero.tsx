@@ -5,7 +5,13 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, Clipboard, Ticket } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 
 interface TicketHeroProps {
   ticketURL?: string;
@@ -77,7 +83,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="text-center text-4xl md:text-6xl lg:text-6xl font-black uppercase mb-16 text-white"
+        className="text-center text-4xl md:text-6xl lg:text-6xl font-robofan font-extrabold uppercase tracking-wider mb-16 text-white"
       >
         GET <span className="text-[#EB0028]">TICKETS</span>
       </motion.h2>
@@ -97,13 +103,13 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative w-full max-w-7xl mx-auto bg-transparent flex flex-col lg:flex-row will-change-transform group cursor-pointer"
       >
-          {/* Glare Effect */}
-          <motion.div 
-            className="absolute inset-0 z-50 pointer-events-none rounded-[32px] mix-blend-overlay opacity-0 group-hover:opacity-40 transition-opacity duration-300"
-            style={{
-                background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.8), transparent 50%)`
-            }}
-          />
+        {/* Glare Effect */}
+        <motion.div
+          className="absolute inset-0 z-50 pointer-events-none rounded-[32px] mix-blend-overlay opacity-0 group-hover:opacity-40 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.8), transparent 50%)`,
+          }}
+        />
 
         {/* Optimized Shadow Element */}
         <div className="absolute inset-0 rounded-[32px] shadow-[0_20px_50px_rgba(235,0,40,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none transform translate-z-[-20px]" />
@@ -287,10 +293,11 @@ const TicketHero: React.FC<TicketHeroProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className={`absolute -top-1.5 right-8 w-3 h-3 bg-black rotate-45 border-l border-t transition-colors duration-300
-                ${copied ? "border-green-500" : "border-red-600"}`} 
+              <div
+                className={`absolute -top-1.5 right-8 w-3 h-3 bg-black rotate-45 border-l border-t transition-colors duration-300
+                ${copied ? "border-green-500" : "border-red-600"}`}
               />
-              
+
               <div className="flex flex-col items-center">
                 <AnimatePresence mode="wait">
                   {copied ? (
@@ -319,11 +326,15 @@ const TicketHero: React.FC<TicketHeroProps> = ({
                 <p className="text-xs text-zinc-300 text-center">
                   Use Coupon Code
                 </p>
-                
-                <div className={`mt-1 w-full border border-dashed p-1 rounded transition-colors duration-300 flex items-center justify-center gap-2
-                  ${copied ? "border-green-500/50 bg-green-500/5" : "border-white/20 bg-white/5"}`}>
-                  <p className={`text-sm font-black tracking-wider transition-colors duration-300
-                    ${copied ? "text-green-500" : "text-white"}`}>
+
+                <div
+                  className={`mt-1 w-full border border-dashed p-1 rounded transition-colors duration-300 flex items-center justify-center gap-2
+                  ${copied ? "border-green-500/50 bg-green-500/5" : "border-white/20 bg-white/5"}`}
+                >
+                  <p
+                    className={`text-sm font-black tracking-wider transition-colors duration-300
+                    ${copied ? "text-green-500" : "text-white"}`}
+                  >
                     TEDXCCET26
                   </p>
                   <AnimatePresence mode="wait">
@@ -348,7 +359,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
                     )}
                   </AnimatePresence>
                 </div>
-                
+
                 <p className="text-[10px] text-zinc-500 text-center mt-1">
                   (Click to copy)
                 </p>
@@ -378,7 +389,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         className="w-full max-w-7xl mx-auto px-6 relative z-10 mt-16 lg:mt-12"
       >
         <div className="w-full flex flex-col items-center justify-center gap-10">
-          <div className="max-w-4xl text-center">
+          <div className="max-w-4xl text-center mt-10">
             <p className="text-zinc-400 text-base md:text-xl leading-relaxed font-light">
               Don't miss out on the opportunity to be part of{" "}
               <span className="text-white font-bold">TEDxCCET 2026</span>.

@@ -13,7 +13,7 @@ export default function Sponsors() {
             Partners
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-6xl font-robofan font-extrabold uppercase tracking-wider">
             OUR <span className="text-red-600">PARTNERS</span>
           </h2>
 
@@ -34,7 +34,9 @@ export default function Sponsors() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6 }}
-              onClick={() => window.open("https://www.graburpass.com/", "_blank")}
+              onClick={() =>
+                window.open("https://www.graburpass.com/", "_blank")
+              }
               className="mx-auto w-full max-w-md h-48 rounded-2xl border border-white/10 bg-white/5 
                          flex items-center justify-center cursor-pointer hover:border-red-600/50 transition-all duration-300"
             >

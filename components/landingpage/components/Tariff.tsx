@@ -131,7 +131,7 @@ export default function Tariff() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-red-500/20 bg-red-500/5 text-[10px] uppercase font-bold tracking-[0.2em] text-red-500 mb-6 font-sans">
             <Sparkles className="w-3 h-3" /> Admission
           </div>
-          <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-6 font-robofan tracking-tighter">
+          <h2 className="text-5xl md:text-7xl font-black uppercase text-white mb-6 font-robofan tracking-tight">
             Ticket <span className="text-red-600 drop-shadow-[0_0_15px_rgba(235,0,40,0.5)]">Tariff</span>
           </h2>
           <p className="text-zinc-500 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed font-sans">
