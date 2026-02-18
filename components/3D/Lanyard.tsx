@@ -96,7 +96,7 @@ export default function Lanyard({
                 camera={{ position, fov }}
                 dpr={[1, 1.5]} // Cap at 1.5 for performance
                 gl={{ alpha: transparent, powerPreference: "high-performance" }}
-                frameloop={paused ? "never" : "demand"} // Use demand to only render when needed
+                frameloop={paused ? "never" : "always"} // Use always to ensure continuous simulation
                 onCreated={({ gl }) =>
                     gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
                 }
@@ -198,6 +198,14 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false, colors }: BandPro
         [0, 0, 0],
         [0, 0.55, 0],
     ]);
+
+    useEffect(() => {
+        // Wake up all bodies on mount to ensure they don't start asleep
+        const timeout = setTimeout(() => {
+            [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
+        }, 100);
+        return () => clearTimeout(timeout);
+    }, []);
 
     useEffect(() => {
         if (hovered) {
