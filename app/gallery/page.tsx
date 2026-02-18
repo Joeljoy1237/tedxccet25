@@ -2,7 +2,7 @@ import { galleryImages } from "@/data/galleryImages";
 import Masonry from "@/components/Masonry";
 import { useMemo } from "react";
 
-export default function TeamPage() {
+export default function GalleryPage() {
   const items = useMemo(() => {
     return galleryImages.map((img, index) => ({
       id: index.toString(),

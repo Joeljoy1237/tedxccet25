@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import NextImage from "next/image";
 import { gsap } from "gsap";
 
 const useMedia = (
@@ -323,12 +324,16 @@ const Masonry: React.FC<MasonryProps> = ({
           {item.content ? (
             <div className="w-full h-full">{item.content}</div>
           ) : (
-            <div
-              className="relative w-full h-full bg-cover bg-center rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] uppercase text-[10px] leading-[10px]"
-              style={{ backgroundImage: `url(${item.img})` }}
-            >
+              <div className="relative w-full h-full rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] overflow-hidden">
+                <NextImage
+                  src={item.img}
+                  alt="Gallery item"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
               {colorShiftOnHover && (
-                <div className="color-overlay absolute inset-0 rounded-[10px] bg-gradient-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
+                  <div className="color-overlay absolute inset-0 rounded-[10px] bg-linear-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
               )}
             </div>
           )}

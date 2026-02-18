@@ -7,7 +7,14 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 
-const galleryImagesLoop = [...galleryImages, ...galleryImages]; // Reduced duplication, usually enough for seamless loop
+// Split images into two halves
+const halfIndex = Math.ceil(galleryImages.length / 2);
+const topRowImages = galleryImages.slice(0, halfIndex);
+const bottomRowImages = galleryImages.slice(halfIndex);
+
+// duplicate 4 times for smooth looping on large screens
+const topRowLoop = [...topRowImages, ...topRowImages, ...topRowImages, ...topRowImages];
+const bottomRowLoop = [...bottomRowImages, ...bottomRowImages, ...bottomRowImages, ...bottomRowImages];
 
 export default function Gallery2() {
   // Carousel 1: Moves Left (play)
@@ -44,13 +51,13 @@ export default function Gallery2() {
         {/* Top Row - Moving Left */}
         <div className="overflow-hidden" ref={emblaRef1}>
           <div className="flex touch-pan-y gap-4 pl-4">
-            {galleryImagesLoop.map((image, index) => (
+            {topRowLoop.map((image, index) => (
               <div
                 key={`row1-${index}`}
                 className="flex-[0_0_auto] min-w-0" // Embla slide requirement
               >
                 <Link
-                  href="/team"
+                  href="/gallery"
                   className="relative block w-[300px] md:w-[400px] aspect-4/3 group overflow-hidden border border-red-900/30"
                 >
                   <Image
@@ -70,7 +77,7 @@ export default function Gallery2() {
         {/* Bottom Row - Moving Right */}
         <div className="overflow-hidden" ref={emblaRef2}>
           <div className="flex touch-pan-y gap-4 pl-4">
-            {galleryImagesLoop.map((image, index) => (
+            {bottomRowLoop.map((image, index) => (
               <div
                 key={`row2-${index}`}
                 className="flex-[0_0_auto] min-w-0"
