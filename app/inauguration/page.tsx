@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import TextType from "@/components/TextType";
 import Image from "next/image";
 import { GeometricAccent, Triangle, DiagonalSlice, RedLine } from "@/components/GeometricShapes";
+import Particles from "@/components/visual-effects/Particles";
 
 import dynamic from "next/dynamic";
 
@@ -85,30 +86,51 @@ function ClientComponent() {
                         className="z-10 text-center space-y-6"
                     >
                         <motion.div
-                            animate={{
-                                boxShadow: [
-                                    "0 0 20px rgba(220,38,38,0.2)",
-                                    "0 0 60px rgba(220,38,38,0.6)",
-                                    "0 0 20px rgba(220,38,38,0.2)",
-                                ],
-                            }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                            className="w-32 h-32 mx-auto rounded-full border border-red-500/30 flex items-center justify-center bg-black/50 backdrop-blur-md relative"
+                            className="relative w-32 h-32 mx-auto flex items-center justify-center"
                         >
-                            <div className="w-24 h-4 rounded-md border border-white/20 relative overflow-hidden">
-                                <motion.div
-                                    className="absolute inset-0 bg-white/20"
-                                    animate={{ x: ["-100%", "100%"] }}
-                                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                                />
-                            </div>
-
-                            {/* Spinning Ring */}
+                            {/* Rotating Ring */}
                             <motion.div
-                                className="absolute inset-[-4px] rounded-full border-t border-r border-red-600/50"
+                                className="absolute inset-0 border border-dashed border-red-500/40 rounded-full"
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                             />
+
+                            {/* Counter-Rotating Ring segment */}
+                            <motion.div
+                                className="absolute inset-[-4px] border-t-2 border-r-2 border-red-500/60 rounded-full"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            />
+
+                            {/* Inner Glow/Backdrop */}
+                            <div className="absolute inset-0 bg-red-600/10 blur-xl rounded-full" />
+
+                            <motion.div
+                                animate={{
+                                    y: [-5, 5, -5],
+                                    filter: [
+                                        "drop-shadow(0 0 10px rgba(220,38,38,0.4))",
+                                        "drop-shadow(0 0 20px rgba(220,38,38,0.6))",
+                                        "drop-shadow(0 0 10px rgba(220,38,38,0.4))"
+                                    ]
+                                }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative w-24 h-24 flex items-center justify-center overflow-hidden rounded-full"
+                            >
+                                <Image
+                                    src="/fi.png"
+                                    alt="Initialize"
+                                    width={100}
+                                    height={100}
+                                    className="w-16 h-16 object-contain relative z-10"
+                                />
+                                {/* Scanning Glare */}
+                                <motion.div
+                                    className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"
+                                    animate={{ x: ["-150%", "150%"] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                                />
+                            </motion.div>
                         </motion.div>
 
                         <motion.p
@@ -116,7 +138,7 @@ function ClientComponent() {
                             animate={{ opacity: [0.4, 1, 0.4] }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
-                            Press Space to Initialize
+                            Press Space
                         </motion.p>
                     </motion.div>
                 )}
