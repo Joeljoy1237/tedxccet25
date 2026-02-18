@@ -27,7 +27,7 @@ export default function BackgroundSlideshow() {
       {images.map((img, i) => (
         <div
           key={img}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out blur-sm ${
             i === index ? "opacity-40 md:opacity-60 z-1" : "opacity-0 z-0"
           }`}
           aria-hidden={i !== index}
@@ -42,7 +42,7 @@ export default function BackgroundSlideshow() {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[10px] z-10" />
     </div>
   );
 }
