@@ -83,7 +83,7 @@ export default function Gallery2() {
                 className="flex-[0_0_auto] min-w-0"
               >
                 <Link
-                  href="/team"
+                  href="/gallery"
                   className="relative block w-[300px] md:w-[400px] aspect-4/3 group overflow-hidden border border-red-900/30"
                 >
                   <Image

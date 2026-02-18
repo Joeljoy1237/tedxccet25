@@ -43,18 +43,18 @@ const AnimatedText = ({ text, className = "" }: { text: string; className?: stri
 export default function Welcome() {
   return (
     <section
-      className={`py-10 md:py-14 lg:py-20 px-[4vw] relative z-10 bg-black text-white font-sans overflow-hidden`}
+      className={`py-10 md:pb-14 md:pt-10 lg:pt-20 lg:pb-10 px-[4vw] relative z-10 bg-black text-white font-sans overflow-hidden`}
     >
       <div className="text-center">
         <motion.div
-          className="w-full items-center justify-center flex flex-col gap-5 overflow-visible mb-16 md:mb-20 select-none relative"
+          className="w-full items-center justify-center flex flex-col gap-5 overflow-visible mb-10 md:mb-14 select-none relative"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={letterContainer}
         >
           {/* Main Title */}
-          <h2 className="flex flex-row gap-4 flex-wrap w-full items-center justify-center relative z-10 text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mix-blend-screen">
+          <h2 className="flex flex-row gap-4 flex-wrap w-full items-center justify-center font-robofan tracking-wider relative z-10 text-2xl md:text-4xl lg:text-6xl font-black uppercase tracking-tighter mix-blend-screen">
             <AnimatedText text="WELCOME" />
             <AnimatedText text="TO" />
             <div className="inline-flex items-baseline">
@@ -62,7 +62,7 @@ export default function Welcome() {
                 <AnimatedText text="TED" />
                 <motion.sup
                   variants={letterAnimation}
-                  className="text-2xl md:text-4xl inline-block"
+                  className="text-xl md:text-4xl inline-block"
                 >
                   x
                 </motion.sup>
@@ -79,7 +79,7 @@ export default function Welcome() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-          className="mt-8 text-neutral-400 text-lg lg:text-2xl leading-relaxed font-raleway max-w-5xl mx-auto md:text-center text-justify"
+          className="mt-4 text-neutral-400 text-lg lg:text-xl leading-relaxed font-raleway mx-auto md:text-center text-justify"
         >
           <p>
             We are thrilled to bring the global spirit of{" "}
@@ -89,7 +89,7 @@ export default function Welcome() {
             —a program of local, self-organized events dedicated to "ideas worth
             spreading"—to the heart of Carmel College of Engineering and Technology.
           </p>
-          <p className="mt-8">
+          <p className="mt-4">
             On March 21st, join our community of innovators as we bridge technical
             excellence with our 2026 theme:{" "}
             <span className="text-[#EB0028] font-black inline-block transform hover:scale-105 transition-transform duration-300">

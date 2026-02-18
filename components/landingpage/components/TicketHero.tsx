@@ -282,23 +282,60 @@ const TicketHero: React.FC<TicketHeroProps> = ({
               Be Present At The Seminar Hall Before 9:00 IST
             </p>
           </div>
+        </div>
+      </motion.div>
 
-          {/* Early Bird – Tooltip Look */}
-          <div className="absolute -bottom-16 right-6 z-50 md:-bottom-16 md:right-10">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="w-full max-w-7xl mx-auto px-6 relative z-10 mt-8 lg:mt-12"
+      >
+        <div className="w-full flex md:flex-row flex-col-reverse items-center justify-between gap-10">
+          {/* Left Column: Description & Ticket Button */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left md:w-2/3">
+            <div className="max-w-2xl text-center md:text-left mb-8">
+              <p className="text-zinc-400 text-base md:text-xl leading-relaxed font-light">
+                Don't miss out on the opportunity to be part of{" "}
+                <span className="text-white font-bold">TEDxCCET 2026</span>.
+                Secure your spot today and join the conversation.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center md:items-start shrink-0">
+              <Link
+                href="https://www.graburpass.com/e/QuY6el"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-3 bg-[#EB0028] text-white px-10 py-5 rounded-md font-black text-sm md:text-base tracking-widest uppercase overflow-hidden transition-all duration-300 hover:bg-red-700 shadow-[0_0_40px_rgba(235,0,40,0.4)] hover:shadow-[0_0_60px_rgba(235,0,40,0.6)] transform hover:-translate-y-1 whitespace-nowrap"
+              >
+                <span className="relative z-10">Get Your Tickets</span>
+                <Ticket className="w-6 h-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+
+                {/* Button Shine Effect */}
+                <div className="absolute top-0 -left-full w-[50%] h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-25 group-hover:animate-shine" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: Early Bird Tooltip */}
+          <div className="relative z-50 md:w-1/3 flex justify-end md:-mt-30 -mt-6">
             <motion.div
-              className={`relative bg-black text-white px-4 py-3 rounded-md shadow-2xl border transition-all duration-300 w-44 cursor-pointer overflow-hidden
+              className={`relative bg-black text-white px-4 py-3 rounded-md shadow-2xl border transition-all duration-300 w-44 cursor-pointer
                 ${copied ? "border-green-500 shadow-[0_0_20px_rgba(34,197,94,0.3)]" : "border-red-600"}
               `}
               onClick={() => handleCopy("TEDXCCET26")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              {/* Arrow pointing UP to the ticket */}
               <div
-                className={`absolute -top-1.5 right-8 w-3 h-3 bg-black rotate-45 border-l border-t transition-colors duration-300
-                ${copied ? "border-green-500" : "border-red-600"}`}
+                className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black rotate-45 border-l border-t transition-colors duration-300
+                ${copied ? "border-green-500" : "border-red-600"} z-10`}
               />
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center relative z-20">
                 <AnimatePresence mode="wait">
                   {copied ? (
                     <motion.p
@@ -360,56 +397,25 @@ const TicketHero: React.FC<TicketHeroProps> = ({
                   </AnimatePresence>
                 </div>
 
-                <p className="text-[10px] text-zinc-500 text-center mt-1">
+                <p className="text-xs text-zinc-500 text-center mt-1">
                   (Click to copy)
                 </p>
               </div>
 
               {/* Shine effect when copied */}
-              <AnimatePresence>
-                {copied && (
-                  <motion.div
-                    initial={{ left: "-100%" }}
-                    animate={{ left: "100%" }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute top-0 w-full h-full bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-25 pointer-events-none"
-                  />
-                )}
-              </AnimatePresence>
+              <div className="absolute inset-0 rounded-md overflow-hidden pointer-events-none z-0">
+                <AnimatePresence>
+                  {copied && (
+                    <motion.div
+                      initial={{ left: "-100%" }}
+                      animate={{ left: "100%" }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute top-0 w-full h-full bg-linear-to-r from-transparent via-white/10 to-transparent skew-x-25 border-red-600"
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="w-full max-w-7xl mx-auto px-6 relative z-10 mt-16 lg:mt-12"
-      >
-        <div className="w-full flex flex-col items-center justify-center gap-10">
-          <div className="max-w-4xl text-center mt-10">
-            <p className="text-zinc-400 text-base md:text-xl leading-relaxed font-light">
-              Don't miss out on the opportunity to be part of{" "}
-              <span className="text-white font-bold">TEDxCCET 2026</span>.
-              Secure your spot today and join the conversation.
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center shrink-0">
-            <Link
-              href="https://www.graburpass.com/e/QuY6el"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-3 bg-[#EB0028] text-white px-10 py-5 rounded-md font-black text-sm md:text-base tracking-widest uppercase overflow-hidden transition-all duration-300 hover:bg-red-700 shadow-[0_0_40px_rgba(235,0,40,0.4)] hover:shadow-[0_0_60px_rgba(235,0,40,0.6)] transform hover:-translate-y-1 whitespace-nowrap"
-            >
-              <span className="relative z-10">Get Your Tickets</span>
-              <Ticket className="w-6 h-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-
-              {/* Button Shine Effect */}
-              <div className="absolute top-0 -left-full w-[50%] h-full bg-linear-to-r from-transparent via-white/20 to-transparent skew-x-25 group-hover:animate-shine" />
-            </Link>
           </div>
         </div>
       </motion.div>
