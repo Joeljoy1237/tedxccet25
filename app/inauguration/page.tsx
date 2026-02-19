@@ -18,6 +18,151 @@ export default function InaugurationPage() {
     return <InaugurationClient />;
 }
 
+// --- Helper Components ---
+
+// Sci-fi HUD / Energy Field Animation Component
+const GyroPhi = () => {
+    const size = 280;
+    const center = size / 2;
+
+    // Ring configurations: radius, stroke, dash pattern, speed, direction
+    const rings = [
+        { r: 125, stroke: "rgba(235,0,40,0.2)", dash: "8 12", dur: "8s", dir: "normal" },
+        { r: 108, stroke: "rgba(235,0,40,0.35)", dash: "20 10 5 10", dur: "12s", dir: "reverse" },
+        { r: 88, stroke: "rgba(255,255,255,0.1)", dash: "3 20", dur: "6s", dir: "normal" },
+        { r: 68, stroke: "rgba(235,0,40,0.15)", dash: "40 8", dur: "15s", dir: "reverse" },
+    ];
+
+    // Orbiting particles at different radii
+    const particles = [
+        { r: 125, dur: "6s", size: 4, color: "#EB0028", glow: "0 0 8px #EB0028", delay: "0s" },
+        { r: 108, dur: "10s", size: 3, color: "white", glow: "0 0 6px white", delay: "-3s" },
+        { r: 88, dur: "4s", size: 3, color: "#EB0028", glow: "0 0 10px #EB0028", delay: "-1s" },
+        { r: 68, dur: "8s", size: 2, color: "rgba(255,255,255,0.7)", glow: "0 0 4px white", delay: "-5s" },
+    ];
+
+    return (
+        <div className="relative w-56 h-56 md:w-72 md:h-72 flex items-center justify-center pointer-events-none">
+
+            {/* SVG Rings Layer */}
+            <svg
+                viewBox={`0 0 ${size} ${size}`}
+                className="absolute inset-0 w-full h-full"
+                fill="none"
+            >
+                <defs>
+                    <radialGradient id="coreGlow">
+                        <stop offset="0%" stopColor="rgba(235,0,40,0.15)" />
+                        <stop offset="100%" stopColor="transparent" />
+                    </radialGradient>
+                </defs>
+
+                {/* Core glow circle */}
+                <circle cx={center} cy={center} r="50" fill="url(#coreGlow)" />
+
+                {/* Animated dashed rings */}
+                {rings.map((ring, i) => (
+                    <circle
+                        key={i}
+                        cx={center}
+                        cy={center}
+                        r={ring.r}
+                        stroke={ring.stroke}
+                        strokeWidth="1"
+                        strokeDasharray={ring.dash}
+                        className="origin-center"
+                        style={{
+                            transformOrigin: "center",
+                            animation: `spin ${ring.dur} linear infinite ${ring.dir}`,
+                        }}
+                    />
+                ))}
+
+                {/* Crosshair tick marks */}
+                {[0, 90, 180, 270].map((angle) => (
+                    <line
+                        key={angle}
+                        x1={center + 55 * Math.cos((angle * Math.PI) / 180)}
+                        y1={center + 55 * Math.sin((angle * Math.PI) / 180)}
+                        x2={center + 65 * Math.cos((angle * Math.PI) / 180)}
+                        y2={center + 65 * Math.sin((angle * Math.PI) / 180)}
+                        stroke="rgba(235,0,40,0.4)"
+                        strokeWidth="1.5"
+                    />
+                ))}
+
+                {/* Pulsing expansion ring */}
+                <circle
+                    cx={center}
+                    cy={center}
+                    r="45"
+                    stroke="rgba(235,0,40,0.3)"
+                    strokeWidth="0.5"
+                    fill="none"
+                    style={{
+                        transformOrigin: "center",
+                        animation: "pulseRing 3s ease-out infinite",
+                    }}
+                />
+            </svg>
+
+            {/* Orbiting Particles (HTML layer for box-shadow glow) */}
+            {particles.map((p, i) => (
+                <div
+                    key={i}
+                    className="absolute"
+                    style={{
+                        width: p.size,
+                        height: p.size,
+                        borderRadius: "50%",
+                        backgroundColor: p.color,
+                        boxShadow: p.glow,
+                        offsetPath: `circle(${p.r * (100 / center)}% at center)`,
+                        animation: `orbit ${p.dur} linear infinite`,
+                        animationDelay: p.delay,
+                    }}
+                />
+            ))}
+
+            {/* Central Phi Symbol */}
+            <motion.div
+                className="relative z-10 w-16 h-16 md:w-20 md:h-20"
+                animate={{
+                    scale: [1, 1.05, 1],
+                    filter: [
+                        "drop-shadow(0 0 6px rgba(235,0,40,0.3))",
+                        "drop-shadow(0 0 20px rgba(235,0,40,0.7))",
+                        "drop-shadow(0 0 6px rgba(235,0,40,0.3))",
+                    ],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <Image
+                    src="/fi.png"
+                    alt="Phi"
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-contain"
+                />
+            </motion.div>
+
+            {/* CSS Keyframes */}
+            <style jsx>{`
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+                @keyframes orbit {
+                    to { offset-distance: 100%; }
+                }
+                @keyframes pulseRing {
+                    0% { r: 45; opacity: 0.4; }
+                    100% { r: 130; opacity: 0; }
+                }
+            `}</style>
+        </div>
+    );
+};
+
 // Client Component definition
 function ClientComponent() {
     const router = useRouter();
@@ -43,17 +188,22 @@ function ClientComponent() {
         setStage("logo");
 
         // Timeline
-        // 0s: Logo
-        // 3.5s: Reveal (Phi -> Text)
-        // 10s: Redirect
+        // 0s: Logo fades in (1.2s entrance)
+        // 0.4s: Underline reveals
+        // 1s: "presents" fades in
+        // 4s: Logo exits → Reveal stage begins
+        // 4.3s: DAUNT + Phi spin in simultaneously
+        // 5.5s: Phi collapses, LESS slides in
+        // 6.8s: Tagline fades up
+        // 13s: Redirect to home
         setTimeout(() => {
             setStage("reveal");
-        }, 3500);
+        }, 4000);
 
         setTimeout(() => {
             setStage("redirecting");
             router.push("/");
-        }, 10000);
+        }, 11000);
     };
 
     return (
@@ -81,65 +231,27 @@ function ClientComponent() {
                         key="prompt"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-                        transition={{ duration: 1 }}
-                        className="z-10 text-center space-y-6"
+                        exit={{ opacity: 0, scale: 0.95, filter: "blur(12px)" }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="z-10 w-full h-full flex flex-col items-center justify-center relative bg-black"
                     >
-                        <motion.div
-                            className="relative w-32 h-32 mx-auto flex items-center justify-center"
-                        >
-                            {/* Rotating Ring */}
-                            <motion.div
-                                className="absolute inset-0 border border-dashed border-red-500/40 rounded-full"
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                            />
+                        {/* 3D-ish Gyroscope Scene */}
+                        <div className="relative group cursor-pointer flex flex-col items-center justify-center" onClick={startSequence}>
 
-                            {/* Counter-Rotating Ring segment */}
-                            <motion.div
-                                className="absolute inset-[-4px] border-t-2 border-r-2 border-red-500/60 rounded-full"
-                                animate={{ rotate: -360 }}
-                                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                            />
+                            <GyroPhi />
 
-                            {/* Inner Glow/Backdrop */}
-                            <div className="absolute inset-0 bg-red-600/10 blur-xl rounded-full" />
-
-                            <motion.div
-                                animate={{
-                                    y: [-5, 5, -5],
-                                    filter: [
-                                        "drop-shadow(0 0 10px rgba(220,38,38,0.4))",
-                                        "drop-shadow(0 0 20px rgba(220,38,38,0.6))",
-                                        "drop-shadow(0 0 10px rgba(220,38,38,0.4))"
-                                    ]
-                                }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="relative w-24 h-24 flex items-center justify-center overflow-hidden rounded-full"
+                            {/* Clean Text */}
+                            <motion.div 
+                                className="mt-12 text-center"
+                                initial={{ opacity: 0.4 }}
+                                animate={{ opacity: [0.4, 1, 0.4] }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                             >
-                                <Image
-                                    src="/fi.png"
-                                    alt="Initialize"
-                                    width={100}
-                                    height={100}
-                                    className="w-16 h-16 object-contain relative z-10"
-                                />
-                                {/* Scanning Glare */}
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"
-                                    animate={{ x: ["-150%", "150%"] }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                                />
+                                <p className="font-intro text-sm md:text-base tracking-[0.5em] text-white/60 group-hover:text-red-500 transition-colors duration-300">
+                                    PRESS SPACE
+                                </p>
                             </motion.div>
-                        </motion.div>
-
-                        <motion.p
-                            className="text-neutral-400 font-intro tracking-widest text-sm uppercase"
-                            animate={{ opacity: [0.4, 1, 0.4] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        >
-                            Press Space
-                        </motion.p>
+                        </div>
                     </motion.div>
                 )}
 
@@ -148,16 +260,16 @@ function ClientComponent() {
                     <motion.div
                         key="logo"
                         className="absolute z-20 flex flex-col items-center"
-                        initial={{ opacity: 0, scale: 0.9, y: 20, filter: "blur(10px)" }}
+                        initial={{ opacity: 0, scale: 0.95, y: 15, filter: "blur(8px)" }}
                         animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, scale: 1.2, filter: "blur(20px)" }}
-                        transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                        exit={{ opacity: 0, scale: 1.1, filter: "blur(16px)" }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         <div className="relative flex flex-col items-center">
                             <motion.div
-                                initial={{ filter: "blur(20px)", opacity: 0 }}
+                                initial={{ filter: "blur(12px)", opacity: 0 }}
                                 animate={{ filter: "blur(0px)", opacity: 1 }}
-                                transition={{ duration: 1.5, ease: "circOut" }}
+                                transition={{ duration: 1, ease: "circOut" }}
                                 className="relative"
                             >
                                 <Image
@@ -176,20 +288,20 @@ function ClientComponent() {
                                 <motion.div
                                     initial={{ width: 0, opacity: 0 }}
                                     animate={{ width: "100%", opacity: 1 }}
-                                    transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
-                                    className="absolute inset-0 m-auto h-[1px] bg-gradient-to-r from-transparent via-red-600 to-transparent"
+                                    transition={{ duration: 0.8, delay: 0.4, ease: "easeInOut" }}
+                                    className="absolute inset-0 m-auto h-px bg-linear-to-r from-transparent via-red-600 to-transparent"
                                 />
 
                                 {/* Moving Shine Effect */}
                                 <motion.div
-                                    className="absolute top-0 bottom-0 w-20 bg-gradient-to-r from-transparent via-white/80 to-transparent blur-[2px]"
+                                    className="absolute top-0 bottom-0 w-20 bg-linear-to-r from-transparent via-white/80 to-transparent blur-[2px]"
                                     initial={{ x: "-100%" }}
                                     animate={{ x: "500%" }} // Move far enough to clear
                                     transition={{
                                         repeat: Infinity,
-                                        duration: 2.5,
+                                        duration: 2,
                                         ease: "easeInOut",
-                                        repeatDelay: 0.5
+                                        repeatDelay: 0.3
                                     }}
                                 />
 
@@ -197,16 +309,16 @@ function ClientComponent() {
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 0.5 }}
-                                    transition={{ delay: 0.8, duration: 1 }}
+                                    transition={{ delay: 0.6, duration: 0.8 }}
                                     className="absolute inset-x-0 top-0 h-[10px] bg-red-600/30 blur-md rounded-full"
                                 />
                             </div>
 
                             {/* Presents Text */}
                             <motion.p
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 8 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1.2, duration: 1 }}
+                                transition={{ delay: 1, duration: 0.8 }}
                                 className="mt-4 text-white/90 text-sm tracking-[0.4em] uppercase font-medium drop-shadow-md"
                             >
                                 presents
@@ -224,50 +336,57 @@ function ClientComponent() {
                         animate={{ opacity: 1 }}
                         exit={{
                             opacity: 0,
-                            scale: 2, // Cinematic Zoom In/Out
-                            filter: "blur(20px) brightness(1.5)", // Brighten as it leaves
-                            transition: { duration: 0.8, ease: "easeInOut" }
+                            scale: 1.5,
+                            filter: "blur(16px) brightness(1.3)",
+                            transition: { duration: 1, ease: "easeInOut" }
                         }}
                     >
-                        {/* Flash Effect */}
+                        {/* Flash Effect — hard hit */}
                         <motion.div
                             className="absolute inset-0 bg-white"
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 0.2, 0] }}
-                            transition={{ duration: 0.5, times: [0, 0.1, 1] }}
+                            animate={{ opacity: [0, 0.5, 0] }}
+                            transition={{ duration: 0.3, times: [0, 0.2, 1] }}
                             style={{ pointerEvents: 'none', mixBlendMode: 'overlay' }}
                         />
 
-
+                        {/* Shockwave Ring */}
+                        <motion.div
+                            className="absolute rounded-full border border-red-500/40"
+                            initial={{ width: 0, height: 0, opacity: 0.8 }}
+                            animate={{ width: 600, height: 600, opacity: 0 }}
+                            transition={{ duration: 1.2, ease: "easeOut" }}
+                            style={{ pointerEvents: 'none' }}
+                        />
 
                         <div className="relative flex items-center justify-center perspective-[1000px]">
 
-                            {/* Left Side: DAUNT - Revealed from Right to Left */}
+                            {/* Left Side: DAUNT — slams in fast */}
                             <div className="overflow-hidden relative flex justify-end">
                                 <motion.h2
-                                    initial={{ x: "100%", opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }} // Appearing early with Phi
+                                    initial={{ x: "120%", opacity: 0, scale: 1.2 }}
+                                    animate={{ x: 0, opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                                     className="text-4xl md:text-8xl font-bold font-robofan text-[#EB0028] tracking-wider text-right mr-2 md:mr-4 whitespace-nowrap"
-                                    style={{ textShadow: "0 0 30px rgba(235,0,40,0.3)" }}
+                                    style={{ textShadow: "0 0 40px rgba(235,0,40,0.5)" }}
                                 >
                                     DAUNT
                                 </motion.h2>
                             </div>
 
-                            {/* Center: PHI SYMBOL */}
+                            {/* Center: PHI SYMBOL — fast spin, hold, collapse */}
                             <motion.div
                                 className="relative z-20 shrink-0 overflow-hidden flex items-center justify-center"
                                 initial={{ scale: 0, rotate: -180, opacity: 0, maxWidth: "100px" }}
                                 animate={{
-                                    scale: [0, 1, 1, 0], // Scale to normal size (1)
+                                    scale: [0, 1.15, 1, 0],
                                     rotate: [-180, 0, 0, 0],
                                     opacity: [0, 1, 1, 0],
-                                    maxWidth: ["100px", "100px", "100px", "0px"], // Collapse width
+                                    maxWidth: ["100px", "100px", "100px", "0px"],
                                 }}
                                 transition={{
-                                    duration: 2.5,
-                                    times: [0, 0.4, 0.8, 1],
+                                    duration: 2.2,
+                                    times: [0, 0.25, 0.65, 1],
                                     ease: "easeInOut"
                                 }}
                             >
@@ -281,12 +400,12 @@ function ClientComponent() {
                                 />
                             </motion.div>
 
-                            {/* Right Side: LESS - Revealed from Left to Right */}
+                            {/* Right Side: LESS — slams in as Phi collapses */}
                             <div className="overflow-hidden relative flex justify-start">
                                 <motion.h2
-                                    initial={{ x: "-100%", opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 2.2 }} // Delayed to match DAUNT
+                                    initial={{ x: "-120%", opacity: 0, scale: 1.2 }}
+                                    animate={{ x: 0, opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 1.5 }}
                                     className="text-4xl md:text-8xl font-bold font-robofan text-white tracking-wider text-left ml-2 md:ml-4 whitespace-nowrap"
                                 >
                                     LESS
@@ -294,10 +413,19 @@ function ClientComponent() {
                             </div>
                         </div>
 
+                        {/* Second flash when LESS lands */}
+                        <motion.div
+                            className="absolute inset-0 bg-red-900/30"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 0.3, 0] }}
+                            transition={{ duration: 0.3, delay: 1.5, times: [0, 0.3, 1] }}
+                            style={{ pointerEvents: 'none' }}
+                        />
+
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.5, duration: 1 }}
+                            transition={{ delay: 2.8, duration: 1, ease: "easeOut" }}
                             className="text-neutral-400 font-intro text-lg md:text-xl tracking-widest mt-12 relative z-10"
                         >
                             REDESIGNING FEAR. REDEFINING THE FUTURE.
