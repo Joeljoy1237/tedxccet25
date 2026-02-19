@@ -21,7 +21,7 @@ export default function Footer() {
   const handleCopy = (code: string) => {
     navigator.clipboard.writeText(code);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 3500);
   };
 
   useEffect(() => {
@@ -217,16 +217,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Feedback Pop (Animated Presence in Interaction Layer handles Copied message) */}
+          {/* Speech Bubble from the Bird */}
           <AnimatePresence>
             {copied && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.5 }}
-                animate={{ opacity: 1, y: -40, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                className="absolute left-1/2 -translate-x-1/2 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg z-30"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-56 bg-zinc-900 border border-red-500/20 text-white text-xs font-medium px-4 py-3 rounded-2xl shadow-[0_0_20px_rgba(235,0,40,0.15)] z-30"
               >
-                Copied!
+                <p className="text-red-400 font-bold mb-1">✦ Code Copied!</p>
+                <p className="text-neutral-400 leading-relaxed">
+                  Paste <span className="text-red-500 font-bold">TEDXCCET26</span> in GrabUrPass to get your discount!
+                </p>
+                {/* Speech bubble tail */}
+                <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-10 border-l-zinc-900" />
               </motion.div>
             )}
           </AnimatePresence>
