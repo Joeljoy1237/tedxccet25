@@ -148,15 +148,12 @@ function ClientComponent() {
                     <motion.div
                         key="logo"
                         className="absolute z-20 flex flex-col items-center"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, y: -50, filter: "blur(20px)" }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        initial={{ opacity: 0, scale: 0.9, y: 20, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, scale: 1.2, filter: "blur(20px)" }}
+                        transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        <div className="relative">
-                            {/* Dynamic Red Lines */}
-                            <RedLine orientation="horizontal" length="120%" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[1px] opacity-50" delay={0.5} />
-
+                        <div className="relative flex flex-col items-center">
                             <motion.div
                                 initial={{ filter: "blur(20px)", opacity: 0 }}
                                 animate={{ filter: "blur(0px)", opacity: 1 }}
@@ -172,6 +169,48 @@ function ClientComponent() {
                                     priority
                                 />
                             </motion.div>
+
+                            {/* Modern Animated Underline */}
+                            <div className="relative w-full max-w-[500px] h-[2px] mt-6 overflow-hidden">
+                                {/* Base Line (reveals from center) */}
+                                <motion.div
+                                    initial={{ width: 0, opacity: 0 }}
+                                    animate={{ width: "100%", opacity: 1 }}
+                                    transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+                                    className="absolute inset-0 m-auto h-[1px] bg-gradient-to-r from-transparent via-red-600 to-transparent"
+                                />
+
+                                {/* Moving Shine Effect */}
+                                <motion.div
+                                    className="absolute top-0 bottom-0 w-20 bg-gradient-to-r from-transparent via-white/80 to-transparent blur-[2px]"
+                                    initial={{ x: "-100%" }}
+                                    animate={{ x: "500%" }} // Move far enough to clear
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 2.5,
+                                        ease: "easeInOut",
+                                        repeatDelay: 0.5
+                                    }}
+                                />
+
+                                {/* Glow Underneath */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 0.5 }}
+                                    transition={{ delay: 0.8, duration: 1 }}
+                                    className="absolute inset-x-0 top-0 h-[10px] bg-red-600/30 blur-md rounded-full"
+                                />
+                            </div>
+
+                            {/* Presents Text */}
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.2, duration: 1 }}
+                                className="mt-4 text-white/90 text-sm tracking-[0.4em] uppercase font-medium drop-shadow-md"
+                            >
+                                presents
+                            </motion.p>
                         </div>
                     </motion.div>
                 )}
@@ -183,8 +222,12 @@ function ClientComponent() {
                         className="absolute z-20 flex flex-col items-center justify-center w-full h-full"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, scale: 1.1, filter: "blur(30px)" }}
-                        transition={{ duration: 0.5 }}
+                        exit={{
+                            opacity: 0,
+                            scale: 2, // Cinematic Zoom In/Out
+                            filter: "blur(20px) brightness(1.5)", // Brighten as it leaves
+                            transition: { duration: 0.8, ease: "easeInOut" }
+                        }}
                     >
                         {/* Flash Effect */}
                         <motion.div
@@ -195,15 +238,7 @@ function ClientComponent() {
                             style={{ pointerEvents: 'none', mixBlendMode: 'overlay' }}
                         />
 
-                        {/* Theme Label */}
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1 }}
-                            className="absolute top-[30%] mb-8 px-4 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-500 uppercase z-10 backdrop-blur-sm"
-                        >
-                            The Theme
-                        </motion.div>
+
 
                         <div className="relative flex items-center justify-center perspective-[1000px]">
 
