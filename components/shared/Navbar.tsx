@@ -69,7 +69,17 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8 text-sm leading-tight font-medium text-white/80">
+        <div
+          className="hidden lg:flex items-center gap-8"
+          style={{
+            fontFamily:
+              '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+            fontSize: "14px",
+            fontWeight: 500,
+            lineHeight: "20px",
+            color: "rgb(255, 255, 255)",
+          }}
+        >
           {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
@@ -88,7 +98,15 @@ export default function Navbar() {
             href="https://www.graburpass.com/e/QuY6el"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-2 text-sm font-bold text-white bg-[#EB0028] rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]"
+            className="flex items-center gap-2 px-6 py-2 bg-[#EB0028] uppercase rounded-md hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]"
+            style={{
+              fontFamily:
+                '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+              fontSize: "16px",
+              fontWeight: 700,
+              lineHeight: "20px",
+              color: "rgb(255, 255, 255)",
+            }}
           >
             <span>Get Tickets</span>
             <Ticket className="w-4 h-4" />

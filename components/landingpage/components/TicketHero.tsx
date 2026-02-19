@@ -128,7 +128,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
         </div>
 
         {/* Center Section - Event Details */}
-        <div className="w-full lg:w-[50%] relative py-12 px-6 flex flex-col justify-between border-b lg:border-b-0 border-white/5 text-center z-10 overflow-hidden min-h-[400px] lg:min-h-auto bg-black/80 backdrop-blur-md transform translate-z-[20px]">
+        <div className="w-full lg:w-[50%] relative py-4 px-6 flex flex-col justify-between border-b lg:border-b-0 border-white/5 text-center z-10 overflow-hidden min-h-[400px] lg:min-h-auto bg-black/80 backdrop-blur-md transform translate-z-[20px]">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -146,12 +146,13 @@ const TicketHero: React.FC<TicketHeroProps> = ({
           {/* Header Row */}
           <div className="relative z-10 flex justify-between items-center mb-8 h-10 transform translate-z-[30px]">
             <div className="flex items-baseline leading-none text-left h-full">
-              <span className="text-red-600 font-extrabold text-2xl tracking-tighter">
-                TED<span className="text-lg relative -top-1 ml-px">x</span>
-              </span>
-              <span className="text-white text-2xl font-bold tracking-tight ml-1">
-                CCET
-              </span>
+              <Image
+                            src="/Logo1.svg"
+                            alt="TEDxCCET Logo"
+                            width={120}
+                            height={220}
+                            className="w-32 md:w-36 h-auto transition-all duration-300"
+                          />
             </div>
 
             <div className="relative w-32 h-10 opacity-90 flex items-center">
@@ -247,7 +248,7 @@ const TicketHero: React.FC<TicketHeroProps> = ({
             >
               <div className="relative w-28 h-28">
                 <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.graburpass.com/e/QuY6el"
+                  src="/qr.png"
                   alt="Scan for Tickets"
                   className="object-contain w-full h-full"
                 />

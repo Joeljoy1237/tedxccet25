@@ -64,6 +64,10 @@ export const galleryImages = [
     alt: "img16",
   },
   {
+    src: "https://res.cloudinary.com/dkwft0wsv/image/upload/v1771479334/design_team_abkb7x.jpg",
+    alt: "img25",
+  },
+  {
     src: "https://res.cloudinary.com/dkwft0wsv/image/upload/v1770533518/main14_zzreb1.jpg",
     alt: "img17",
   },
@@ -95,5 +99,6 @@ export const galleryImages = [
     src: "https://res.cloudinary.com/dkwft0wsv/image/upload/v1770533516/Akhil_P_Dharmajan_skikqp.jpg",
     alt: "img24",
   },
+  
  
 ];

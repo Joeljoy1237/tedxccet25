@@ -172,15 +172,12 @@ export default function Footer() {
             &copy; 2026 TEDxCCET. This independent TEDx event is operated under
             license from TED.
           </p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <span className="text-neutral-700">•</span>
-            <Link href="#" className="hover:text-white transition-colors">
-              Terms of Use
-            </Link>
-          </div>
+          <p className="text-zinc-500 text-sm">
+            Made by{" "}
+            <span className="text-white font-medium hover:text-[#EB0028] transition-colors cursor-pointer">
+              Tech Team
+            </span>
+          </p>
         </div>
       </div>
 
@@ -199,7 +196,6 @@ export default function Footer() {
 
           {/* Circular Base */}
           <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-red-600 bg-zinc-900/80 backdrop-blur-sm shadow-[0_0_30px_rgba(235,0,40,0.3)] flex items-center justify-center transition-transform duration-500 group-hover:rotate-6">
-
             {/* Overflowing Bird Animation */}
             <div className="absolute -inset-6 md:-inset-8 pointer-events-none select-none">
               <Image
@@ -213,7 +209,9 @@ export default function Footer() {
 
             {/* Interaction Overlay (Text) */}
             <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center z-20 pointer-events-none">
-              <span className="text-[10px] font-black text-red-500 uppercase tracking-tighter">Copy Code</span>
+              <span className="text-[10px] font-black text-red-500 uppercase tracking-tighter">
+                Copy Code
+              </span>
             </div>
           </div>
 
