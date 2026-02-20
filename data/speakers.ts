@@ -51,7 +51,7 @@ export const speakers: Speaker[] = [
     ],
   },
   
-  {
+  /* {
     name: "Manoj Abraham IPS",
     slug: "manoj-abraham",
     role: "Director General of Police (DGP), Fire & Rescue Services, and Director of the Vigilance and Anti-Corruption Bureau (VACB) ",
@@ -68,7 +68,7 @@ export const speakers: Speaker[] = [
       "Throughout his illustrious career, he has been recognized for his innovative approach to policing, particularly in the realm of community participation and the integration of technology in law enforcement. As one of the key architects of the Kerala Police Cyberdome, he has revolutionized how the force tackles modern-day security challenges.",
       "At TEDxCCET, he shares insights into the true nature of courage and leadership in public service, advocating for a principled approach to governance that stands firm against corruption and prioritizes the safety and dignity of every citizen."
     ],
-  },
+  }, */
   {
     name: "Arvind Venugopal",
     slug: "arvind-venugopal",
