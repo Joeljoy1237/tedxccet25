@@ -100,7 +100,7 @@ export default function Tariff() {
   const tiers = [
     {
       name: "Regular",
-      price: "1200",
+      price: "1199",
       highlight: false,
       isSale: false,
       buttonText: "Secure Seat",
@@ -108,8 +108,8 @@ export default function Tariff() {
     },
     {
       name: "Flash Sale",
-      price: "1200",
-      salePrice: "900",
+      price: "1199",
+      salePrice: "899",
       savings: "300",
       discount: "25% OFF",
       highlight: true,
