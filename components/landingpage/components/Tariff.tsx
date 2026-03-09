@@ -115,7 +115,7 @@ export default function Tariff() {
       highlight: true,
       isSale: true,
       buttonText: "Claim Flash Sale",
-      url: "https://www.graburpass.com/e/QuY6el",
+      url: "https://www.graburpass.com/ref/REF-EB-2J2O",
     },
   ];
 

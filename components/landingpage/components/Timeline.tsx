@@ -213,11 +213,11 @@ export default function Timeline() {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto mb-24 text-center">
-        <div className="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 text-xs font-bold tracking-[0.2em] text-red-600 uppercase">
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-red-500/20 bg-red-500/5 text-[10px] uppercase font-bold tracking-[0.2em] text-red-500 font-sans">
           Schedule
         </div>
-        <h2 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-4">
-          Event <span className="text-red-600">Timeline</span>
+        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-6 font-robofan">
+          Event <span className="text-red-600 drop-shadow-[0_0_15px_rgba(235,0,40,0.5)]">Timeline</span>
         </h2>
         <p className="text-neutral-400 text-lg lg:text-xl">
           A full day of inspiration, connection, and transformation.

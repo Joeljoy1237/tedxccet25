@@ -38,6 +38,7 @@ export default function LandingPage() {
       <Speakers />
       <TicketHero />
       <Tariff />
+      <Timeline />
       <Sponsors/>
       <PreviousTalks />
       <Gallery2 />
