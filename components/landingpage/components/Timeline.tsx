@@ -216,7 +216,7 @@ export default function Timeline() {
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-red-500/20 bg-red-500/5 text-[10px] uppercase font-bold tracking-[0.2em] text-red-500 font-sans">
           Schedule
         </div>
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-6 font-robofan">
+        <h2 className="text-5xl md:text-7xl lg:text-7.5xl font-black uppercase tracking-tight mb-6 font-robofan">
           Event <span className="text-red-600 drop-shadow-[0_0_15px_rgba(235,0,40,0.5)]">Timeline</span>
         </h2>
         <p className="text-neutral-400 text-lg lg:text-xl">
