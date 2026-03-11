@@ -62,7 +62,7 @@ export default function Gallery2() {
                 >
                   <Image
                     src={image.src}
-                    alt={image.alt || `Gallery Image ${index + 1}`}
+                    alt={image.src || `Gallery Image ${index + 1}`}
                     fill
                     sizes="(max-width: 768px) 300px, 400px"
                     className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
@@ -88,7 +88,7 @@ export default function Gallery2() {
                 >
                   <Image
                     src={image.src}
-                    alt={image.alt || `Gallery Image ${index + 1}`}
+                    alt={image.src || `Gallery Image ${index + 1}`}
                     fill
                     sizes="(max-width: 768px) 300px, 400px"
                     className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
