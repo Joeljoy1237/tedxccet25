@@ -77,7 +77,7 @@ export default function MercantileePage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white pt-28 pb-12 overflow-hidden flex items-center justify-center relative">
+    <main className="min-h-screen bg-black text-white pt-20 md:pt-28 pb-12 overflow-hidden flex items-center justify-center relative">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[120px] animate-pulse" />
@@ -122,7 +122,7 @@ export default function MercantileePage() {
                   <div className="h-px w-12 bg-red-600" />
                   <span className="text-[11px] font-black uppercase tracking-[0.4em] text-red-600">The Collection</span>
                 </div>
-                <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] mt-4 font-intro uppercase flex items-baseline gap-4">
+                <h1 className="text-4xl md:text-8xl font-black tracking-tighter leading-[0.85] mt-4 font-intro uppercase flex items-baseline gap-4">
                   <span className="text-white">DAUNT</span>
                   <span className="text-red-600 relative inline-block group italic font-light font-intro-light">
                     Ø
@@ -222,9 +222,9 @@ export default function MercantileePage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 40 }}
               data-lenis-prevent
-              className="relative w-full max-w-xl bg-black border border-white/5 rounded-[3rem] overflow-y-auto max-h-[90vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] custom-scrollbar"
+              className="relative w-full max-w-xl bg-black border border-white/5 rounded-2xl md:rounded-[3rem] overflow-y-auto max-h-[90vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] custom-scrollbar"
             >
-              <div className="p-10">
+              <div className="p-6 md:p-10">
                 <div className="flex justify-between items-start mb-10">
                   <div>
                     <h2 className="text-3xl font-black font-intro uppercase tracking-tight text-white mb-2">Checkout</h2>
@@ -269,7 +269,7 @@ export default function MercantileePage() {
                               type="text"
                               value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 md:py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
                               placeholder="Your full name"
                             />
                           </div>
@@ -284,7 +284,7 @@ export default function MercantileePage() {
                               type="email"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 md:py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
                               placeholder="hello@example.com"
                             />
                           </div>
@@ -298,7 +298,7 @@ export default function MercantileePage() {
                               type="text"
                               value={formData.organization}
                               onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 md:py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
                               placeholder="Institution"
                             />
                           </div>
@@ -310,7 +310,7 @@ export default function MercantileePage() {
                               type="text"
                               value={formData.designation}
                               onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
-                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 md:py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
                               placeholder="e.g. Student"
                             />
                           </div>
@@ -325,7 +325,7 @@ export default function MercantileePage() {
                               type="tel"
                               value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 md:py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
                               placeholder="+91"
                             />
                           </div>
@@ -337,7 +337,7 @@ export default function MercantileePage() {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           disabled={isSubmitting}
-                          className="w-full bg-red-600 hover:bg-red-700 h-16 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 transition-all disabled:opacity-50 font-intro uppercase tracking-wider"
+                          className="w-full bg-red-600 hover:bg-red-700 h-14 md:h-16 rounded-xl md:rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 transition-all disabled:opacity-50 font-intro uppercase tracking-wider"
                         >
                           {isSubmitting ? (
                             <Loader2 className="w-6 h-6 animate-spin" />

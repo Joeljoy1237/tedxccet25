@@ -14,9 +14,9 @@ export default function GalleryPage() {
 
   return (
     <div className="bg-black min-h-screen text-white">
-      <div className="container mx-auto px-6 pt-32 pb-20">
+      <div className="container mx-auto px-6 pt-24 md:pt-32 pb-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
+          <h1 className="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4">
             Our <span className="text-red-600">Gallery</span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto">

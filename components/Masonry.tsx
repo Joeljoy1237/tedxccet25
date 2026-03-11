@@ -304,7 +304,7 @@ const Masonry: React.FC<MasonryProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative mx-10"
+      className="relative mx-4 md:mx-10"
       style={{ height: grid.length > 0 ? containerHeight : 'auto' }}
     >
       {grid.length > 0 ? (
