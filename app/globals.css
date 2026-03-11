@@ -149,6 +149,24 @@
   background: #5f0000;
 }
 
+/* Modal Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
 .blankRedScroll {
   color: transparent;
   -webkit-text-stroke: 2px var(--theme-color);

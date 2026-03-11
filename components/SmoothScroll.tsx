@@ -33,6 +33,20 @@ export default function SmoothScroll() {
   }, []);
 
   useEffect(() => {
+    const observer = new MutationObserver(() => {
+      if (document.body.style.overflow === "hidden") {
+        lenisRef.current?.stop();
+      } else {
+        lenisRef.current?.start();
+      }
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }

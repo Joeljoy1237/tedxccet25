@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import {
   Instagram,
@@ -10,13 +10,16 @@ import {
   MapPin,
   Mail,
   Phone,
+  PartyPopper,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Confetti, type ConfettiRef } from "../ui/confetti";
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
   const [copied, setCopied] = useState(false);
+  const confettiRef = useRef<ConfettiRef>(null);
 
   const handleCopy = (code: string) => {
     navigator.clipboard.writeText(code);
@@ -36,6 +39,23 @@ export default function Footer() {
     window.addEventListener("scroll", toggleVisibility);
 
     return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  useEffect(() => {
+    // Subtle interval pop to catch attention
+    const interval = setInterval(() => {
+      confettiRef.current?.fire({
+        particleCount: 12,
+        spread: 30, // Reduced spread
+        startVelocity: 12, // Reduced height
+        origin: { x: 0.65, y: 0.85 }, // More precise origin
+        colors: ["#EB0028", "#FFFFFF"],
+        ticks: 150,
+        gravity: 1.5, // Faster fall
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToTop = () => {
@@ -111,14 +131,21 @@ export default function Footer() {
                 { name: "Speakers", href: "/speakers" },
                 { name: "Schedule", href: "/#timeline" },
                 { name: "Partners", href: "/sponsors" },
+                { name: "Merchandise", href: "/mercantilee", isNew: true },
                 { name: "Venue", href: "/gettingthere" },
               ].map((item) => (
-                <li key={item.name}>
+                <li key={item.name} className="flex items-center gap-2">
                   <Link
                     href={item.href}
-                    className="text-neutral-400 hover:text-red-600 transition-colors text-sm"
+                    className={`${(item as any).isNew
+                        ? "text-red-500 font-bold hover:text-red-400"
+                        : "text-neutral-400 hover:text-red-600"
+                      } transition-colors text-sm flex items-center gap-2`}
                   >
                     {item.name}
+                    {(item as any).isNew && (
+                      <span className="flex h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
+                    )}
                   </Link>
                 </li>
               ))}
@@ -181,59 +208,104 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Early Bird Floating Button - Shown all the time */}
-      <div className="fixed bottom-10 right-6 md:right-10 z-100 group">
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => handleCopy("TEDXCCET26")}
-          className="relative"
-          aria-label="Early Bird Ticket"
-        >
-          {/* Ambient Pulse */}
+      {/* Merchandise Floating Link */}
+      <div className="fixed bottom-10 right-6 md:right-10 z-[100] group">
+        <Link href="/mercantilee">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -10, 0] // Subtle floating animation
+            }}
+            transition={{
+              y: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              },
+              opacity: { duration: 0.5 },
+              scale: { duration: 0.5 }
+            }}
+            whileHover={{ scale: 1.15, y: -15, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.95 }}
+            onMouseEnter={() => {
+              confettiRef.current?.fire({
+                particleCount: 30,
+                spread: 40, // Reduced spread
+                startVelocity: 25, // Reduced height
+                origin: { x: 0.91, y: 0.92 },
+                colors: ["#EB0028", "#FFFFFF", "#FF0000"],
+              });
+            }}
+            className="relative"
+            aria-label="Visit Merchandise Store"
+          >
+            {/* Professional Confetti Canvas */}
+            <Confetti
+              ref={confettiRef}
+              className="absolute pointer-events-none z-50 -inset-40"
+            />
 
-          {/* Circular Base */}
-          <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-red-600 bg-zinc-900/80 backdrop-blur-sm shadow-[0_0_30px_rgba(235,0,40,0.3)] flex items-center justify-center transition-transform duration-500 group-hover:rotate-6">
-            {/* Overflowing Bird Animation */}
-            <div className="absolute -inset-6 md:-inset-8 pointer-events-none select-none">
-              <Image
-                src="/early.gif"
-                alt="Early Bird"
-                fill
-                className="object-contain mix-blend-screen contrast-[2.5] brightness-[1.1]"
-                unoptimized
-              />
+            {/* Dynamic Glow Effect */}
+            <motion.div
+              animate={{
+                opacity: [0.25, 0.6, 0.25],
+                scale: [1, 1.3, 1],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute inset-0 rounded-full bg-red-600/40 blur-2xl -z-10"
+            />
+
+            {/* "LIVE" Badge */}
+            <motion.div
+              initial={{ scale: 0, rotate: -20 }}
+              animate={{ scale: 1, rotate: 0 }}
+              whileHover={{
+                scale: [1, 1.25, 1],
+                rotate: [0, 15, -15, 0],
+              }}
+              className="absolute -top-1 -right-1 z-30 bg-red-600 text-[8px] font-black text-white px-2 py-0.5 rounded-full border border-white/20 shadow-lg tracking-tighter flex items-center gap-0.5"
+            >
+              <PartyPopper className="w-2 h-2" />
+              LIVE
+            </motion.div>
+
+            {/* Circular Base */}
+            <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-red-600 bg-zinc-900/80 backdrop-blur-sm shadow-[0_0_40px_rgba(235,0,40,0.4)] flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:rotate-12">
+              {/* T-Shirt Image */}
+              <div className="absolute inset-0 bg-[#E3E3E3] p-2 pointer-events-none select-none">
+                <Image
+                  src="/tshirt/tshirt.jpeg"
+                  alt="Merchandise"
+                  fill
+                  className="object-contain group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Interaction Overlay (Text) */}
+              <div className="absolute inset-0 rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center z-20 pointer-events-none">
+                <span className="text-[10px] font-black text-white uppercase tracking-tighter">
+                  Store
+                </span>
+                <span className="text-[8px] font-bold text-red-500 uppercase tracking-tighter">
+                  Open
+                </span>
+              </div>
             </div>
 
-            {/* Interaction Overlay (Text) */}
-            <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center z-20 pointer-events-none">
-              <span className="text-[10px] font-black text-red-500 uppercase tracking-tighter">
-                Copy Code
-              </span>
+            {/* Hint Tooltip */}
+            <div className="absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 bg-zinc-900 border border-white/10 rounded-xl text-[10px] font-bold text-white uppercase tracking-widest opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap">
+              Merch
+              {/* Tooltip Arrow */}
+              <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-zinc-900 border-r border-t border-white/10 rotate-45" />
             </div>
-          </div>
-
-          {/* Speech Bubble from the Bird */}
-          <AnimatePresence>
-            {copied && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                className="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-56 bg-zinc-900 border border-red-500/20 text-white text-xs font-medium px-4 py-3 rounded-2xl shadow-[0_0_20px_rgba(235,0,40,0.15)] z-30"
-              >
-                <p className="text-red-400 font-bold mb-1">✦ Code Copied!</p>
-                <p className="text-neutral-400 leading-relaxed">
-                  Paste <span className="text-red-500 font-bold">TEDXCCET26</span> in GrabUrPass to get your discount!
-                </p>
-                {/* Speech bubble tail */}
-                <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-10 border-l-zinc-900" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+          </motion.div>
+        </Link>
       </div>
     </footer>
   );

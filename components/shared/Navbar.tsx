@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { name: "Talks", href: "/previoustalks" },
   { name: "Getting There", href: "/gettingthere" },
   { name: "Gallery", href: "/gallery" },
+  { name: "Mercantilee", href: "/mercantilee" },
 ];
 
 export default function Navbar() {
