@@ -71,6 +71,7 @@ interface Item {
   img: string;
   url?: string;
   height?: number;
+  aspect?: number;
   content?: React.ReactNode;
   onClick?: () => void;
   forceLowPosition?: boolean;
@@ -153,35 +154,32 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   useEffect(() => {
-    const imagesToLoad = items.filter((i) => i.img);
+    // We already have aspect ratios in most cases now.
+    // If some are missing (e.g. dynamic content), we can still detect them.
+    const imagesToLoad = items.filter((i) => i.img && !i.aspect);
     if (imagesToLoad.length === 0) {
       setImagesReady(true);
       return;
     }
 
-    const imagePromises = imagesToLoad.map(
-      (i) =>
-        new Promise<void>((resolve) => {
-          const img = new Image();
-          img.src = i.img;
-          // Pre-load logic to get dimensions
-          const checkDimensions = () => {
-            if (img.naturalWidth && img.naturalHeight) {
-              const ratio = img.naturalWidth / img.naturalHeight;
-              setAspectRatios((prev) => ({ ...prev, [i.id]: ratio }));
-            }
-            resolve();
-          };
+    setImagesReady(true);
 
-          if (img.complete) {
-            checkDimensions();
-          } else {
-            img.onload = checkDimensions;
-            img.onerror = () => resolve();
-          }
-        }),
-    );
-    Promise.all(imagePromises).then(() => setImagesReady(true));
+    imagesToLoad.forEach((i) => {
+      const img = new Image();
+      img.src = i.img;
+      const checkDimensions = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          const ratio = img.naturalWidth / img.naturalHeight;
+          setAspectRatios((prev) => ({ ...prev, [i.id]: ratio }));
+        }
+      };
+
+      if (img.complete) {
+        checkDimensions();
+      } else {
+        img.onload = checkDimensions;
+      }
+    });
   }, [items]);
 
   const grid = useMemo<GridItem[]>(() => {
@@ -207,11 +205,12 @@ const Masonry: React.FC<MasonryProps> = ({
       // Note: Dividing by 2 was in original code likely for scaling, but if using real aspect ratio:
       // height = width / ratio.
       // If the user wants to maintain the "random/varied" look but based on content:
-      let height = child.height || 300;
-      if (aspectRatios[child.id]) {
-        height = columnWidth / aspectRatios[child.id];
-      } else if (child.content && child.height) {
-        // Keep fixed height for content cards (like view all)
+      // Calculate height based on aspect ratio
+      const ratio = child.aspect || aspectRatios[child.id] || 1.5;
+      let height = columnWidth / ratio;
+      
+      if (child.content && child.height) {
+        // Keep fixed height for content cards
         height = child.height;
       }
 
@@ -306,39 +305,56 @@ const Masonry: React.FC<MasonryProps> = ({
     <div
       ref={containerRef}
       className="relative mx-10"
-      style={{ height: containerHeight }}
+      style={{ height: grid.length > 0 ? containerHeight : 'auto' }}
     >
-      {grid.map((item) => (
-        <div
-          key={item.id}
-          data-key={item.id}
-          className="absolute box-content"
-          style={{ willChange: "transform, width, height, opacity" }}
-          onClick={() => {
-            if (item.onClick) item.onClick();
-            else if (item.url) window.open(item.url, "_blank", "noopener");
-          }}
-          onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
-          onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
-        >
-          {item.content ? (
-            <div className="w-full h-full">{item.content}</div>
-          ) : (
-              <div className="relative w-full h-full rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] overflow-hidden">
-                <NextImage
-                  src={item.img}
-                  alt="Gallery item"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              {colorShiftOnHover && (
-                  <div className="color-overlay absolute inset-0 rounded-[10px] bg-linear-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
-              )}
-            </div>
-          )}
+      {grid.length > 0 ? (
+        grid.map((item) => (
+          <div
+            key={item.id}
+            data-key={item.id}
+            className="absolute box-content"
+            style={{ willChange: "transform, width, height, opacity" }}
+            onClick={() => {
+              if (item.onClick) item.onClick();
+              else if (item.url) window.open(item.url, "_blank", "noopener");
+            }}
+            onMouseEnter={(e) => handleMouseEnter(item.id, e.currentTarget)}
+            onMouseLeave={(e) => handleMouseLeave(item.id, e.currentTarget)}
+          >
+            {item.content ? (
+              <div className="w-full h-full">{item.content}</div>
+            ) : (
+                <div className="gallery-image-container skeleton relative w-full h-full rounded-[10px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] overflow-hidden bg-neutral-900/50">
+                  <NextImage
+                    src={item.img}
+                    alt="Gallery item"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-opacity duration-500"
+                    onLoadingComplete={(img) => {
+                      const parent = img.parentElement;
+                      if (parent) parent.classList.add('loaded');
+                    }}
+                  />
+                {colorShiftOnHover && (
+                    <div className="color-overlay absolute inset-0 rounded-[10px] bg-linear-to-tr from-pink-500/50 to-sky-500/50 opacity-0 pointer-events-none" />
+                )}
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        /* Initial Skeleton Grid */
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+          {[...Array(6)].map((_, i) => (
+            <div 
+              key={i} 
+              className="skeleton rounded-[10px] bg-neutral-900/50" 
+              style={{ height: i % 2 === 0 ? '300px' : '400px' }}
+            />
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };

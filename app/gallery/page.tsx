@@ -8,7 +8,7 @@ export default function GalleryPage() {
       id: index.toString(),
       img: img.src,
       url: img.src, // Using image source as URL for now
-      // height removed
+      aspect: img.aspect,
     }));
   }, []);
 

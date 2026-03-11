@@ -77,8 +77,14 @@ export default function MercantileePage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white pt-24 pb-12 overflow-hidden flex items-center justify-center">
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-black text-white pt-28 pb-12 overflow-hidden flex items-center justify-center relative">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: "2s" }} />
+      </div>
+
+      <div className="w-full mx-auto px-[4vw] relative z-10">
         <motion.div
           initial="initial"
           animate="animate"
@@ -91,11 +97,14 @@ export default function MercantileePage() {
             variants={fadeIn}
             className="space-y-4"
           >
-            <div className="aspect-square w-full max-w-[500px] mx-auto bg-neutral-900/40 rounded-3xl border border-white/5 overflow-hidden shadow-2xl relative group">
+            <div className="aspect-square w-full max-w-[550px] mx-auto bg-neutral-900/20 backdrop-blur-3xl rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl relative group">
+              {/* Decorative Glow */}
+              <div className="absolute inset-0 bg-linear-to-br from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
               <TShirt color="#ffffff" />
 
               {/* Interaction Overlay */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center gap-2 text-xs font-medium text-white/70">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/5 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/50">
                 <Info className="w-3.5 h-3.5" />
                 Drag to rotate • Scroll to zoom
               </div>
@@ -108,14 +117,28 @@ export default function MercantileePage() {
               <motion.div variants={fadeIn} className="flex items-center gap-3 mb-4">
                 <span className="bg-red-600/10 text-red-500 text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded">Official Merchandise</span>
               </motion.div>
-              <motion.h1 variants={fadeIn} className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-tight">
-                TEDxCCET <span className="text-red-600">Logo</span> Tee
-              </motion.h1>
-              <motion.div variants={fadeIn} className="flex items-baseline gap-4 mb-6">
-                <span className="text-3xl font-bold tracking-tighter">₹399</span>
+              <motion.div variants={fadeIn} className="flex flex-col gap-1 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-12 bg-red-600" />
+                  <span className="text-[11px] font-black uppercase tracking-[0.4em] text-red-600">The Collection</span>
+                </div>
+                <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] mt-4 font-intro uppercase flex items-baseline gap-4">
+                  <span className="text-white">DAUNT</span>
+                  <span className="text-red-600 relative inline-block group italic font-light font-intro-light">
+                    Ø
+                    <span className="absolute -inset-4 bg-red-600/20 blur-2xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl font-light text-white/40 mt-4 tracking-tight italic font-intro-light">
+                  The Phoenix Unbounded
+                </p>
               </motion.div>
-              <motion.p variants={fadeIn} className="text-white/60 leading-relaxed text-lg max-w-lg italic">
-                A masterpiece of comfort and design. Crafted for those who believe in ideas worth spreading.
+              <motion.div variants={fadeIn} className="flex items-center gap-4 mb-8">
+                <span className="text-4xl font-intro text-white">₹399</span>
+                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-white/40">Limited Series</span>
+              </motion.div>
+              <motion.p variants={fadeIn} className="text-white/60 leading-relaxed text-lg max-w-lg font-light">
+                A masterpiece of comfort and design. Crafted from <span className="text-white font-medium">premium cotton</span> for those who believe in ideas worth spreading.
               </motion.p>
             </div>
 
@@ -124,16 +147,16 @@ export default function MercantileePage() {
               <div className="flex justify-between items-center text-sm">
                 <span className="font-bold tracking-widest uppercase text-white/40">Select Size</span>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
                 {SIZES.map((size) => (
                   <motion.button
                     key={size}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedSize(size)}
-                    className={`min-w-[56px] h-12 rounded-xl text-sm font-bold border transition-all ${selectedSize === size
-                      ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-                      : "bg-transparent text-white/60 border-white/10 hover:border-white/40"
+                    className={`min-w-[64px] h-14 rounded-2xl text-sm font-black transition-all duration-300 border ${selectedSize === size
+                      ? "bg-white text-black border-white shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                      : "bg-white/5 text-white/40 border-white/5 hover:border-white/20 hover:text-white"
                       }`}
                   >
                     {size}
@@ -145,12 +168,14 @@ export default function MercantileePage() {
             {/* Action Buttons */}
             <div className="flex pt-6">
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(220, 38, 38, 0.4)" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleAddToCart}
                 disabled={isAdding}
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white h-14 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all disabled:opacity-50 shadow-lg shadow-red-600/20"
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white h-16 rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 transition-all disabled:opacity-50 relative overflow-hidden group/btn"
               >
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
+                
                 <AnimatePresence mode="wait">
                   {isAdding ? (
                     <motion.div
@@ -160,19 +185,19 @@ export default function MercantileePage() {
                       exit={{ opacity: 0, y: -10 }}
                       className="flex items-center gap-2"
                     >
-                      <Check className="w-5 h-5" />
+                      <Check className="w-6 h-6" />
                       Added to Bag
                     </motion.div>
                   ) : (
                     <motion.div
                       key="add"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center gap-2"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.1 }}
+                      className="flex items-center gap-3"
                     >
-                      <ShoppingCart className="w-6 h-6" />
-                      Order Now
+                      <ShoppingCart className="w-7 h-7" />
+                      <span className="font-intro tracking-wider">ORDER NOW</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -193,15 +218,18 @@ export default function MercantileePage() {
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              exit={{ opacity: 0, scale: 0.95, y: 40 }}
               data-lenis-prevent
-              className="relative w-full max-w-md bg-neutral-900 border border-white/10 rounded-3xl overflow-y-auto max-h-[85vh] shadow-2xl custom-scrollbar"
+              className="relative w-full max-w-xl bg-black border border-white/5 rounded-[3rem] overflow-y-auto max-h-[90vh] shadow-[0_0_100px_rgba(0,0,0,0.5)] custom-scrollbar"
             >
-              <div className="p-8">
-                <div className="flex justify-between items-center mb-8">
-                  <h2 className="text-2xl font-bold">Complete Your Order</h2>
+              <div className="p-10">
+                <div className="flex justify-between items-start mb-10">
+                  <div>
+                    <h2 className="text-3xl font-black font-intro uppercase tracking-tight text-white mb-2">Checkout</h2>
+                    <p className="text-white/40 text-sm font-medium uppercase tracking-widest">Complete Your Order Details</p>
+                  </div>
                   <button
                     onClick={() => setShowForm(false)}
                     disabled={isSubmitting}
@@ -232,82 +260,84 @@ export default function MercantileePage() {
                       className="space-y-6"
                     >
                       <div className="space-y-4">
-                        <div>
-                          <label className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2 block">Full Name</label>
+                         <div>
+                          <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3 block ml-1">Full Name</label>
                           <div className="relative">
-                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+                            <User className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
                             <input
                               required
                               type="text"
                               value={formData.name}
                               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-red-600 outline-none transition-colors"
-                              placeholder="John Doe"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              placeholder="Your full name"
                             />
                           </div>
                         </div>
 
                         <div>
-                          <label className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2 block">Email Address</label>
+                          <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3 block ml-1">Email Address</label>
                           <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+                            <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
                             <input
                               required
                               type="email"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-red-600 outline-none transition-colors"
-                              placeholder="john@example.com"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              placeholder="hello@example.com"
                             />
                           </div>
                         </div>
 
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
-                            <label className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2 block">Organization / Institution</label>
+                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3 block ml-1">Organization</label>
                             <input
                               required
                               type="text"
                               value={formData.organization}
                               onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-4 focus:border-red-600 outline-none transition-colors"
-                              placeholder="College or Company Name"
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              placeholder="Institution"
                             />
                           </div>
 
                           <div>
-                            <label className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2 block">Designation</label>
+                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3 block ml-1">Designation</label>
                             <input
                               required
                               type="text"
                               value={formData.designation}
                               onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
-                              className="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-4 focus:border-red-600 outline-none transition-colors"
-                              placeholder="Student, Assistant Professor, etc."
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 px-6 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              placeholder="e.g. Student"
                             />
                           </div>
+                        </div>
 
-                          <div>
-                            <label className="text-xs font-bold uppercase tracking-widest text-white/40 mb-2 block">WhatsApp Number</label>
-                            <div className="relative">
-                              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
-                              <input
-                                required
-                                type="tel"
-                                value={formData.phone}
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-red-600 outline-none transition-colors"
-                                placeholder="+91 9876543210"
-                              />
-                            </div>
+                        <div>
+                          <label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-3 block ml-1">WhatsApp Number</label>
+                          <div className="relative">
+                            <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+                            <input
+                              required
+                              type="tel"
+                              value={formData.phone}
+                              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              className="w-full bg-white/5 border border-white/5 rounded-2xl py-5 pl-14 pr-4 focus:border-red-600/50 focus:bg-white/10 outline-none transition-all placeholder:text-white/10 font-medium"
+                              placeholder="+91"
+                            />
                           </div>
+                        </div>
                       </div>
 
-                      <div className="pt-4">
+                      <div className="pt-6">
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           disabled={isSubmitting}
-                          className="w-full bg-red-600 hover:bg-red-700 h-14 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all disabled:opacity-50"
+                          className="w-full bg-red-600 hover:bg-red-700 h-16 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 transition-all disabled:opacity-50 font-intro uppercase tracking-wider"
                         >
                           {isSubmitting ? (
                             <Loader2 className="w-6 h-6 animate-spin" />
@@ -315,7 +345,7 @@ export default function MercantileePage() {
                             "Confirm Order"
                           )}
                         </motion.button>
-                        <p className="text-[10px] text-white/20 text-center mt-4 uppercase tracking-[0.2em] italic">
+                        <p className="text-[9px] text-white/20 text-center mt-6 uppercase tracking-[0.3em] font-medium max-w-[280px] mx-auto leading-loose">
                           By confirming, you agree to our processing of your details for order updates.
                         </p>
                       </div>
