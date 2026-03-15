@@ -99,7 +99,7 @@ export default function MercantileePage() {
           >
             <div className="aspect-square w-full max-w-[550px] mx-auto bg-neutral-900/20 backdrop-blur-3xl rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl relative group">
               {/* Decorative Glow */}
-              <div className="absolute inset-0 bg-linear-to-br from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 pointer-events-none bg-linear-to-br from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               <TShirt color="#ffffff" />
 
