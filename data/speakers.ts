@@ -53,7 +53,7 @@ export const speakers: Speaker[] = [
   
   /* {
     name: "Manoj Abraham IPS",
-    slug: "manoj-abraham",
+    slug: "",
     role: "Director General of Police (DGP), Fire & Rescue Services, and Director of the Vigilance and Anti-Corruption Bureau (VACB) ",
     title: "SENIOR INDIAN POLICE SERVICE OFFICER, KERALA CADRE",
     org: "Government of Kerala",
@@ -96,12 +96,13 @@ export const speakers: Speaker[] = [
     image: "/speakers_s2/Dr_Jose_Chacko.png",
     imageUrl: "/speakers_s2/Dr_Jose_Chacko.png",
     achievement: "",
-    quote: "Medicine heals the body, but understanding heals the person.",
+    quote: "The Government of India awarded him the Padma Bhushan, the third highest civilian award, in 2025.",
     layout: "right",
     googleLink: "https://www.google.com/search?q=Dr.+Jose+Chacko+Cardiac+Surgeon+Author",
     detailedBio: [
       "Dr. Jose Chacko is a distinguished Cardiac Surgeon with a profound commitment to both the art of healing and the power of the written word. With years of experience in high-stakes surgical environments, he has dedicated his career to mending hearts, both literally and figuratively.",
       "Beyond the operating theater, Dr. Chacko is an accomplished author, exploring the intersections of medicine, ethics, and the human experience. His insights into the delicate balance between technical precision and empathetic care provide a unique perspective on what it truly means to be a healer in the modern world.",
+      "In recognition of his outstanding contributions to medicine, the Government of India awarded him the Padma Bhushan — the third highest civilian honour — in 2025.",
       "At TEDxCCET, Dr. Chacko shares his journey and the vital lessons learned from the rhythmic beat of thousands of hearts, advocating for a healthcare approach that prioritizes understanding as much as intervention."
     ],
   },
@@ -159,6 +160,23 @@ export const speakers: Speaker[] = [
     "Through his writings and public engagements, he has inspired diverse audiences to approach life with clarity, enthusiasm, and resilience. At TEDxCCET, he shares insights on how stories shape identity and how conscious living can transform everyday life."
   ],
 },
-
+{
+  name: "Franklin Josemon M",
+  slug: "franklin-josemon-m",
+  role: "Founder & CEO, Franklin's Lectures",
+  title: "TECH SPEAKER & ENTREPRENEUR",
+  org: "Franklin's Lectures",
+  image: "/speakers_s2/franklin.png",
+  imageUrl: "/speakers_s2/franklin.png",
+  achievement: "",
+  quote: "Education is not just about learning — it's about building systems that scale knowledge for thousands.",
+  layout: "left",
+  googleLink: "https://www.google.com/search?q=Franklin+Josemon+M+Franklins+Lectures",
+  detailedBio: [
+    "Franklin Josemon M is an education entrepreneur, ecosystem builder, and the Founder & CEO of Franklin's Lectures, a next-generation ed-tech initiative transforming engineering education in India.",
+    "Through his vision of a Virtual Engineering University model, he has developed scalable, technology-driven learning systems that provide structured academic excellence and mentorship to thousands of students nationwide.",
+    "At TEDxCCET, Franklin brings his unique perspective on AI, entrepreneurship, and the future of education — inspiring the next generation of engineers and innovators to think beyond the classroom and build solutions at scale.",
+  ],
+},
   
 ];
