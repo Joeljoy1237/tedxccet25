@@ -171,6 +171,23 @@ export default function Sponsors() {
                 />
               </div>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6 }}
+              className="w-full h-48 rounded-3xl border border-white/10 bg-white/5 
+                         flex items-center justify-center hover:border-red-600/50 transition-all duration-300 overflow-hidden p-8"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src="/sponsors/zahrat.jpeg"
+                  alt="Zahrat"
+                  fill
+                  className="object-fill rounded-2xl"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
